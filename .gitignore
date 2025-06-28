@@ -1,6 +1,8 @@
 # Maven build output
 /target/
 /test-output/
+/allure-report/
+/aalure-results/
 /AllureReports/
 /ExtentReport/
 /ExtentReports/
