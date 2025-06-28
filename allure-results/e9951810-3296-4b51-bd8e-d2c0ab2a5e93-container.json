@@ -1,0 +1,1 @@
+{"uuid":"e9951810-3296-4b51-bd8e-d2c0ab2a5e93","name":"FirefoxBrowser","children":[],"befores":[{"name":"setBrowser","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1751072025038,"stop":1751072025039}],"afters":[],"start":1751072025037,"stop":1751072033510}
