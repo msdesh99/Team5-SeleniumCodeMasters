@@ -1,0 +1,1 @@
+[{"uid":"2c48bd1f8c9f5647","name":"Verify the homepage heading is visible","time":{"start":1751140704320,"stop":1751140707335,"duration":3015},"status":"passed","severity":"normal"},{"uid":"977e2d37458d401e","name":"Validate the presence of App Name on the home page","time":{"start":1751140697999,"stop":1751140704273,"duration":6274},"status":"passed","severity":"normal"}]

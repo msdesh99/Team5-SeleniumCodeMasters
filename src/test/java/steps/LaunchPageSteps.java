@@ -20,7 +20,8 @@ public class LaunchPageSteps {
 	public LaunchPageSteps(TestContext testContext) {
 		this.testContext = testContext;
 		this.driver = this.testContext.base.getDriver();
-		this.launchPage = this.testContext.pageObjectManager.getLaunchPage();		
+		this.launchPage = this.testContext.pageObjectManager.getLaunchPage();
+
 		
 	}
 	//========= launchpage.feature
@@ -38,16 +39,22 @@ public class LaunchPageSteps {
 		}
 	}
 	@Then("User should see app name on the top left")
-	public void user_should_see_app_name_on_the_top_left() {
+	public void user_should_see_app_name_on_the_top_left() throws Exception {
 		System.out.println("User logged in : "+ driver.getCurrentUrl());
 		Map<String,Object> map = launchPage.validateAppNameOnTopLeft();
 		softAssertUtils = testContext.get("SoftAssertUtils", SoftAssertUtils.class);
 		softAssertUtils.assertTrue((Boolean)map.get("ElementFound"),"Assertion for presence of App Name Element is failed");
 		softAssertUtils.assertTrue((int)map.get("location")<=20,"App Name appears at the top left corner assertion is failed");
+		testContext.set("SoftAssertUtils", softAssertUtils);
+
 		try {
 			softAssertUtils.assertAll();
+			Assert.assertTrue((int)map.get("location")<=20,"App Name appears at the top left corner assertion is failed");
+
 		}catch(AssertionError ae) {
-			System.err.println(ae.getMessage());
+			//System.err.println(ae.getMessage());
+			//ae.printStackTrace();
+			throw new Exception(ae.getMessage());
 		}	
 	}
 	@Then("User should see text {string}")

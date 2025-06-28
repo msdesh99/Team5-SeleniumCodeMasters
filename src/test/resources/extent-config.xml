@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+  <configuration>
+   	<reportName>Team5_SweetBalance_ExtentReport</reportName>
+   	<documentTitle>Team5_SweetBalance_ui_hackethon</documentTitle>
+    <theme>DARK</theme>    
+    <encoding>UTF-8</encoding>    
+    <protocol>HTTPS</protocol>
+    
+    <timelineEnabled>true</timelineEnabled>
+    
+    <enableOfflineMode>true</enableOfflineMode>
+    
+    <thumbnailForBase64>thumbnails</thumbnailForBase64>
+   <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+   
+    <!-- custom javascript -->
+    <scripts>
+      <![CDATA[
+        $(document).ready(function() {
+            
+        });
+      ]]>
+    </scripts>
+    <!-- custom styles -->
+    <styles>
+      <![CDATA[
+      
+      ]]>
+    </styles>
+  </configuration>
+</extentreports>

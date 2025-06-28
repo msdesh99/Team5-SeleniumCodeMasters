@@ -10,9 +10,10 @@ public class TestContext {
 	private final Map<String, Object> contextData = new HashMap<String,Object>();
 	
 	public TestContext() {
-		base = new Base();
+		base = new Base(); 
 		//configLoader = base.getConfigs();
 		pageObjectManager = new PageObjectManager(base.getConfigs(), base.getDriver());
+		
 	}
 	public void set(String key, Object value) {
 		contextData.put(key,value);

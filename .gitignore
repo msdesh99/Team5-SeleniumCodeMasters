@@ -1,0 +1,18 @@
+# Maven build output
+/target/
+/test-output/
+/AllureReports/
+/ExtentReport/
+/ExtentReports/
+/logs/
+/PDFReport/
+/allure-results/
+
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+mvnw
+mvnw.cmd
+
+.classpath
+.project
+.settings/

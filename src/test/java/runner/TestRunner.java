@@ -12,12 +12,13 @@ import configs.BrowserConfig;
 @CucumberOptions(
 		//tags=(),
 		glue= {"steps"},
-		features= {"src/test/resources/feature"},
-		plugin= {"pretty","html:htmlReport.html",
-				"json:jsonReport.json"
-				//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				//"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
-				//"rerun:rerun/failed-scenarios.txt"
+		features= {"src/test/resources/feature/launchpage.feature"},
+		plugin= {"pretty",
+				"html:target/cucumber-reports/cucumberReport.html",
+				"json:target/cucumber-reports/cucumberReport.json",
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+				"rerun:rerun/failed-scenarios.txt"
 				},
 		dryRun=false,
 		monochrome=false,
@@ -25,14 +26,16 @@ import configs.BrowserConfig;
 		)
 public class TestRunner extends AbstractTestNGCucumberTests{
 
+	
 @Override
-@DataProvider(parallel=true)
+@DataProvider(parallel=false)
 public Object[][] scenarios() {
 	return super.scenarios();
 }
+	
 @BeforeTest
 @Parameters({"browser"})
-public void setBrowser(@Optional("Edge")String browser) {
+public void setBrowser(@Optional("chrome")String browser) {
 	BrowserConfig.setBrowserType(browser);
 }
 }
