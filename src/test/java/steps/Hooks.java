@@ -55,7 +55,7 @@ public class Hooks {
 			scenario.attach(fileContent, "image/png", "screenshot");
 		}
 	}
-	@After
+	/*@After
 	public void afterScenario(Scenario scenario) {
 		System.out.println("is scenario failed: "+ scenario.isFailed());
 		scenario.log("Quiting Driver for "+scenario.getName()+"........ ");
@@ -68,5 +68,5 @@ public class Hooks {
 		}
 		this.testContext.base.getDriver().quit();
 		this.testContext.clear();
-	}
+	}*/
 }
