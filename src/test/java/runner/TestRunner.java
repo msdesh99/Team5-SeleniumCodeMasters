@@ -12,7 +12,7 @@ import configs.BrowserConfig;
 @CucumberOptions(
 		//tags=(),
 		glue= {"steps"},
-		features= {"src/test/resources/feature/launchpage.feature"},
+		features= {"src/test/resources/feature/09_PremiumUserHomepage.feature"},
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
