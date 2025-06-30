@@ -11,9 +11,9 @@ import configs.BrowserConfig;
 @CucumberOptions(
 		//tags=(),
 		glue= {"steps"},
-		features= {"src/test/resources/feature/09_PremiumUserHomepage.feature"},
-		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
-
+		//glue= {"seqsteps"},
+		features= {"src/test/resources/feature/"},
+//		features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",

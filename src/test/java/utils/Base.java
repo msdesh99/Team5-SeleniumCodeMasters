@@ -31,12 +31,12 @@ public class Base {
     	  }
     	  else if(browserType.equalsIgnoreCase("firefox")) {
     		  FirefoxOptions fOptions = new FirefoxOptions();
-    		  //fOptions.addArguments("--headless");
+    		  fOptions.addArguments("--headless");
     		  driver = new FirefoxDriver(fOptions);    		  
     	  }
     	  else if(browserType.equalsIgnoreCase("edge")) {
     		  EdgeOptions eOptions = new EdgeOptions();
-    		  //eOptions.addArguments("--headless=new");
+    		  eOptions.addArguments("--headless=new");
     		  driver = new EdgeDriver(eOptions);
     	  }
     	  	driver.get(configLoader.getBaseUrl());
