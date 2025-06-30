@@ -41,6 +41,6 @@ Feature: Home Page Validation for Registered free user
   Scenario: Verify Average Blood Sugar  label is visible for free user
     Then User should see "Average Blood Sugar" third label for free user
 
-  @ChromePage10
+  @ChomePage10
   Scenario: Verify the time for last update in home page for free user
     Then User should see timestamp displayed next to the "Last updated" label for free user
