@@ -12,12 +12,12 @@ import org.testng.Assert;
 import configs.BrowserConfig;
 import pages.LaunchPage;
 import utils.SoftAssertUtils;
-public class LaunchPageSteps {
+public class LaunchPageStepsOld {
 	TestContext testContext;
 	WebDriver driver;
 	LaunchPage launchPage;
 	SoftAssertUtils softAssertUtils;
-	public LaunchPageSteps(TestContext testContext) {
+	public LaunchPageStepsOld(TestContext testContext) {
 		this.testContext = testContext;
 		this.driver = this.testContext.base.getDriver();
 		this.launchPage = this.testContext.pageObjectManager.getLaunchPage();
