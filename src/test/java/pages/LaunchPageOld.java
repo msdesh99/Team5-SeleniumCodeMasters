@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-public class LaunchPage {
+public class LaunchPageOld {
 	By passwordLocator = By.name("password");
 	WebDriver driver;
 	
