@@ -7,27 +7,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 public class LaunchPageOld {
 	By passwordLocator = By.name("password");
-	WebDriver driver;
-	
-	public LaunchPage(WebDriver driver) {
+	By appNameLocator = By.xpath("//div[text()='SweetBalance']");
+	WebDriver driver;	
+	public LaunchPageOld(WebDriver driver) {
 		this.driver = driver;		
 	}
-	public Map<String,Object> validateAppNameOnTopLeft() {
-		int x,y=0;
-		Map<String,Object> map = new HashMap<String,Object>();
-		
+	public int validateAppNameOnTopLeft() {
+		int x,y=0;		
 		System.out.println("Validating App Name.....");
-			WebElement appNameEle = driver.findElement(By.xpath("//div[contains(text(),'SweetBalance')]"));
+			WebElement appNameEle = driver.findElement(appNameLocator);
 		if(appNameEle.isDisplayed()) {
-			map.put("ElementFound", true);
 			Point location = appNameEle.getLocation();
 			x = location.getX();
 			y = location.getY();
-			map.put("location",40);
-			System.out.println("location of App Name is "+ location);			
 		}
 		else System.out.println("App Name is not displayed");
-		return map;
-	
+		return y;	
 	}
 }
