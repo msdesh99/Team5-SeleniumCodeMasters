@@ -50,4 +50,39 @@ Feature: Home Page Validation for Registered premium Account User
   @TC_11
   Scenario: Verify the presence of "Record New Data" in the bottom
     Then User should see "Record New Data"text
-  
+
+  @TC_12
+  Scenario: Verify the presence of 4 button option below Record New Data
+    Then User should see 4 button options
+
+  @TC_13
+  Scenario: Verify the first button text " Blood Glucose"
+    Then User should see "Blood Glucose"
+
+  @TC_14
+  Scenario: Verify the second button text " Physical Activity"
+    Then User should see "Physical Activity"
+
+  @TC_15
+  Scenario: Verify the third button text " Food Intake"
+    Then User should see "Food Intake"
+
+  @TC_16
+  Scenario: Verify the fourth button text " Medication"
+    Then User should see "Medication"
+
+  @TC_17
+  Scenario: Verify  icon for Blood Glucose
+    Then Activity icon should be present in blood glucose
+
+  @TC_18
+  Scenario: Verify icon for  Physical Activity
+    Then Running icon should be present in Physical activity
+
+  @TC_19
+  Scenario: Verify icon for Food Intake
+    Then Pizza icon should be present in food intake
+
+  @TC_20
+  Scenario: Verify  icon for Medication
+    Then Pill icon should be present in medication
