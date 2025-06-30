@@ -10,7 +10,7 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(
-		tags="@ChomePage9",
+		tags="@ChomePage10",
 		glue= {"steps"},
 		//features= {"src/test/resources/feature/CommanHomePage.feature"},
 		features= {"src/test/resources/feature"},

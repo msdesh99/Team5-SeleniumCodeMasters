@@ -143,6 +143,21 @@ public class CommanHomePageSteps {
 	}
 		
 	}
+	
+	
+
+	@Then("User should see timestamp displayed next to the {string} label for free user")
+	public void user_should_see_timestamp_displayed_next_to_the_label_for_free_user(String string) throws Exception {
+		
+		boolean TimeStramp = commanhomepage.isTimestampDisplayed(string);
+		try {
+			Assert.assertTrue(TimeStramp,"Assertion for presence of "+string+" is failed");
+		}catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+	}
+		
+		
+	}
 	}
 
 

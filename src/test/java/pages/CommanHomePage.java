@@ -24,6 +24,7 @@ public class CommanHomePage {
 	private By LatestHbA1C =By.xpath("//div[text()='Latest HbA1C']");
 	private By BMI =By.xpath("//div[text()='BMI']");
 	private By AvgBloodSugar =By.xpath("//div[text()='Average Blood Sugar']");
+	private By timestampText = By.xpath("//div[text()='Last updated:']/following-sibling::div");
 	
 	
 	
@@ -145,10 +146,15 @@ public class CommanHomePage {
 	
 	
 	
+	 public boolean isTimestampDisplayed(String string) {
+	        WebElement timestamp = driver.findElement(timestampText);
+	        return timestamp.isDisplayed();
+	
 	
 	}
 
 
+}
 
 
 
