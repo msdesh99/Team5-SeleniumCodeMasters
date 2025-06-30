@@ -96,7 +96,7 @@ public class PremiumUserHomepage_SD {
 
 	@Then("User should see Week plan button")
 	public void user_should_see_week_plan_button() {
-		WebElement weeklyPlanButtonDisplayed=premiumuserhomepage.weeklyPlanButton();
+		WebElement  weeklyPlanButtonDisplayed = premiumuserhomepage.weeklyPlanButton();
 		Assert.assertTrue(weeklyPlanButtonDisplayed.isDisplayed());
 	}
 
@@ -105,6 +105,46 @@ public class PremiumUserHomepage_SD {
 		WebElement recordNewdataTxt=premiumuserhomepage.recordNewData();
 		Assert.assertTrue(recordNewdataTxt.isDisplayed());
 	}
+	
+	@Then("User should see {int} button options")
+	public void user_should_see_button_options(Integer expectedCount) {
+	    List<WebElement> options=premiumuserhomepage.countOfbuttonPresent();
+	    int actualCount=options.size();
+	    System.out.println("Found buttons:");
+	    for (WebElement btn : options) {
+	        LoggerLoad.info(btn.getText());
+	    }
+	    Assert.assertEquals(actualCount, expectedCount);
+		
+	}
+
+	@Then("User should see {string}")
+	public void user_should_see(String expected) {
+	 String actualbuttonName=premiumuserhomepage.getButtonText(expected);
+	 Assert.assertEquals(actualbuttonName, expected);
+	 
+	}
+
+	@Then("Activity icon should be present in blood glucose")
+	public void activity_icon_should_be_present_in_blood_glucose() {
+	    
+	}
+
+	@Then("Running icon should be present in Physical activity")
+	public void running_icon_should_be_present_in_physical_activity() {
+	    
+	}
+
+	@Then("Pizza icon should be present in food intake")
+	public void pizza_icon_should_be_present_in_food_intake() {
+	    
+	}
+
+	@Then("Pill icon should be present in medication")
+	public void pill_icon_should_be_present_in_medication() {
+	    
+	}
+
 
 
 
