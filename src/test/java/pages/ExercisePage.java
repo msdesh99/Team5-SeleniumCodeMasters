@@ -1,5 +1,6 @@
 package pages;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,6 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ExercisePage {
     WebDriver driver;
@@ -74,6 +78,85 @@ public class ExercisePage {
     		}
     	return found;
     }
-  
+    public String validateSuccessMessage(String button, String tab) {
+    	By tabLocator = By.xpath("//button[text()='"+tab+"']");
+    	driver.findElement(tabLocator).click();
+    	By locator = By.xpath("//span[contains(text(),'Mark as Completed')]");
+    	WebElement markEle = driver.findElement(locator);
+    	markEle.click();
+    	
+    	By messageLocator = By.xpath("//div[text()='Success!']");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    	WebElement msgEle = wait.until(
+    			ExpectedConditions.visibilityOfElementLocated(messageLocator));
+    	System.out.println("mark button: "+ markEle.getText());
+    	 return msgEle.getText();
+     }
+  /*
+   Scenario: Verify "View Full Schedule" button is displayed on right for premium user homePage
+Then "View Full Schedule" button is displayed on the right for premium user homePage
+
+Scenario: Verify navigation to "Today's Exercise Schedule" page for premium user home#Page
+When User clicks the "View Full Schedule" button for premium user homePage
+Then User is redirected to "Today's Exercise Schedule" page for premium user homePage
+
+Scenario Outline: Verify different tabs are displayed for premium user homePage
+Then "<tab>" tab is visible for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
+
+Scenario Outline: Verify Exercise name is displayed under differnt tabs for premium user homePage
+Then Exercise name is displayed under "<tab>" tab for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
+
+Scenario Outline: Verify Exercise description is displayed under different tabs for premium user homePage
+Then Description is shown below the Exercise name under "<tab>" for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
+
+   Scenario Outline: Duration is displayed under different tabs for premium user homePage
+Then "Duration" is displayed under "<tab>" tab for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
+
+Scenario Outline: Calories is displayed under different tabs for premium user homePage
+Then "Calories" is displayed under "<tab>" tab for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
+
+Scenario Outline: Intensity is displayed under different tabs for premium user homePage
+Then "Intensity" is displayed under "<tab>" tab for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
+
+Scenario Outline: Mark as Completed is displayed under different tabs for premium user homePage
+Then "Mark as Completed" is displayed under "<tab>" tab for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
+     
+   */
   
 }
