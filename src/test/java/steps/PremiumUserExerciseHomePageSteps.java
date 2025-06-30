@@ -63,5 +63,22 @@ public class PremiumUserExerciseHomePageSteps {
 			throw new Exception(ae.getMessage());
 		}
 	}
-
+	@Then("Description is shown below the Exercise name under {string} for premium user homePage")
+	public void description_is_shown_below_the_exercise_name_under_for_premium_user_home_page(String tab) throws Exception {
+		int count = exercisePage.checkForExerciseDescription(tab);
+		try {
+			Assert.assertTrue(count>0,"Assertion for Exercise Description displyed under "+tab+" is failed");	
+		}catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+		}	
+	}
+    @Then("{string} is displayed under {string} tab for premium user homePage")
+    public void is_displayed_under_tab_for_premium_user_home_page(String tabText, String tab) throws Exception {
+    	try {
+    		Assert.assertTrue(exercisePage.checkForDuration(tab,tabText),
+    			"Assertion for Duration under tab "+ tab+" is failed");
+    	}catch(AssertionError ae) {
+    		throw new Exception (ae.getMessage());
+    	}
+    }
 }

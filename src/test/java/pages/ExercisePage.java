@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.JavascriptExecutor;
+
 public class ExercisePage {
     WebDriver driver;
     Actions action;
@@ -18,15 +19,14 @@ public class ExercisePage {
     By warmUpLocator = By.xpath("//button[text()='Warm Up']");
     By workOutLocator = By.xpath("//button[text()='Main Workout']");
     By coolDownLocator = By.xpath("//button[text()='Cool Down']");
+    By exerciseSpanLocator = By.xpath("//div[@class='space-y-4']//div");
     
-    //button[text()='Warm Up']/ancestor::div[2]/following-sibling::div//div/h3
-
     public ExercisePage(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	public void clickExerciseOption() {
-				driver.findElement(exerciseLocator).click();
+				driver.findElement(exerciseLocator).click();				
 	}
 	public int validateViewFullSchedule() {
        int y,x=0;
@@ -54,22 +54,26 @@ public class ExercisePage {
     	By headerLocator = By.xpath("//button[text()='"+option+"']/../../following-sibling::div//div/h3");
     	List<WebElement> headerList = driver.findElements(headerLocator);
     	return headerList.size();
-    	//System.out.println("count: "+ headerList.size());   	
     }
-    
+    public int checkForExerciseDescription(String option) {
+    	By pTagLocator = By.xpath("//button[text()='"+option+"']/../../following-sibling::div//div//p");
+    	List<WebElement> pTagList = driver.findElements(pTagLocator);
+    	return pTagList.size();
+    }
+    public boolean checkForDuration(String tab, String tabText) {
+    			By spanLocator = By.xpath(    			
+    					"//div[@class='space-y-4']//div//button[text()='"+tab+"']/ancestor::div[3]//span");
+    			List<WebElement> list = driver.findElements(spanLocator);
+    			boolean found=false;
+    			System.out.println("tabtex: "+ tabText);
+    		for(WebElement textEle: list) {
+    			if(textEle.getText().contains(tabText)) {
+    				found=true;
+    		      break;
+    		    }    			
+    		}
+    	return found;
+    }
+  
+  
 }
-/*
- * 
-
-
-
-Scenario: Verify Exercise description is displayed under "Warm Up" tab for premium user homePage
-Then Description is shown below the Exercise name under "Warm Up" for premium user homePage
-
-Scenario: Verify Exercise description is displayed under "Main Workout" tab for premium user homePage
-Then Description is shown below the Exercise name under "Main Workout" for premium user homePage
-
-Scenario: Verify Exercise description is displayed under "Cool Down" tab for premium user homePage
-Then Description is shown below the Exercise name under "Cool Down" for premium user homePage
-
- */ 
