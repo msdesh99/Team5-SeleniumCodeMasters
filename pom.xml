@@ -76,11 +76,12 @@
 		    <artifactId>allure-cucumber7-jvm</artifactId>
 		    <version>${allure-version}</version>
 		</dependency>
-
+		<!--
 		<dependency>
 			<groupId>Baseframework</groupId>
 			<artifactId>Baseframework</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		-->
   </dependencies>
 </project>

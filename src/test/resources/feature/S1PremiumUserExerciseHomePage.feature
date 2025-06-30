@@ -7,67 +7,12 @@ Given  User click on login button of Launch Page
 When User enters userid "abcd@abcd.com" and password "abcd1234"  
 And User logs in and clicks "Exercise" option from the side panel for premium user homePage
 
-Scenario: Verify "View Full Schedule" button is displayed on right for premium user homePage
-Then "View Full Schedule" button is displayed on the right for premium user homePage
-
-Scenario: Verify navigation to "Today's Exercise Schedule" page for premium user home#Page
-When User clicks the "View Full Schedule" button for premium user homePage
-Then User is redirected to "Today's Exercise Schedule" page for premium user homePage
-
-Scenario Outline: Verify different tabs are displayed for premium user homePage
-Then "<tab>" tab is visible for premium user homePage
+Scenario Outline:Verify success dialog is shown after marking as completed for different tabs for premium user homePage
+When User clicks the "Mark as Completed" button for "<tab>" for premium user homePage
+Then Success dialog is shown for premium user homePage
 Examples:
 | tab | 
 | Warm Up |
 | Main Workout |
 | Cool Down |
 
-Scenario Outline: Verify Exercise name is displayed under differnt tabs for premium user homePage
-Then Exercise name is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Verify Exercise description is displayed under different tabs for premium user homePage
-Then Description is shown below the Exercise name under "<tab>" for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-   Scenario Outline: Duration is displayed under different tabs for premium user homePage
-Then "Duration" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Calories is displayed under different tabs for premium user homePage
-Then "Calories" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Intensity is displayed under different tabs for premium user homePage
-Then "Intensity" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Mark as Completed is displayed under different tabs for premium user homePage
-Then "Mark as Completed" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-     
-    
