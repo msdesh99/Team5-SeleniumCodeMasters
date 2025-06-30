@@ -9,6 +9,8 @@ import io.cucumber.java.en.Then;
 import static org.testng.Assert.assertThrows;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Alert;
+
 public class PremiumUserExerciseHomePageSteps {
 	WebDriver driver;
 	private final TestContext testContext;
@@ -80,5 +82,15 @@ public class PremiumUserExerciseHomePageSteps {
     	}catch(AssertionError ae) {
     		throw new Exception (ae.getMessage());
     	}
+    }
+    @When("User clicks the {string} button for {string} for premium user homePage")
+    public void user_clicks_the_button_for_for_premium_user_home_page(String button, String tab){
+    	String message = exercisePage.validateSuccessMessage(button,tab);
+    	Assert.assertEquals(message,"Success!",
+    		"Assertion for Success message after clicking Mark as Completed for tab "+tab+" is failed");
+    }
+    @Then("Success dialog is shown for premium user homePage")
+    public void success_dialog_is_shown_for_premium_user_home_page() {
+    	
     }
 }
