@@ -11,7 +11,9 @@ import configs.BrowserConfig;
 @CucumberOptions(
 		//tags=(),
 		glue= {"steps"},
-		features= {"src/test/resources/feature/09_PremiumUserHomepage.feature"},
+		features= {"src/test/resources/feature/"},
+		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
+
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
@@ -23,14 +25,16 @@ import configs.BrowserConfig;
 		monochrome=false,
 		publish=false
 		)
-public class TestRunner extends AbstractTestNGCucumberTests{ 
-	
+
+public class TestRunner extends AbstractTestNGCucumberTests{
+
 @Override
 @DataProvider(parallel=true)
 public Object[][] scenarios() {
 	return super.scenarios();
 }
 	
+
 @BeforeTest
 @Parameters({"browser"})
 public void setBrowser(@Optional("chrome")String browser) {

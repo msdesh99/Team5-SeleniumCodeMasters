@@ -2,6 +2,7 @@ package steps;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -18,15 +19,14 @@ import io.qameta.allure.Allure;
 import utils.LoggerLoad;
 import utils.SoftAssertUtils;
 import utils.TestContext;
-
 public class Hooks {
 	TestContext testContext;
 	Scenario scenario;
 	WebDriver driver;
 	SoftAssertUtils softAssertUtils;
-	public Hooks(TestContext testContext) {
+ 	public Hooks(TestContext testContext) {
 		this.testContext = testContext;
-	}
+	}	
 	@Before
 	public void before(Scenario scenario) {
 		testContext.set("Scenario", scenario);
@@ -58,7 +58,7 @@ public class Hooks {
 	}
 	@After
 	public void afterScenario(Scenario scenario) {
-		System.out.println("is scenario failed: "+ scenario.isFailed());
+		
 		scenario.log("Quiting Driver for "+scenario.getName()+"........ ");
 		LoggerLoad.info("Quiting Driver for "+scenario.getName()+"........ ");
 		Allure.addAttachment("info","Quiting Driver for "+scenario.getName()+"........ ");
