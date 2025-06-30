@@ -1,6 +1,5 @@
 package runner;
 import io.cucumber.testng.CucumberOptions;
-
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -16,7 +15,7 @@ import configs.BrowserConfig;
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+				//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 				"rerun:rerun/failed-scenarios.txt"
 				},
@@ -24,11 +23,10 @@ import configs.BrowserConfig;
 		monochrome=false,
 		publish=false
 		)
-public class TestRunner extends AbstractTestNGCucumberTests{
-
+public class TestRunner extends AbstractTestNGCucumberTests{ 
 	
 @Override
-@DataProvider(parallel=false)
+@DataProvider(parallel=true)
 public Object[][] scenarios() {
 	return super.scenarios();
 }
@@ -36,6 +34,6 @@ public Object[][] scenarios() {
 @BeforeTest
 @Parameters({"browser"})
 public void setBrowser(@Optional("chrome")String browser) {
-	BrowserConfig.setBrowserType(browser);
+	BrowserConfig.setBrowserType(browser); 
 }
 }

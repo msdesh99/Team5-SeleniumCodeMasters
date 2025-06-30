@@ -20,8 +20,8 @@ public class Base {
       public WebDriver driver;
       private ConfigLoader configLoader;
      
-      public WebDriver getDriver() {
-    	  String browserType = BrowserConfig.getBrowserType();
+     public WebDriver getDriver() {
+    	 String browserType = BrowserConfig.getBrowserType();
     	  if(driver == null) {
     		  loadConfigs();
     	  if(browserType.equalsIgnoreCase("chrome")) {
@@ -45,7 +45,9 @@ public class Base {
     	  }
   	  	return this.driver;
       }
-      public ConfigLoader getConfigs() {
+      
+      
+     public ConfigLoader getConfigs() {
     	  return configLoader;
       }
       
