@@ -35,10 +35,10 @@ public class Hooks {
 		String logFileName = "logs/SweetBalance-"+BrowserConfig.getBrowserType()+"-logs.log";
 		System.setProperty("logFileName", logFileName);
 		testContext.set("Scenario", this.scenario);
-	
 		scenario.log("Logging for "+scenario.getName());
 		LoggerLoad.info("Logging for "+scenario.getName());
 		Allure.addAttachment("info", "Logging for "+scenario.getName());
+		
 	}
 	@AfterStep
 	public void afterstep(Scenario scenario) throws IOException {

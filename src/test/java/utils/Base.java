@@ -20,13 +20,13 @@ public class Base {
       public WebDriver driver;
       private ConfigLoader configLoader;
      
-      public WebDriver getDriver() {
-    	  String browserType = BrowserConfig.getBrowserType();
+     public WebDriver getDriver() {
+    	 String browserType = BrowserConfig.getBrowserType();
     	  if(driver == null) {
     		  loadConfigs();
     	  if(browserType.equalsIgnoreCase("chrome")) {
     		  ChromeOptions cOptions = new ChromeOptions();
-    		  cOptions.addArguments("--headless=new");
+    		 // cOptions.addArguments("--headless=new");
     		  driver = new ChromeDriver(cOptions);
     	  }
     	  else if(browserType.equalsIgnoreCase("firefox")) {
@@ -45,7 +45,9 @@ public class Base {
     	  }
   	  	return this.driver;
       }
-      public ConfigLoader getConfigs() {
+      
+      
+     public ConfigLoader getConfigs() {
     	  return configLoader;
       }
       

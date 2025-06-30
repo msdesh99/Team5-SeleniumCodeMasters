@@ -3,12 +3,14 @@ import configs.ConfigLoader;
 import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
 import pages.Loginpage;
+import pages.PremiumUserHomepage;
 import pages.ExercisePage;
 public class PageObjectManager {
     ConfigLoader configLoader;
     WebDriver driver;
     private LaunchPageOld launchPage; 
     private Loginpage loginpage; 
+    private PremiumUserHomepage premiumuserhomepage; 
     private ExercisePage exercisePage;
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
@@ -27,6 +29,11 @@ public class PageObjectManager {
 	public ExercisePage getExercisePage() {
 		exercisePage = new ExercisePage(this.driver);
 		return exercisePage;
+	}
+	public PremiumUserHomepage getPremiumUserHomepage() {
+		premiumuserhomepage = new PremiumUserHomepage(this.driver);
+		return premiumuserhomepage;
+		
 	}
 	
 }
