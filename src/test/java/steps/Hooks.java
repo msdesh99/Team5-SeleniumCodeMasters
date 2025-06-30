@@ -1,5 +1,6 @@
 package steps;
 import java.io.ByteArrayInputStream;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -66,7 +67,7 @@ public class Hooks {
 			LoggerLoad.error("Scenario: "+ scenario.getName()+" is failed");
 			Allure.addAttachment("Failed Scenario","Scenario: "+ scenario.getName()+" is failed");
 		}
-		this.testContext.base.getDriver().quit();
+		//this.testContext.base.getDriver().quit();
 		this.testContext.clear();
 	}
 }

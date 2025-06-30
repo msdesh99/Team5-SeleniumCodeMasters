@@ -6,12 +6,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Loginpage;
+import utils.LoggerLoad;
 import utils.SoftAssertUtils;
 import utils.TestContext;
-
-
-
-
 
 public class Loginsteps {
 	
@@ -45,7 +42,8 @@ public class Loginsteps {
 
 	@Then("User should redirected to Homepage")
 	public void user_should_redirected_to_homepage() {
-	   
+		
+	   LoggerLoad.info("User is in homepage");
 	}
 
 

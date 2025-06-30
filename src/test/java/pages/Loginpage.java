@@ -35,6 +35,7 @@ public void clickSubmitbtn() {
 	WebElement SubmitBtn = driver.findElement(By.xpath("//button[@type='submit']"));
 	SubmitBtn.click();
 }
+
 public void clicksigninBtn() {
 	WebElement SignBtn = driver.findElement(By.xpath("//button[text()='Sign in']"));
 	SignBtn.click();
