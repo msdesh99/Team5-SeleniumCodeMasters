@@ -10,22 +10,31 @@ And User logs in and clicks "Exercise" option from the side panel for premium us
 Scenario: Verify "View Full Schedule" button is displayed on right for premium user homePage
 Then "View Full Schedule" button is displayed on the right for premium user homePage
 
-Scenario: Verify navigation to "Today's Exercise Schedule" page for premium user homePage
+Scenario: Verify navigation to "Today's Exercise Schedule" page for premium user home#Page
 When User clicks the "View Full Schedule" button for premium user homePage
 Then User is redirected to "Today's Exercise Schedule" page for premium user homePage
 
-Scenario: Verify "Warm Up" tab is displayed for premium user homePage
-Then "Warm Up" tab is visible for premium user homePage
-Scenario: Verify "Main Workout" tab is displayed for premium user homePage
-Then "Main Workout" tab is visible for premium user homePage
-Scenario: Verify "Cool Down" tab is displayed for premium user homePage
-Then "Cool Down" tab is visible for premium user homePage
+Scenario Outline: Verify different tabs are displayed for premium user homePage
+Then "<tab>" tab is visible for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
 
-Scenario: Verify Exercise name is displayed under "Warm Up" tab for premium user homePage
-Then Exercise name is displayed under "Warm Up" tab for premium user homePage
-Scenario: Verify Exercise name is displayed under "Main Workout" tab for premium user homePage
-Then Exercise name is displayed under "Main Workout" tab for premium user homePage
-Scenario: Verify Exercise name is displayed under "Cool Down" tab for premium user homePage
-Then Exercise name is displayed under "Cool Down" tab for premium user homePage
+Scenario Outline: Verify Exercise name is displayed under differnt tabs for premium user homePage
+Then Exercise name is displayed under "<tab>" tab for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
 
+Scenario Outline: Verify Exercise description is displayed under different tabs for premium user homePage
+Then Description is shown below the Exercise name under "<tab>" for premium user homePage
+Examples:
+| tab | 
+| Warm Up |
+| Main Workout |
+| Cool Down |
 
