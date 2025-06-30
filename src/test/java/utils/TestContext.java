@@ -1,24 +1,24 @@
 package utils;
 import configs.ConfigLoader;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TestContext {
 	public Base base;  //public as not getter and setter methods
 	//public ConfigLoader configLoader;
 	public PageObjectManager pageObjectManager;
 	private final Map<String, Object> contextData = new HashMap<String,Object>();
-	
+
 	public TestContext() {
 		base = new Base(); 
-		//configLoader = base.getConfigs();
-		pageObjectManager = new PageObjectManager(base.getConfigs(), base.getDriver());
+		//configLoader = base.getConfigs();		
+		pageObjectManager = new PageObjectManager(base.getConfigs(), base.getDriver());	
 		
 	}
-	public void set(String key, Object value) {
+    public void set(String key, Object value) {
 		contextData.put(key,value);
-	}
-	
+	}	
+    
 	public Object get(String key) {
 		return contextData.get(key);
 	}

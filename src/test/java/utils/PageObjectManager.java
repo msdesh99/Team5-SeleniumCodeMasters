@@ -1,29 +1,32 @@
 package utils;
 import configs.ConfigLoader;
 import org.openqa.selenium.WebDriver;
-import pages.LaunchPage;
+import pages.LaunchPageOld;
 import pages.Loginpage;
-
+import pages.ExercisePage;
 public class PageObjectManager {
     ConfigLoader configLoader;
     WebDriver driver;
-    private LaunchPage launchPage; 
+    private LaunchPageOld launchPage; 
     private Loginpage loginpage; 
+    private ExercisePage exercisePage;
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
 		this.configLoader = configLoader;		
 	}
-	public LaunchPage getLaunchPage() {
-		launchPage = new LaunchPage(this.driver);
+	public LaunchPageOld getLaunchPage() {
+		launchPage = new LaunchPageOld(this.driver);
 		return launchPage;
 		//return new LaunchPage(this.driver);
-	}
-	
+	}	
 	public Loginpage getLoginpage() {
 		loginpage = new Loginpage(this.driver);
-		return loginpage;
-		
+		return loginpage;		
+	}
+	public ExercisePage getExercisePage() {
+		exercisePage = new ExercisePage(this.driver);
+		return exercisePage;
 	}
 	
 }
