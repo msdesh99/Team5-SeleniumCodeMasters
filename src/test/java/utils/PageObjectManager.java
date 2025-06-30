@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
 import pages.Loginpage;
 import pages.PremiumUserHomepage;
+import pages.CommanHomePage;
 import pages.ExercisePage;
 public class PageObjectManager {
     ConfigLoader configLoader;
@@ -12,6 +13,7 @@ public class PageObjectManager {
     private Loginpage loginpage; 
     private PremiumUserHomepage premiumuserhomepage; 
     private ExercisePage exercisePage;
+    private CommanHomePage commanhomepage;
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
@@ -33,6 +35,12 @@ public class PageObjectManager {
 	public PremiumUserHomepage getPremiumUserHomepage() {
 		premiumuserhomepage = new PremiumUserHomepage(this.driver);
 		return premiumuserhomepage;
+		
+	}
+	
+	public CommanHomePage getCommanHomePage() {
+		commanhomepage = new CommanHomePage(this.driver);
+		return commanhomepage;
 		
 	}
 	
