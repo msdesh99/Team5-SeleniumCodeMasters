@@ -74,38 +74,6 @@ public class ExercisePage {
     		}
     	return found;
     }
-    /*
-     Scenario Outline: Duration is displayed under different tabs for premium user homePage
-Then "Duration" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Calories is displayed under different tabs for premium user homePage
-Then "Calories" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Intensity is displayed under different tabs for premium user homePage
-Then "Intensity" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Mark as Completed is displayed under different tabs for premium user homePage
-Then "Mark as Completed" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-     */
-    
+  
+  
 }
