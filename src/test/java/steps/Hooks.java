@@ -12,6 +12,7 @@ import configs.BrowserConfig;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
 import utils.LoggerLoad;
@@ -34,10 +35,10 @@ public class Hooks {
 		String logFileName = "logs/SweetBalance-"+BrowserConfig.getBrowserType()+"-logs.log";
 		System.setProperty("logFileName", logFileName);
 		testContext.set("Scenario", this.scenario);
-	
 		scenario.log("Logging for "+scenario.getName());
 		LoggerLoad.info("Logging for "+scenario.getName());
 		Allure.addAttachment("info", "Logging for "+scenario.getName());
+		
 	}
 	@AfterStep
 	public void afterstep(Scenario scenario) throws IOException {
@@ -55,7 +56,7 @@ public class Hooks {
 			scenario.attach(fileContent, "image/png", "screenshot");
 		}
 	}
-	/*@After
+	@After
 	public void afterScenario(Scenario scenario) {
 		System.out.println("is scenario failed: "+ scenario.isFailed());
 		scenario.log("Quiting Driver for "+scenario.getName()+"........ ");
@@ -68,5 +69,5 @@ public class Hooks {
 		}
 		this.testContext.base.getDriver().quit();
 		this.testContext.clear();
-	}*/
+	}
 }

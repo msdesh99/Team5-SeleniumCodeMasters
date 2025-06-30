@@ -15,4 +15,12 @@
   	<classes><class name="runner.TestRunner"></class></classes>
   </test>
   
+  <test name="FirefoxBrowser">
+  	<parameter name="browser" value="firefox"></parameter>
+  	<classes><class name="runner.TestRunner"></class></classes>
+  </test>
+  <test name="EdgeBrowser">
+  	<parameter name="browser" value="edge"></parameter>
+  	<classes><class name="runner.TestRunner"></class></classes>
+  </test>
 </suite> <!-- Suite -->

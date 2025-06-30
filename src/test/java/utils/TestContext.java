@@ -15,6 +15,7 @@ public class TestContext {
 		pageObjectManager = new PageObjectManager(base.getConfigs(), base.getDriver());
 		
 	}
+	
 	public void set(String key, Object value) {
 		contextData.put(key,value);
 	}
