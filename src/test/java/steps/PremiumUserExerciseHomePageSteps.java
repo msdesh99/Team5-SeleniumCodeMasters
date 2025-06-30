@@ -9,6 +9,8 @@ import io.cucumber.java.en.Then;
 import static org.testng.Assert.assertThrows;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Alert;
+
 public class PremiumUserExerciseHomePageSteps {
 	WebDriver driver;
 	private final TestContext testContext;
@@ -63,5 +65,32 @@ public class PremiumUserExerciseHomePageSteps {
 			throw new Exception(ae.getMessage());
 		}
 	}
-
+	@Then("Description is shown below the Exercise name under {string} for premium user homePage")
+	public void description_is_shown_below_the_exercise_name_under_for_premium_user_home_page(String tab) throws Exception {
+		int count = exercisePage.checkForExerciseDescription(tab);
+		try {
+			Assert.assertTrue(count>0,"Assertion for Exercise Description displyed under "+tab+" is failed");	
+		}catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+		}	
+	}
+    @Then("{string} is displayed under {string} tab for premium user homePage")
+    public void is_displayed_under_tab_for_premium_user_home_page(String tabText, String tab) throws Exception {
+    	try {
+    		Assert.assertTrue(exercisePage.checkForDuration(tab,tabText),
+    			"Assertion for Duration under tab "+ tab+" is failed");
+    	}catch(AssertionError ae) {
+    		throw new Exception (ae.getMessage());
+    	}
+    }
+    @When("User clicks the {string} button for {string} for premium user homePage")
+    public void user_clicks_the_button_for_for_premium_user_home_page(String button, String tab){
+    	String message = exercisePage.validateSuccessMessage(button,tab);
+    	Assert.assertEquals(message,"Success!",
+    		"Assertion for Success message after clicking Mark as Completed for tab "+tab+" is failed");
+    }
+    @Then("Success dialog is shown for premium user homePage")
+    public void success_dialog_is_shown_for_premium_user_home_page() {
+    	
+    }
 }
