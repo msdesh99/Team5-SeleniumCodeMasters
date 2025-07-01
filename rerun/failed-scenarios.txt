@@ -1,3 +1,1 @@
-file:src/test/resources/feature/02_C_Login.feature:5:10:15:20:25
-file:src/test/resources/feature/02_B_Login.feature:5:10:15:20:25
-file:src/test/resources/feature/02_Login.feature:25:49:54:59:64:69:74:79:84
+file:src/test/resources/feature/09_B_PremiumUserHomepage.feature:27

@@ -7,6 +7,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.asserts.Assertion;
 
 import utils.LoggerLoad;
@@ -14,6 +15,7 @@ import utils.LoggerLoad;
 public class PremiumUserHomepage {
 
 	WebDriver driver;
+	Actions actions;
 	By navBarItems = By.xpath("//div[@class='flex space-x-8']/button");
 	By challengeYourselfButton = By.xpath("//button[contains(text(),'Challenge Yourself')]");
 	By genderImage = By.xpath("//img[@alt='Female character illustration']");
@@ -23,15 +25,25 @@ public class PremiumUserHomepage {
 	By weeklyPlanButton = By.xpath("//button[text()='Weekly Plan']");
 	By recordNewdata = By.xpath("//h2[text()='Record New Data']");
 	By countOfButton = By.xpath("//h2[text()='Record New Data']/../div/button");
-	By bloodGlucoseButton=By.xpath("//span[text()='Blood Glucose']");
-	By physicalActivityButton=By.xpath("//span[text()='Physical Activity']");
-	By foodInTakeButton=By.xpath("//span[text()='Food Intake']");
-	By MedicationButton=By.xpath("//span[text()='Medication']");
-	
-	
+	By bloodGlucoseButton = By.xpath("//span[text()='Blood Glucose']");
+	By physicalActivityButton = By.xpath("//span[text()='Physical Activity']");
+	By foodInTakeButton = By.xpath("//span[text()='Food Intake']");
+	By MedicationButton = By.xpath("//span[text()='Medication']");
+	By bloodGlucoseIcon = By.cssSelector("div.grid button");
+	By hometab = By.xpath("//button[text()='Home']");
+	By mealPlanButt = By.xpath("//span[text()='Meal Plan']");
+	By preMeal = By.xpath("//h3[text()='Pre-Meal']");
+	By mealcontainer = By.xpath("//div[@class='space-y-4']/div/button");
+	By snack = By.xpath("//button[text()='Snacks']");
+	By noneDis = By.xpath("//div[text()='None']");
+	By Zero = By.xpath("//span[text()='0']");
+	By mainmealTitle = By.xpath("//h3[text()='Main Meal']");
+	By mainmealDescription = By.xpath("//h3[text()='Main Meal']/../div/div");
+	By UtensilImg = By.xpath("//span[text()='🍽️']");
 
 	public PremiumUserHomepage(WebDriver driver) {
 		this.driver = driver;
+		this.actions = new Actions(driver);
 	}
 
 	public List<String> VerifyNavBar() {
@@ -185,7 +197,7 @@ public class PremiumUserHomepage {
 		}
 
 	}
-	
+
 	public WebElement bloodGlucoseButton() {
 		try {
 			WebElement bloodGlucose = driver.findElement(bloodGlucoseButton);
@@ -196,6 +208,7 @@ public class PremiumUserHomepage {
 		}
 
 	}
+
 	public WebElement physicalActivityButton() {
 		try {
 			WebElement physicalActivity = driver.findElement(physicalActivityButton);
@@ -206,6 +219,7 @@ public class PremiumUserHomepage {
 		}
 
 	}
+
 	public WebElement foodInTakeButton() {
 		try {
 			WebElement foodIntake = driver.findElement(foodInTakeButton);
@@ -216,6 +230,7 @@ public class PremiumUserHomepage {
 		}
 
 	}
+
 	public WebElement medicationButton() {
 		try {
 			WebElement medication = driver.findElement(MedicationButton);
@@ -226,23 +241,127 @@ public class PremiumUserHomepage {
 		}
 
 	}
-	
+
 	public String getButtonText(String button) {
-		
+
 		switch (button) {
 		case "Blood Glucose":
-			return bloodGlucoseButton().getText() ;
+			return bloodGlucoseButton().getText();
 		case "Physical Activity":
-			return physicalActivityButton().getText() ;
+			return physicalActivityButton().getText();
 		case "Food Intake":
-			return foodInTakeButton().getText() ;
+			return foodInTakeButton().getText();
 		case "Medication":
-			return medicationButton().getText() ;
+			return medicationButton().getText();
 		default:
-            throw new IllegalArgumentException("button is not present "+button);
+			throw new IllegalArgumentException("button is not present " + button);
 		}
-		
+
 	}
-	
+
+	public List<WebElement> getIcon() {
+		try {
+			List<WebElement> button = driver.findElements(bloodGlucoseIcon);
+			return button;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public WebElement HomeTab() {
+		try {
+			WebElement homeTab = driver.findElement(hometab);
+			return homeTab;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public void clickmealPlanbutton() {
+		try {
+			WebElement mealPlanButton = driver.findElement(mealPlanButt);
+			mealPlanButton.click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public WebElement checkPreMealDisplayed() {
+		try {
+			WebElement preMealDis = driver.findElement(preMeal);
+			return preMealDis;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public List<WebElement> checkPreMealFirst() {
+		List<WebElement> mealpart = driver.findElements(mealcontainer);
+		return mealpart;
+
+	}
+
+	public WebElement clickSnack() {
+		try {
+			WebElement snackButton = driver.findElement(snack);
+			return snackButton;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public WebElement checkNoneDisplayed() {
+		WebElement noneText = driver.findElement(noneDis);
+		return noneText;
+
+	}
+
+	public WebElement checkZeroDisplayed() {
+		try {
+			WebElement zeroDis = driver.findElement(Zero);
+			return zeroDis;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public WebElement checkMainMealTitleDisplayed() {
+		try {
+			WebElement mainMealTitle = driver.findElement(mainmealTitle);
+			return mainMealTitle;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public WebElement checkMainMealDescriptionDisplayed() {
+		try {
+			WebElement mainMealTitle = driver.findElement(mainmealTitle);
+			return mainMealTitle;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public WebElement checkUtensilImgDisplayed() {
+		WebElement Utensil = driver.findElement(UtensilImg);
+		return Utensil;
+
+	}
 
 }
