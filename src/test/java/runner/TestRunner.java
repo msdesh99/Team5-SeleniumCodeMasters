@@ -12,7 +12,7 @@ import configs.BrowserConfig;
 		//tags=(),
 		glue= {"steps"},
 		//glue= {"seqsteps"},
-		features= {"src/test/resources/feature/"},
+		features= {"src/test/resources/feature/09_B_PremiumUserHomepage.feature"},
 //		features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
