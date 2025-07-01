@@ -6,6 +6,8 @@ import pages.Loginpage;
 import pages.PremiumUserHomepage;
 import pages.CommanHomePage;
 import pages.ExercisePage;
+import pages.ExerciseFullPage;
+
 public class PageObjectManager {
     ConfigLoader configLoader;
     WebDriver driver;
@@ -14,6 +16,7 @@ public class PageObjectManager {
     private PremiumUserHomepage premiumuserhomepage; 
     private ExercisePage exercisePage;
     private CommanHomePage commanhomepage;
+    private ExerciseFullPage exerciseFullPage;
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
@@ -32,10 +35,13 @@ public class PageObjectManager {
 		exercisePage = new ExercisePage(this.driver);
 		return exercisePage;
 	}
+	public ExerciseFullPage getExerciseFullPage() {
+		exerciseFullPage = new ExerciseFullPage(this.driver);
+		return exerciseFullPage;
+	}
 	public PremiumUserHomepage getPremiumUserHomepage() {
 		premiumuserhomepage = new PremiumUserHomepage(this.driver);
-		return premiumuserhomepage;
-		
+		return premiumuserhomepage;		
 	}
 	
 	public CommanHomePage getCommanHomePage() {

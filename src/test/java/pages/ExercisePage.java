@@ -12,6 +12,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.Map;
+import java.util.HashMap;
 
 public class ExercisePage {
     WebDriver driver;
@@ -24,6 +26,11 @@ public class ExercisePage {
     By workOutLocator = By.xpath("//button[text()='Main Workout']");
     By coolDownLocator = By.xpath("//button[text()='Cool Down']");
     By exerciseSpanLocator = By.xpath("//div[@class='space-y-4']//div");
+	By markLocator = By.xpath("//span[contains(text(),'Mark as Completed')]");
+	By messageLocator = By.xpath("//div[text()='Success!']");
+    By undoLocator = By.xpath("//button[text()='Undo']");
+    By completedLocator = By.xpath("//span[text()='Completed']");
+    By fullScheduleLocator = By.xpath("//button[text()='View Full Schedule']");
     
     public ExercisePage(WebDriver driver) {
 		this.driver = driver;
@@ -69,7 +76,7 @@ public class ExercisePage {
     					"//div[@class='space-y-4']//div//button[text()='"+tab+"']/ancestor::div[3]//span");
     			List<WebElement> list = driver.findElements(spanLocator);
     			boolean found=false;
-    			System.out.println("tabtex: "+ tabText);
+    			//System.out.println("tabtex: "+ tabText);
     		for(WebElement textEle: list) {
     			if(textEle.getText().contains(tabText)) {
     				found=true;
@@ -78,85 +85,32 @@ public class ExercisePage {
     		}
     	return found;
     }
-    public String validateSuccessMessage(String button, String tab) {
+    public Map<String,Object> validateSuccessMessage(String button, String tab) {
+    	Map<String,Object> actualMap = new HashMap<String,Object>();
     	By tabLocator = By.xpath("//button[text()='"+tab+"']");
     	driver.findElement(tabLocator).click();
-    	By locator = By.xpath("//span[contains(text(),'Mark as Completed')]");
-    	WebElement markEle = driver.findElement(locator);
+
+    	WebElement markEle = driver.findElement(markLocator);
     	markEle.click();
     	
-    	By messageLocator = By.xpath("//div[text()='Success!']");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
     	WebElement msgEle = wait.until(
     			ExpectedConditions.visibilityOfElementLocated(messageLocator));
-    	System.out.println("mark button: "+ markEle.getText());
-    	 return msgEle.getText();
+    	WebElement undoEle = driver.findElement(undoLocator);
+    	actualMap.put("message", msgEle.getText());
+        actualMap.put("Completed",driver.findElement(completedLocator).getText());
+        actualMap.put("UndoButton",undoEle.isDisplayed());
+        
+    	driver.findElement(tabLocator).click();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        undoEle = wait.until(ExpectedConditions.elementToBeClickable(undoLocator));
+        undoEle.click();
+
+        actualMap.put("UndoClick",markEle.isDisplayed());
+    	 return actualMap;
      }
-  /*
-   Scenario: Verify "View Full Schedule" button is displayed on right for premium user homePage
-Then "View Full Schedule" button is displayed on the right for premium user homePage
-
-Scenario: Verify navigation to "Today's Exercise Schedule" page for premium user home#Page
-When User clicks the "View Full Schedule" button for premium user homePage
-Then User is redirected to "Today's Exercise Schedule" page for premium user homePage
-
-Scenario Outline: Verify different tabs are displayed for premium user homePage
-Then "<tab>" tab is visible for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Verify Exercise name is displayed under differnt tabs for premium user homePage
-Then Exercise name is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Verify Exercise description is displayed under different tabs for premium user homePage
-Then Description is shown below the Exercise name under "<tab>" for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-   Scenario Outline: Duration is displayed under different tabs for premium user homePage
-Then "Duration" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Calories is displayed under different tabs for premium user homePage
-Then "Calories" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Intensity is displayed under different tabs for premium user homePage
-Then "Intensity" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-
-Scenario Outline: Mark as Completed is displayed under different tabs for premium user homePage
-Then "Mark as Completed" is displayed under "<tab>" tab for premium user homePage
-Examples:
-| tab | 
-| Warm Up |
-| Main Workout |
-| Cool Down |
-     
-   */
-  
+    public void verifySectionDisplaedOnFullSchedule(String tab) {
+    	
+    }
+   
 }
