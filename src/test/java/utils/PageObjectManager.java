@@ -2,11 +2,17 @@ package utils;
 import configs.ConfigLoader;
 import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
+import pages.Launchgpage1;
 import pages.Loginpage;
+
 import pages.PdFfileUploadPage;
+
+import pages.NonFunctionalPage;
+
 import pages.PremiumUserHomepage;
 import pages.CommanHomePage;
 import pages.ExercisePage;
+import pages.HomeNavigation;
 import pages.ExerciseFullPage;
 
 public class PageObjectManager {
@@ -21,6 +27,10 @@ public class PageObjectManager {
     private PdFfileUploadPage pdfuploadpage;
 
 
+
+    private Launchgpage1 launchPageobj;
+    private HomeNavigation homepageObj;
+    private NonFunctionalPage nonfunctionalObj;
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
@@ -53,10 +63,25 @@ public class PageObjectManager {
 		return commanhomepage;
 		
 	}
+
 	public PdFfileUploadPage getPdFfileUploadPage() {
 		pdfuploadpage = new PdFfileUploadPage(this.driver);
 		return pdfuploadpage;		
 
 	}	
 	
+
+	public Launchgpage1 getLaunchpage1() {
+		launchPageobj = new Launchgpage1(this.driver);
+		return launchPageobj;
+		//return new LaunchPage(this.driver);
+	}
+	public  HomeNavigation getHomeNavigation() {
+		homepageObj = new HomeNavigation(this.driver);
+		return homepageObj;
+	}
+	public NonFunctionalPage getNonFunctionalPage() {
+	   nonfunctionalObj = new NonFunctionalPage(this.driver);
+	  return nonfunctionalObj;
+	}
 }
