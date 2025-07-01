@@ -17,12 +17,13 @@ Scenario: Verify Create Account button is enabled after valid input on Login Pag
     When User clicks create account button after filling invalid data for new account user
     Then User should see error message for new account user
 
-  Scenario: Verify presence of Upload Blood Report button on Login Page
-    Given User is on complete profile form page for new account user
-    When User clicks create account button after filling valid data in all fields for new account user on login Page
-    Then User should see Upload Blood Report button for new account user
-
   Scenario: Verify presence of Step Through Onboarding button on Login Page
     Given User is on complete profile form page for new account user
     When User clicks create account button after filling valid data in all fields for new account user on login Page1
-    Then User should see Step Through Onboarding buttonf or new account user
+    Then User should see Step Through Onboarding button or new account user
+
+  Scenario: Verify presence of Upload Blood Report button on Login Page
+    Given User is on complete profile form page for new account user
+    When User clicks create account button after filling valid data in all fields for new account user on login Page of blood report modal
+    Then User should see Upload Blood Report modal for new account user
+    

@@ -26,6 +26,7 @@ public class Base {
     		  loadConfigs();
     	  if(browserType.equalsIgnoreCase("chrome")) {
     		  ChromeOptions cOptions = new ChromeOptions();
+    		  cOptions.addArguments("user-data-dir=/tmp/temporary-profile");
     		 // cOptions.addArguments("--headless=new");
     		  driver = new ChromeDriver(cOptions);
     	  }
@@ -40,6 +41,8 @@ public class Base {
     		  driver = new EdgeDriver(eOptions);
     	  }
     	  	driver.get(configLoader.getBaseUrl());
+    	  	driver.manage().deleteAllCookies();
+    	  	driver.navigate().refresh(); 
     	  	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
     	  	driver.manage().window().maximize();
     	  }

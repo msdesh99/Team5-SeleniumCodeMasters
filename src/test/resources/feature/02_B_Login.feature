@@ -10,12 +10,12 @@ Scenario: Verify Full Name field is visible on Login Page
   Scenario: Verify Username field is visible on Login Page
  
     When User clicks continue with email button after entering a valid new email on Login Page
-    Then "Username" input field should be displayed on Login Page
+    Then "Username" input field should be displayed on Login Page usernamefield
 
   Scenario: Verify Password field is visible on Login Page
    
     When User clicks continue with email button after entering a valid new email on Login Page
-    Then "Password" input field should be displayed on Login Page
+    Then "Password" input field should be displayed on Login Page passwordfield
 
   Scenario: Verify Terms & Conditions checkbox is visible on Login Page
     
