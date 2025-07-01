@@ -3,6 +3,7 @@ import configs.ConfigLoader;
 import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
 import pages.Loginpage;
+import pages.PdFfileUploadPage;
 import pages.PremiumUserHomepage;
 import pages.CommanHomePage;
 import pages.ExercisePage;
@@ -17,6 +18,9 @@ public class PageObjectManager {
     private ExercisePage exercisePage;
     private CommanHomePage commanhomepage;
     private ExerciseFullPage exerciseFullPage;
+    private PdFfileUploadPage pdfuploadpage;
+
+
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
@@ -49,5 +53,10 @@ public class PageObjectManager {
 		return commanhomepage;
 		
 	}
+	public PdFfileUploadPage getPdFfileUploadPage() {
+		pdfuploadpage = new PdFfileUploadPage(this.driver);
+		return pdfuploadpage;		
+
+	}	
 	
 }

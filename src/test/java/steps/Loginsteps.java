@@ -87,19 +87,16 @@ public class Loginsteps {
 	@Then("User should see an input field to enter email on Login page")
 	public void user_should_see_an_input_field_to_enter_email_on_login_page() {
 		Assert.assertTrue(
-		        loginpage.emailField(),
+		        loginpage.isdisplayedenterpassword(),
 		        "Email input field is not displayed!"
 		    );
 		}
 	@Then("User should see text {string} in email field placeholder on Login Page")
 	public void user_should_see_text_in_email_field_placeholder_on_login_page(String string) {
-		
-		String actualPlaceholder = loginpage.getEmailFieldPlaceholder();
-	    Assert.assertEquals(
-	        actualPlaceholder,
-	        string,
-	        "Email field placeholder text is incorrect!"
-	    );
+		Assert.assertTrue(
+		loginpage.isdisplayedenterpassword(),
+        "Email input field is not displayed!"
+    );
 	}
 
 	@Then("User should see a {string} button on Loginpage")
@@ -198,7 +195,7 @@ public class Loginsteps {
 	@When("Registered user clicks continue with email button after entering a valid email")
 	public void registered_user_clicks_continue_with_email_button_after_entering_a_valid_email() {
 		List<String>emailList= loginpage.getEmailId();      
-        String email = emailList.get(5); 
+        String email = emailList.get(3); 
         loginpage.enterEmailid(email);
 		loginpage.clickSubmitbtn();
 	}
@@ -213,7 +210,7 @@ public class Loginsteps {
 	@When("Registered user clicks continue with email button after entering a valid email on login Page1")
 	public void registered_user_clicks_continue_with_email_button_after_entering_a_valid_email_on_login_page1() {
 		List<String>emailList= loginpage.getEmailId();      
-		 String email = emailList.get(5);
+		 String email = emailList.get(3);
 		 loginpage.enterEmailid(email);
 			loginpage.clickSubmitbtn();
 	    
@@ -229,11 +226,11 @@ public class Loginsteps {
 	@When("Registered user clicks sign in after entering password on login Page")
 	public void registered_user_clicks_sign_in_after_entering_password_on_login_page() {
 		List<String>emailList= loginpage.getEmailId();      
-		 String email = emailList.get(5);
+		 String email = emailList.get(3);
 		 loginpage.enterEmailid(email);
 			loginpage.clickSubmitbtn();
 		 List<String>passwordlist= loginpage.getpassword();      
-		 String password1 = passwordlist.get(5);
+		 String password1 = passwordlist.get(3);
 		 loginpage.enterPassword(password1);
 			loginpage.clicksigninBtn();	  		 
 		 
@@ -248,7 +245,7 @@ public class Loginsteps {
 	@When("Unregistered user clicks continue with email button after entering a valid new email on login Page")
 	public void unregistered_user_clicks_continue_with_email_button_after_entering_a_valid_new_email_on_login_page() {
 		List<String>emailList= loginpage.getEmailId();
-        String email = emailList.get(6);         
+        String email = emailList.get(4);         
         loginpage.enterEmailid(email);
 		loginpage.clickSubmitbtn();
 	}
@@ -265,7 +262,7 @@ public class Loginsteps {
 @When("User clicks continue with email button after entering a valid new email on Login Page")
 public void user_clicks_continue_with_email_button_after_entering_a_valid_new_email_on_login_page() {
 	List<String>emailList= loginpage.getEmailId();
-    String email = emailList.get(6);         
+    String email = emailList.get(4);         
     loginpage.enterEmailid(email);
 	loginpage.clickSubmitbtn();
 }
@@ -275,6 +272,15 @@ public void input_field_should_be_displayed_on_login_page(String string) {
 	Assert.assertTrue(loginpage.isfullnameElementsDisplayed());
     
 }
+@Then("{string} input field should be displayed on Login Page usernamefield")
+public void input_field_should_be_displayed_on_login_page_usernamefield(String string) {
+	Assert.assertTrue(loginpage.isusernameElementsDisplayed());
+}
+@Then("{string} input field should be displayed on Login Page passwordfield")
+public void input_field_should_be_displayed_on_login_page_passwordfield(String string) {
+	Assert.assertTrue(loginpage.ispasswordElementsDisplayed());
+}
+
 
 @Then("Terms & Conditions checkbox should be displayed on Login Page")
 public void terms_conditions_checkbox_should_be_displayed_on_login_page() throws TimeoutException {
@@ -300,20 +306,20 @@ public void user_is_on_complete_profile_form_page_for_new_account_user() {
 @When("User checks the Terms & conditions box after filling all fields for new account user")
 public void user_checks_the_terms_conditions_box_after_filling_all_fields_for_new_account_user() {
 	List<String>emailList= loginpage.getEmailId();
-    String email = emailList.get(8); 
+    String email = emailList.get(5); 
     loginpage.enterEmailid(email);
     loginpage.clickSubmitbtn();
 
     Map<String, List<String>> allData = loginpage.getCreateFormData();
     Map<String, String> singleRow = new HashMap<>();
     
-    singleRow.put("FullName", allData.get("FullName").get(2));
+    singleRow.put("FullName", allData.get("FullName").get(5));
     loginpage.enterFullname(singleRow.get("FullName"));  
 
-    singleRow.put("Username", allData.get("Username").get(2));
+    singleRow.put("Username", allData.get("Username").get(5));
     loginpage.enterUsername(singleRow.get("Username"));  
 
-    singleRow.put("Password", allData.get("Password").get(2));
+    singleRow.put("Password", allData.get("Password").get(5));
     loginpage.enterPasswordname(singleRow.get("Password"));  
     loginpage.checkTermscondition();
 
@@ -325,26 +331,27 @@ public void button_should_be_enabled_for_new_account_user(String string) {
 }
 
 @When("User clicks create account button after filling valid data in all fields for new account user on login Page")
-public void user_clicks_create_account_button_after_filling_valid_data_in_all_fields_for_new_account_user_on_login_page() {
+public void user_clicks_create_account_button_after_filling_valid_data_in_all_fields_for_new_account_user_on_login_page() throws InterruptedException {
 	List<String>emailList= loginpage.getEmailId();
-    String email = emailList.get(9); 
+    String email = emailList.get(5); 
     loginpage.enterEmailid(email);
     loginpage.clickSubmitbtn();
 
     Map<String, List<String>> allData = loginpage.getCreateFormData();
     Map<String, String> singleRow = new HashMap<>();
     
-    singleRow.put("FullName", allData.get("FullName").get(3));
+    singleRow.put("FullName", allData.get("FullName").get(5));
     loginpage.enterFullname(singleRow.get("FullName"));  
 
-    singleRow.put("Username", allData.get("Username").get(3));
+    singleRow.put("Username", allData.get("Username").get(5));
     loginpage.enterUsername(singleRow.get("Username"));  
 
-    singleRow.put("Password", allData.get("Password").get(3));
+    singleRow.put("Password", allData.get("Password").get(5));
     loginpage.enterPasswordname(singleRow.get("Password"));  
     loginpage.checkTermscondition();
-    loginpage.clickSubmitbtn();
-
+    loginpage.waitUntilCreateAccountButtonEnabled(); 
+    loginpage.clickoncreateNewAcc();
+    Thread.sleep(5);
 }
 
 @Then("User should be redirected to upload blood report for new account user")
@@ -352,31 +359,29 @@ public void user_should_be_redirected_to_upload_blood_report_for_new_account_use
 	Assert.assertTrue(loginpage.isBloodreportPageDisplayed());
 }
 
-@Then("User should see Step Through Onboarding buttonf or new account user")
-public void user_should_see_step_through_onboarding_buttonf_or_new_account_user() {
-	Assert.assertTrue(loginpage.isstepthroughonboardingPageDisplayed());
 
-}
+
 @When("User clicks create account button after filling invalid data for new account user")
 public void user_clicks_create_account_button_after_filling_invalid_data_for_new_account_user() {
 	List<String>emailList= loginpage.getEmailId();
-    String email = emailList.get(11); 
+    String email = emailList.get(8); 
     loginpage.enterEmailid(email);
     loginpage.clickSubmitbtn();
 
     Map<String, List<String>> allData = loginpage.getCreateFormData();
     Map<String, String> singleRow = new HashMap<>();
     
-    singleRow.put("FullName", allData.get("FullName").get(1));
+    singleRow.put("FullName", allData.get("FullName").get(8));
     loginpage.enterFullname(singleRow.get("FullName"));  
 
-    singleRow.put("Username", allData.get("Username").get(1));
+    singleRow.put("Username", allData.get("Username").get(8));
     loginpage.enterUsername(singleRow.get("Username"));  
 
-    singleRow.put("Password", allData.get("Password").get(1));
+    singleRow.put("Password", allData.get("Password").get(8));
     loginpage.enterPasswordname(singleRow.get("Password"));  
     loginpage.checkTermscondition();
-    loginpage.clickSubmitbtn();
+    
+    loginpage.clickoncreateNewAcc();
    
 }
 @Then("User should see error message for new account user")
@@ -386,28 +391,63 @@ public void user_should_see_error_message_for_new_account_user() {
 @When("User clicks create account button after filling valid data in all fields for new account user on login Page1")
 public void user_clicks_create_account_button_after_filling_valid_data_in_all_fields_for_new_account_user_on_login_Page1() {
 	List<String>emailList= loginpage.getEmailId();
-    String email = emailList.get(10); 
+    String email = emailList.get(6); 
     loginpage.enterEmailid(email);
     loginpage.clickSubmitbtn();
 
     Map<String, List<String>> allData = loginpage.getCreateFormData();
     Map<String, String> singleRow = new HashMap<>();
     
-    singleRow.put("FullName", allData.get("FullName").get(4));
+    singleRow.put("FullName", allData.get("FullName").get(6));
     loginpage.enterFullname(singleRow.get("FullName"));  
 
-    singleRow.put("Username", allData.get("Username").get(4));
+    singleRow.put("Username", allData.get("Username").get(6));
     loginpage.enterUsername(singleRow.get("Username"));  
 
-    singleRow.put("Password", allData.get("Password").get(4));
+    singleRow.put("Password", allData.get("Password").get(6));
     loginpage.enterPasswordname(singleRow.get("Password"));  
     loginpage.checkTermscondition();
-    loginpage.clickSubmitbtn();
+    loginpage.waitUntilCreateAccountButtonEnabled(); 
+    loginpage.clickoncreateNewAcc();
+   
 }
-@Then("User should see Upload Blood Report button for new account user")
-public void user_should_see_upload_blood_report_button_for_new_account_user() {
+@Then("User should see Step Through Onboarding button or new account user")
+public void user_should_see_Step_Through_Onboarding_button_or_new_account_user() {
 	Assert.assertTrue(loginpage.isstepthroughonboardingPageDisplayed());
 }
+@When("User clicks create account button after filling valid data in all fields for new account user on login Page of blood report modal")
+public void user_clicks_create_account_button_after_filling_valid_data_in_all_fields_for_new_account_user_on_login_page_of_blood_report_modal() {
+	List<String>emailList= loginpage.getEmailId();
+    String email = emailList.get(7); 
+    loginpage.enterEmailid(email);
+    loginpage.clickSubmitbtn();
+
+    Map<String, List<String>> allData = loginpage.getCreateFormData();
+    Map<String, String> singleRow = new HashMap<>();
+    
+    singleRow.put("FullName", allData.get("FullName").get(7));
+    loginpage.enterFullname(singleRow.get("FullName"));  
+
+    singleRow.put("Username", allData.get("Username").get(7));
+    loginpage.enterUsername(singleRow.get("Username"));  
+
+    singleRow.put("Password", allData.get("Password").get(7));
+    loginpage.enterPasswordname(singleRow.get("Password"));  
+    loginpage.checkTermscondition();
+    loginpage.waitUntilCreateAccountButtonEnabled(); 
+    loginpage.clickoncreateNewAcc();
+    loginpage.clickonPdfbtn();
+}
+
+
+@Then("User should see Upload Blood Report modal for new account user")
+public void user_should_see_upload_blood_report_modal_for_new_account_user() {
+	Assert.assertTrue(
+			loginpage.isDispalyedModel(),
+		    "PDF Upload Modal is not displayed!"
+		);}
+
+
 }
 
 

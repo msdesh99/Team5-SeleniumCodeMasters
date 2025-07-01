@@ -40,6 +40,8 @@ public class Base {
     		  driver = new EdgeDriver(eOptions);
     	  }
     	  	driver.get(configLoader.getBaseUrl());
+    	  	driver.manage().deleteAllCookies();
+    	  	driver.navigate().refresh(); 
     	  	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
     	  	driver.manage().window().maximize();
     	  }
