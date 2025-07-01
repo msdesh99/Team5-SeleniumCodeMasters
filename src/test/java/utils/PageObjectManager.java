@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
 import pages.Launchgpage1;
 import pages.Loginpage;
+
+import pages.PdFfileUploadPage;
+
 import pages.NonFunctionalPage;
+
 import pages.PremiumUserHomepage;
 import pages.CommanHomePage;
 import pages.ExercisePage;
@@ -20,6 +24,10 @@ public class PageObjectManager {
     private ExercisePage exercisePage;
     private CommanHomePage commanhomepage;
     private ExerciseFullPage exerciseFullPage;
+    private PdFfileUploadPage pdfuploadpage;
+
+
+
     private Launchgpage1 launchPageobj;
     private HomeNavigation homepageObj;
     private NonFunctionalPage nonfunctionalObj;
@@ -55,6 +63,14 @@ public class PageObjectManager {
 		return commanhomepage;
 		
 	}
+
+	public PdFfileUploadPage getPdFfileUploadPage() {
+		pdfuploadpage = new PdFfileUploadPage(this.driver);
+		return pdfuploadpage;		
+
+	}	
+	
+
 	public Launchgpage1 getLaunchpage1() {
 		launchPageobj = new Launchgpage1(this.driver);
 		return launchPageobj;
