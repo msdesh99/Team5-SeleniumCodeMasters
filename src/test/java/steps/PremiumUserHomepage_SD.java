@@ -178,11 +178,11 @@ public class PremiumUserHomepage_SD {
 			}
 		}
 	}
-	
+
 	@Given("User is in home page")
 	public void user_is_in_home_page() {
-	    WebElement homeTabDis= premiumuserhomepage.HomeTab();
-	    Assert.assertTrue(homeTabDis.isDisplayed());
+		WebElement homeTabDis = premiumuserhomepage.HomeTab();
+		Assert.assertTrue(homeTabDis.isDisplayed());
 	}
 
 	@When("User clicks meal section")
@@ -192,117 +192,173 @@ public class PremiumUserHomepage_SD {
 
 	@Then("User should see {string} title")
 	public void user_should_see_title(String expectedText) {
-	    WebElement preMealDis= premiumuserhomepage.checkPreMealDisplayed();
-	    String actualtext= preMealDis.getText().replace("⏰", "").trim();
-	    Assert.assertEquals(actualtext, expectedText);
-	    
+		WebElement preMealDis = premiumuserhomepage.checkPreMealDisplayed();
+		String actualtext = preMealDis.getText().replace("⏰", "").trim();
+		Assert.assertEquals(actualtext, expectedText);
+
 	}
-	
+
 	@Then("User should see alarm clock icon")
 	public void user_should_see_alarm_clock_icon() {
-		WebElement preMealDis= premiumuserhomepage.checkPreMealDisplayed();
-	    Assert.assertTrue(preMealDis.isDisplayed());
+		WebElement preMealDis = premiumuserhomepage.checkPreMealDisplayed();
+		Assert.assertTrue(preMealDis.isDisplayed());
 	}
 
 	@Then("User should see pre-meal in first place of  each meal section")
 	public void user_should_see_pre_meal_in_first_place_of_each_meal_section() {
-		WebElement preMealDis= premiumuserhomepage.checkPreMealDisplayed();
-	    Assert.assertTrue(preMealDis.isDisplayed());
+		WebElement preMealDis = premiumuserhomepage.checkPreMealDisplayed();
+		Assert.assertTrue(preMealDis.isDisplayed());
 	}
 
 	@When("User clicks snack section")
 	public void user_clicks_snack_section() throws InterruptedException {
 		premiumuserhomepage.clickSnack();
-		//Thread.sleep(2000);
-		
+
 	}
 
 	@Then("User should see Pre-Meal entry displays as {string} by default")
 	public void user_should_see_pre_meal_entry_displays_as_by_default(String expectedText) throws InterruptedException {
 		Thread.sleep(2000);
-		WebElement noneDis= premiumuserhomepage.checkNoneDisplayed();
-	    String actualtext= noneDis.getText();
-	    Assert.assertEquals(actualtext, expectedText);
+		WebElement noneDis = premiumuserhomepage.checkNoneDisplayed();
+		String actualtext = noneDis.getText();
+		Assert.assertEquals(actualtext, expectedText);
 	}
 
 	@Then("User should see {int} calorie in pre-meal snack")
 	public void user_should_see_calorie_in_pre_meal_snack(Integer expected) {
-	    WebElement ZeroDis=premiumuserhomepage.checkZeroDisplayed();
-	   String text=ZeroDis.getText();
-	   String[] part=text.split("");
-	   String number=part[0];
-	   System.out.println(number);
-	   int actual=Integer.parseInt(number);
-	    Assert.assertEquals(actual, expected);
-	    
+		WebElement ZeroDis = premiumuserhomepage.checkZeroDisplayed();
+		String text = ZeroDis.getText();
+		String[] part = text.split("");
+		String number = part[0];
+		System.out.println(number);
+		int actual = Integer.parseInt(number);
+		Assert.assertEquals(actual, expected);
+
 	}
 
 	@Then("User should see meal title for main-meal in snack")
 	public void user_should_see_meal_title_for_main_meal_in_snack() {
-	    WebElement mealTitle=premiumuserhomepage.checkMainMealTitleDisplayed();
-	    Assert.assertTrue(mealTitle.isDisplayed());
+		WebElement mealTitle = premiumuserhomepage.checkMainMealTitleDisplayed();
+		Assert.assertTrue(mealTitle.isDisplayed());
 	}
 
 	@Then("User should see description for the dish in snack")
 	public void user_should_see_description_for_the_dish_in_snack() {
-		WebElement dishDesc=premiumuserhomepage.checkMainMealDescriptionDisplayed();
-	    Assert.assertTrue(dishDesc.isDisplayed());
+		WebElement dishDesc = premiumuserhomepage.checkMainMealDescriptionDisplayed();
+		Assert.assertTrue(dishDesc.isDisplayed());
 	}
-	
+
 	@Then("User should see {string} as sub title")
 	public void user_should_see_as_sub_title(String string) {
-		WebElement mainMeal=premiumuserhomepage.checkMainMealTitleDisplayed();
-	    Assert.assertTrue(mainMeal.isDisplayed());
+		WebElement mainMeal = premiumuserhomepage.checkMainMealTitleDisplayed();
+		Assert.assertTrue(mainMeal.isDisplayed());
 	}
 
 	@Then("User should see utensil icon for each main-meal")
 	public void user_should_see_utensil_icon_for_each_main_meal() {
-		WebElement utensilIcon=premiumuserhomepage.checkUtensilImgDisplayed();
-	    Assert.assertTrue(utensilIcon.isDisplayed());
+		WebElement utensilIcon = premiumuserhomepage.checkUtensilImgDisplayed();
+		Assert.assertTrue(utensilIcon.isDisplayed());
 	}
 
 	@Then("User should see  {string} based time in main-meal \\(eg : {int}:{int})")
-	public void user_should_see_based_time_in_main_meal_eg(String string, Integer int1, Integer int2) {
-	    
+	public void user_should_see_based_time_in_main_meal_eg(String format, Integer hour, Integer minute) {
+		WebElement mainMealTime = premiumuserhomepage.checkTime();
+		String timeText = mainMealTime.getText().trim();
+		String[] part = timeText.split("[:\\s]");
+		int actualHour = Integer.parseInt(part[0]);
+		int actualMinute = Integer.parseInt(part[1]);
+		System.out.println(actualHour);
+		System.out.println(actualMinute);
+		Assert.assertTrue(mainMealTime.isDisplayed());
+
+	}
+
+	@When("User clicks breakfast section")
+	public void user_clicks_breakfast_section() {
+		premiumuserhomepage.clickBreakfast();
+
 	}
 
 	@Then("User should see indicator {string} for breakfast main-meal")
-	public void user_should_see_indicator_for_breakfast_main_meal(String string) {
-	    
+	public void user_should_see_indicator_for_breakfast_main_meal(String expected) {
+
+		WebElement mainMealTime = premiumuserhomepage.checkTime();
+		String timeText = mainMealTime.getText().trim();
+		String[] part = timeText.split("[:\\s]");
+		String actual = part[2];
+		System.out.println(actual);
+		Assert.assertEquals(actual, expected);
+
+	}
+
+	@When("User clicks lunch section")
+	public void user_clicks_lunch_section() {
+		premiumuserhomepage.clickLunch();
 	}
 
 	@Then("User should see indicator {string} for lunch  main-meal")
-	public void user_should_see_indicator_for_lunch_main_meal(String string) {
-	    
+	public void user_should_see_indicator_for_lunch_main_meal(String expected) {
+		WebElement mainMealTime = premiumuserhomepage.checkTime();
+		String timeText = mainMealTime.getText().trim();
+		String[] part = timeText.split("[:\\s]");
+		String actual = part[2];
+		System.out.println(actual);
+		Assert.assertEquals(actual, expected);
+	}
+
+	@When("User clicks dinner section")
+	public void user_clicks_dinner_section() {
+		premiumuserhomepage.clickDinner();
 	}
 
 	@Then("UUser should see indicator {string} for dinner  main-meal")
-	public void u_user_should_see_indicator_for_dinner_main_meal(String string) {
-	    
+	public void u_user_should_see_indicator_for_dinner_main_meal(String expected) {
+
+		WebElement mainMealTime = premiumuserhomepage.checkTime();
+		String timeText = mainMealTime.getText().trim();
+		boolean formatmatch = timeText.matches("\\d{1,2}:\\d{2}\\s?(AM|PM)");
+		Assert.assertTrue(formatmatch);
+		String[] part = timeText.split("[:\\s]");
+		String actual = part[2];
+		System.out.println(actual);
+		Assert.assertEquals(actual, expected);
 	}
 
 	@Then("User should see indicator {string} for snack  main-meal")
-	public void user_should_see_indicator_for_snack_main_meal(String string) {
-	    
+	public void user_should_see_indicator_for_snack_main_meal(String expected) {
+		WebElement mainMealTime = premiumuserhomepage.checkTime();
+		String timeText = mainMealTime.getText().trim();
+		boolean formatmatch = timeText.matches("\\d{1,2}:\\d{2}\\s?(AM|PM)");
+		Assert.assertTrue(formatmatch);
+		String[] part = timeText.split("[:\\s]");
+		String actual = part[2];
+		System.out.println(actual);
+		Assert.assertEquals(actual, expected);
+
 	}
 
 	@Then("User should see {int}:{int} o'clock")
-	public void user_should_see_o_clock(Integer int1, Integer int2) {
-	   
+	public void user_should_see_o_clock(Integer hour, Integer minutes) {
+		
+
 	}
 
 	@Then("User should see the main-meal calorie value")
 	public void user_should_see_the_main_meal_calorie_value() {
-	    
+		WebElement calorieValue = premiumuserhomepage.checkCalorieValue();
+		Assert.assertTrue(calorieValue.isDisplayed());
+
 	}
 
 	@Then("User should see text {string} after the calorie value in main meal")
-	public void user_should_see_text_after_the_calorie_value_in_main_meal(String string) {
-	    
+	public void user_should_see_text_after_the_calorie_value_in_main_meal(String expected) {
+		WebElement calorieValue = premiumuserhomepage.checkCalorieText();
+		String calorieText = calorieValue.getText().trim();
+		System.out.println(calorieText);
+		String[] part = calorieText.split(" ");
+		String actual = part[1];
+		Assert.assertEquals(actual, expected);
 	}
-
-
-
-
+	
 
 }

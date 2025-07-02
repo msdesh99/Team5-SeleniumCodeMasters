@@ -9,10 +9,10 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-		tags= "@ChomePage13",		
+		//tags= "@TC_20",		
 		glue= {"steps"},
 
-		features= {"src/test/resources/feature/"},
+		features= {"src/test/resources/feature/09_B_PremiumUserHomepage.feature"},
 		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
 		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
 
@@ -31,7 +31,7 @@ import configs.BrowserConfig;
 public class TestRunner extends AbstractTestNGCucumberTests{
 
 @Override
-@DataProvider(parallel=false)
+@DataProvider(parallel=true)
 public Object[][] scenarios() {
 	return super.scenarios();
 }
