@@ -1,5 +1,6 @@
 package steps;
 
+import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,6 @@ public class PremiumUserLogbookPageSteps {
     TestContext testContext;
     PremiumUserLogbookPage premiumUserLogbookPage;
     WebDriver driver;
-   // Map<String,Object> resultMap;
     SoftAssertUtils softAssertUtils;
     
 	public PremiumUserLogbookPageSteps(TestContext testContext) {
@@ -53,7 +53,33 @@ public class PremiumUserLogbookPageSteps {
 			  Assert.assertTrue(result,"Assertion for validating color code for "+tab+" is failed");
 		  }catch(AssertionError ae) {
 			  throw new Exception(ae.getMessage());
-		  }
-		
+		  }		
+	}
+	@Then("User should see the range for {string} be {string} for premium user logbook page")
+	public void user_should_see_the_range_for_be_for_premium_user_logbook_page(String tab, String range) {
+		String actual = premiumUserLogbookPage.verifyDisplayOfBloodSugarRange(tab);
+			Assert.assertEquals(actual, range,
+					"Assertion for display of blood sugar range" +range+" under "+tab+ " is failed");		
+	}
+	@Then("User should see the X-axis display the last {string} days ending today for {string} for premium user logbook page")
+	public void user_should_see_the_x_axis_display_the_last_days_ending_today_for_for_premium_user_logbook_page(String days, String tab) throws Exception {
+		List<Boolean> result = premiumUserLogbookPage.verifyDaysDisplaysOnXaxis(tab);
+		   Boolean actualResult = result.stream().allMatch(i->i);
+		softAssertUtils.assertTrue(actualResult,
+				"Assertion for display days of last seven days for "+tab+" is failed");
+		softAssertUtils.assertTrue(result.size()==7,
+				"Assertion for number of days displays on the X axis for "+tab+" is failed");
+		try {
+			softAssertUtils.assertAll();
+		}catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+		}
+	}
+	@Then("User should see Y-axis minimum value {string} and maximum value  {string} in {string} for premium user logbook page")
+	public void user_should_see_y_axis_minimum_value_and_maximum_value_in_for_premium_user_logbook_page(String min, String max, String tab) {
+		List<Boolean> result = premiumUserLogbookPage.verifyDisplaysMinAndMaxOnYaxis(min,max,tab);
+		   Boolean actualResult = result.stream().allMatch(i->i);
+		    Assert.assertTrue(actualResult,
+				"Assertion for display minimum and Maximum value on Y axis for "+tab+" is failed");
 	}
 }
