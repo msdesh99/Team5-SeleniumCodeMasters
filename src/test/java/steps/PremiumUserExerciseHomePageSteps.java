@@ -1,25 +1,28 @@
 package steps;
-import utils.TestContext;
-import pages.ExercisePage;
-import org.testng.Assert;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
-
-import static org.testng.Assert.assertThrows;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.Alert;
+import org.testng.Assert;
+
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import pages.ExercisePage;
+import utils.SoftAssertUtils;
+import utils.TestContext;
 
 public class PremiumUserExerciseHomePageSteps {
 	WebDriver driver;
-	private final TestContext testContext;
+	TestContext testContext;
 	ExercisePage exercisePage;
+	Map<String,Object> resultMap;
+	SoftAssertUtils softAssertUtils;
 	
 	public PremiumUserExerciseHomePageSteps(TestContext testContext) {
 		 this.testContext = testContext;		 
 		 this.driver = this.testContext.base.getDriver();
 		 this.exercisePage = this.testContext.pageObjectManager.getExercisePage();
+	     this.softAssertUtils = testContext.get("SoftAssertUtils",SoftAssertUtils.class);
+
 	}
 	@When("User logs in and clicks {string} option from the side panel for premium user homePage")
 	public void user_logs_in_and_clicks_option_from_the_side_panel_for_premium_user_home_page(String option){
@@ -85,12 +88,27 @@ public class PremiumUserExerciseHomePageSteps {
     }
     @When("User clicks the {string} button for {string} for premium user homePage")
     public void user_clicks_the_button_for_for_premium_user_home_page(String button, String tab){
-    	String message = exercisePage.validateSuccessMessage(button,tab);
-    	Assert.assertEquals(message,"Success!",
-    		"Assertion for Success message after clicking Mark as Completed for tab "+tab+" is failed");
+    	//resultMap = new HashMap<String,Object>();
+    	resultMap = exercisePage.validateSuccessMessage(button,tab);
     }
-    @Then("Success dialog is shown for premium user homePage")
-    public void success_dialog_is_shown_for_premium_user_home_page() {
-    	
+    @Then("Success dialog appears and changes the button text for {string} for premium user homePage")
+    public void success_dialog_appears_and_changes_the_button_text_for_for_premium_user_home_page(String tab) {
+      	softAssertUtils.assertEquals(resultMap.get("message"),"Success!",
+        		"Assertion for Success message after clicking Mark as Completed for tab "+tab+" is failed");
+      	softAssertUtils.assertTrue((Boolean)resultMap.get("UndoButton"),"Assertion for Undo button is visible is failed");
+        softAssertUtils.assertEquals(resultMap.get("Completed"),"Completed",
+        		"Assertion for Compledted button is visible is failed");	
+     
     }
+    @Then("Verify button reverts back after undo for {string} for premium user homePage")
+    public void verify_button_reverts_back_after_undo_for_for_premium_user_home_page(String tab) throws Exception{
+    	softAssertUtils.assertTrue((Boolean)resultMap.get("UndoClick"),
+    			"Assertion for mark button reverts for "+ tab+" is failed"); 	
+    	   try {
+           	softAssertUtils.assertAll();
+           }catch(AssertionError ae) {
+           	throw new Exception(ae.getMessage());
+           }	
+    }
+   
 }
