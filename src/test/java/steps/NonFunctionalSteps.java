@@ -24,29 +24,41 @@ public class NonFunctionalSteps {
 	public NonFunctionalSteps(TestContext testContext) {
 	this.testContext = testContext;
 	this.driver = this.testContext.base.getDriver();
-	this.nonfunctionalObj = this.testContext.pageObjectManager.getNonFunctionalPage();
+	this.nonfunctional = this.testContext.pageObjectManager.getNonFunctionalPage();
 	
+
 }/*
+
+}
+	long loadTime;
+	
+
 	@Given("User is in browser")
 	public void user_is_in_browser() {
-	driver = Chromedriver driver.getDriver();  
+	//driver = ChromeDriver();
 	}
 
 	@When("User enters the SweetBalance URL")
 	public void user_enters_the_sweet_balance_url() {
-	startTime = System.currentTimeMillis();
-	        driver.get("https://www.sweetbalance.com"); // Replace with actual URL
-	        endTime = System.currentTimeMillis();
-	    }
+		 long startTime = System.currentTimeMillis();
+	        driver.get("https://sweet-balance-test-env-3-numpyninjadiabe.replit.app/FirstPage"); // Replace with actual URL
+	        long endTime = System.currentTimeMillis();
+	        loadTime = endTime - startTime;
 	}
 
-	@Then("Page should be fully loaded within {int} seconds")
-	public void page_should_be_fully_loaded_within_seconds(Integer int1) {
-	long loadTime = endTime - startTime;
-	       System.out.println("Page load time: " + loadTime + " ms");
-	       assertTrue("Page did not load within 3 seconds", loadTime <= 3000);
-	       driver.quit();
+	@Then("Page should be fully loaded within three seconds")
+	public void page_should_be_fully_loaded_within_three_seconds() {
+	System.out.println("Page Load Time: " + loadTime + " ms");
+    Assert.assertTrue(loadTime <= 3000, "Page did not load within 3 seconds!");
+    
 	}
+	@Then("All elements are readable and accessible without horizontal scrolling")
+	public void all_elements_are_readable_and_accessible_without_horizontal_scrolling() {
+	    
+
+	}
+
 */
+
 
 	}

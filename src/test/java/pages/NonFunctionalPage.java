@@ -15,10 +15,10 @@ public class NonFunctionalPage {
 	       return driver.getTitle();
 	   }
 
-	   public boolean isTitleContains(String keyword) {
-	       return driver.getTitle().contains(keyword);
-	   
-	}
+//	   public boolean isTitleContains(String keyword) {
+//	       return driver.getTitle().contains(keyword);
+//	   
+//	}
 
 	
 	
