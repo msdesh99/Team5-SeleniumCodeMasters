@@ -21,6 +21,8 @@ public class PremiumUserExerciseHomePageSteps {
 		 this.testContext = testContext;		 
 		 this.driver = this.testContext.base.getDriver();
 		 this.exercisePage = this.testContext.pageObjectManager.getExercisePage();
+	     this.softAssertUtils = testContext.get("SoftAssertUtils",SoftAssertUtils.class);
+
 	}
 	@When("User logs in and clicks {string} option from the side panel for premium user homePage")
 	public void user_logs_in_and_clicks_option_from_the_side_panel_for_premium_user_home_page(String option){
@@ -91,7 +93,6 @@ public class PremiumUserExerciseHomePageSteps {
     }
     @Then("Success dialog appears and changes the button text for {string} for premium user homePage")
     public void success_dialog_appears_and_changes_the_button_text_for_for_premium_user_home_page(String tab) {
-    	softAssertUtils = testContext.get("SoftAssertUtils",SoftAssertUtils.class);
       	softAssertUtils.assertEquals(resultMap.get("message"),"Success!",
         		"Assertion for Success message after clicking Mark as Completed for tab "+tab+" is failed");
       	softAssertUtils.assertTrue((Boolean)resultMap.get("UndoButton"),"Assertion for Undo button is visible is failed");

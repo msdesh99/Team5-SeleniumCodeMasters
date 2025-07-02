@@ -1,11 +1,12 @@
-package pages;
+	package pages;
+
 
 
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeoutException;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,7 @@ public class Loginpage {
 	By OrSepratorlocator = By.xpath("//span[text()='OR']");
 	By Conditonstatlocator = By .xpath("//p[text()='By continuing you agree to our T&Cs and Privacy Policy']");
 	By errorMsglocator = By.xpath("//p[text()='Please enter a valid email address']");
-	By validEmaillocator = By.xpath("//input[@value='Test05@gmail.com']");
+	By validEmaillocator = By.xpath("//input[@value='Team05@gmail.com']");
 	By forgorpasswordlocator = By.xpath("//button[text()='Forgot password?']");
 	By homepagelocator = By.xpath("//button[text()='Home']");
 	By completeProfilescreen = By.xpath("//h2[text()='Complete your profile']");
@@ -42,6 +43,8 @@ public class Loginpage {
 	By checkboxlocator = By.id("terms");
 	By uploadBloodReportlocator = By.xpath("//button[text()='Upload Blood Report']");
     By stepthroughLocator = By.xpath("//button[text()='Step Through Onboarding']");
+    By pdfUploadModallocator = By.xpath("//h1[text()='Just a quick upload, and we’ll handle the rest!']");
+    By createaccountBtn = By.xpath("//button[text()='Create Account']");
 	public Loginpage(WebDriver driver) {
 		this.driver = driver;		
 	}	
@@ -50,6 +53,9 @@ public class Loginpage {
 	
 	public void clickonloginbtn() {		
 		driver.findElement(LoginBtnlocator).click();
+	}
+	public void clickoncreateNewAcc() {		
+		driver.findElement(createaccountBtn).click();
 	}
 	
 	public void enterEmailid(String emailid) {				
@@ -97,6 +103,9 @@ public boolean closeButton() {
 	return driver.findElement(closebtnlocator).isDisplayed();
 			
 }
+public boolean isdisplayedenterpassword() {
+	return driver.findElement(Placeholder1locator).isDisplayed();
+}
 
 public boolean emailField() {
 	return driver.findElement(emailFieldlocator).isDisplayed();
@@ -138,13 +147,14 @@ public boolean completeFormisdisplayed() {
 }
 public List<String> getEmailId(){
 	
-	ExcelReader reader = new ExcelReader("src/test/resources/Testdata/Logindata.xlsx", "LoginData");
+	ExcelReader reader = new ExcelReader("src/test/resources/feature/Testdata/Logindata.xlsx", "LoginData");
     List<String> emailList = reader.getColumnDataByName("Emailid");
 	return emailList;
 }
 public List<String> getpassword(){
 	
-	ExcelReader reader = new ExcelReader("src/test/resources/Testdata/Logindata.xlsx", "LoginData");
+	ExcelReader reader = new ExcelReader("src/test/resources/feature/Testdata/Logindata.xlsx", "LoginData");
+
     List<String> passwordlist = reader.getColumnDataByName("password");
 	return passwordlist;
 }
@@ -171,8 +181,14 @@ public void checkTermscondition(){
 public boolean iscreateaccountDisaabled() {
     return driver.findElement(creteAccForm).isDisplayed();
 }
+    public void clickonPdfbtn() {
+    	driver.findElement(uploadBloodReportlocator).click();
+    }
+
 public Map<String, List<String>> getCreateFormData() {
-    ExcelReader reader = new ExcelReader("src/test/resources/Testdata/Logindata.xlsx", "Newacct");
+	ExcelReader reader = new ExcelReader("src/test/resources/feature/Testdata/Logindata.xlsx", "Newacct");
+
+
     
     Map<String, List<String>> data = new HashMap<>();
     
@@ -188,7 +204,12 @@ public boolean isBloodreportPageDisplayed() {
 public boolean isstepthroughonboardingPageDisplayed() {
 	return driver.findElement(stepthroughLocator).isDisplayed();
 }
-
+public boolean isDispalyedModel() {
+	return driver.findElement(pdfUploadModallocator).isDisplayed();
+}
+public void waitUntilCreateAccountButtonEnabled() {
+    new WebDriverWait(driver, Duration.ofSeconds(10))
+        .until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Create Account']")));
 }
 
-
+}

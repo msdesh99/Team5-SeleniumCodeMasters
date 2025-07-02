@@ -9,11 +9,17 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
+
 		tags= "@MealSection11",		
 		glue= {"steps"},
-
-		features= {"src/test/resources/feature/"},
+  features= {"src/test/resources/feature/"},
 	
+		//features= {"src/test/resources/feature/"},
+		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
+		//features= {"src/test/resources/feature/NonFunctional.feature"},
+		//features= {"src/test/resources/feature/Launchpage.feature"},
+		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
+
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
@@ -29,7 +35,7 @@ import configs.BrowserConfig;
 public class TestRunner extends AbstractTestNGCucumberTests{
 
 @Override
-@DataProvider(parallel=false)
+@DataProvider(parallel=true)
 public Object[][] scenarios() {
 	return super.scenarios();
 }
