@@ -9,18 +9,14 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-
-//		tags= "@ChomePage13",		
+       //tags= "@ChomePage13",		
 		glue= {"steps"},
-
-//		features= {"src/test/resources/feature"},
-		features= {"src/test/resources/feature/02_D_PDFupload.feature"},
-
-		//tags= "@ChomePage13",		
-		glue= {"steps"},
-
-// 		features= {"src/test/resources/feature/Launchpage.feature"},
+		//features= {"src/test/resources/feature/02_D_PDFupload.feature"},
+        //features= {"src/test/resources/feature/Launchpage.feature"},
 		//features= {"src/test/resources/feature/Launchpage.feature"},
+		//tags= ("@sectionPresence"),//("@exerciseMarkasCompleted"),//("@premiumLogbook"), //or  @sectionPresence"),		
+		features= {"src/test/resources/feature/"},
+		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
 		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
 
 		plugin= {"pretty",
