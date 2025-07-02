@@ -1,12 +1,9 @@
 Feature: Home Page feature
+Background: Given User launches the browser
+            When User enters the SweetBalance url
 
-    Background: Given User launches the browser
-
-               When User enters the SweetBalance url
-                                                                                                       
 
 Scenario: Validate the presence of App Name on the home page 
-
 #Given User launches the browser
 #
 #When User enters the SweetBalance url
@@ -65,29 +62,23 @@ Then User should see a testimonial from user3 "Robert T."
 
 Scenario: Validate "Join our community of successful members" text is visible above testimonial section
 Then User should see "Join our community of successful members" text is visible above testimonial section
-
+@sce1
 Scenario: Validate presence of five yellow stars above "Join our community of successful members" text
 Then User should see five yellow stars above "Join our community of successful members" text
-
+@sce2
 Scenario: Validate rating for James D testimonial
 Then User should see five stars under user1 "James D."
-
+@sce3
 Scenario: Validate rating for Maria L testimonial
 Then User should see five stars under user2 "Maria L."
-
+@sce4
 Scenario: Validate rating for Robert T testimonial
 Then User should see five stars under user3 "Robert T"
 
-
-
 Scenario: Validate presence of bottom section heading in home page
-
 Then User should see a section with heading "Take control of your diabetes today"
 
-
-
 Scenario: Validate the presence of button "Check your Risk"
-
 Then User should see a button labeled "Check Your Risk"
 
 

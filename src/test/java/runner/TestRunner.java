@@ -9,7 +9,7 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-       //tags= "@ChomePage13",		
+        //tags= ("@sce1 or @sce2 or @sce3 or @sce4"),		
 		glue= {"steps"},
 		//features= {"src/test/resources/feature/02_D_PDFupload.feature"},
         //features= {"src/test/resources/feature/Launchpage.feature"},
