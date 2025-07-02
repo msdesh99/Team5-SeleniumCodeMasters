@@ -1,9 +1,11 @@
 package utils;
 import configs.ConfigLoader;
+
 import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
 import pages.Loginpage;
 import pages.PremiumUserHomepage;
+import pages.CommanHomePage_MealSection;
 import pages.CommanHomePage;
 import pages.ExercisePage;
 import pages.ExerciseFullPage;
@@ -15,8 +17,9 @@ public class PageObjectManager {
     private Loginpage loginpage; 
     private PremiumUserHomepage premiumuserhomepage; 
     private ExercisePage exercisePage;
-    private CommanHomePage commanhomepage;
     private ExerciseFullPage exerciseFullPage;
+    private CommanHomePage commanhomepage;
+    private CommanHomePage_MealSection commanHomePage_MealSection;
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
@@ -43,11 +46,18 @@ public class PageObjectManager {
 		premiumuserhomepage = new PremiumUserHomepage(this.driver);
 		return premiumuserhomepage;		
 	}
-	
+		
 	public CommanHomePage getCommanHomePage() {
 		commanhomepage = new CommanHomePage(this.driver);
 		return commanhomepage;
+	}
+	
+	public CommanHomePage_MealSection getCommanHomePage_MealSection() {
+		commanHomePage_MealSection = new CommanHomePage_MealSection(this.driver);
+		return commanHomePage_MealSection;
 		
 	}
+	
+	
 	
 }

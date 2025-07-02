@@ -56,3 +56,57 @@ Feature: Home Page Validation for Registered free user
   @ChomePage13
   Scenario: Verify Average Blood Sugar is visible for free user
     Then User should see Average Blood Sugar value for free user
+
+  @ChomePage14
+  Scenario: Verify title in flex container for free user
+    Then User should see "Today's Meal Plan" title for free user
+
+  @ChomePage15
+  Scenario: Verify "Today’s Meal Plan" section is visible	for free user
+    Then User should see tabs: Breakfast, Lunch, Dinner, Snacks for free user
+
+  @ChomePage16
+  Scenario: Verify the presence of side tab in flex container for free user
+    Then User should see sidebar tab container within the flex layout for free user
+
+  @ChomePage17
+  Scenario Outline: Verify the text "<label>" in flex container for free user
+  Then User should see "<label>" label in the sidebar section for free user
+
+    Examples: 
+      | label     |
+      | Meal Plan |
+      | Exercise  |
+
+  @ChomePage18
+  Scenario: Verify View Full Plan button is visible for free user
+    Then User should see "View Full Plan" button in the Meal Plan section for free user
+
+  @ChomePage19
+  Scenario: Verify the symbol utensil cross in "Meal plan" 	for free user
+    Then User should see utensil icon (crossed fork and knife) in the Meal Plan tab for free user
+
+  @ChomePage20
+  Scenario: Verify the symbol dumbbell in  "Exercise" for free user
+    Then User should see dumbbell icon in the Exercise tab for free user
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
