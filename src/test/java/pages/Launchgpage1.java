@@ -37,13 +37,17 @@ public class Launchgpage1 {
 	By roberttestimoniallocator=By.xpath("//div[contains(., 'Robert T.') and contains(., 'predictive alerts have saved me')]");
 
 
-	By jamesfivestarlocator = By.xpath("//div[contains(., 'James D.')]/following-sibling::div//span[contains(@class, 'star') and contains(@class, 'filled')]");
-	By mariafivestarlocator = By.xpath("//div[contains(., 'Maria L.')]/following-sibling::div[@class='flex']/svg[contains(@class, 'fill-yellow-400')]");
-	By robertfivestarslocator =By.xpath("//div[contains(., 'Robert T.')]/following-sibling::div[@class='flex']/svg[contains(@class, 'fill-yellow-400')]");
-
-	By jointextlocator = By.xpath("//p[text()='Join our community of successful members']");
-	By fivestarlocator = By.xpath("//h2[contains(text(),'Join our community')]/preceding-sibling::div//*[name()='svg' and @fill='#FFD700']");
-
+  //By jamesfivestarlocator = By.xpath("//div[contains(., 'James D.')]/following-sibling::div//span[contains(@class, 'star') and contains(@class, 'filled')]");
+	By jamesfivestarlocator = By.xpath("//div/p[text()='James D.']/../div/*[name()='svg']");
+  //By mariafivestarlocator = By.xpath("//div[contains(., 'Maria L.')]/following-sibling::div[@class='flex']/svg[contains(@class, 'fill-yellow-400')]");
+	By mariafivestarlocator = By.xpath("//div/p[text()='Maria L.']/../div/*[name()='svg']");
+  //By robertfivestarslocator =By.xpath("//div[contains(., 'Robert T.')]/following-sibling::div[@class='flex']/svg[contains(@class, 'fill-yellow-400')]");
+    By robertfivestarslocator = By.xpath("//div/p[text()='Robert T.']/../div/*[name()='svg']");
+	
+    By jointextlocator = By.xpath("//p[text()='Join our community of successful members']");
+  //By fivestarlocator = By.xpath("//h2[contains(text(),'Join our community')]/preceding-sibling::div//*[name()='svg' and @fill='#FFD700']");
+    By fivestarlocator = By.xpath("//p[starts-with(text(),'Join')]/../div/*[name()='svg']");
+	
 	By headinglocator=By.xpath("//h2[text()='Take control of your diabetes today']");
 	By checkyourrisklocator = By.xpath("//button[contains(text(), 'Check Your Risk')]");
 
@@ -145,12 +149,13 @@ public class Launchgpage1 {
 	}
 	public boolean FiveStars_Visible() {
 	       List<WebElement> stars = driver.findElements(fivestarlocator);
+	       System.out.println("size: "+ stars.size());
+	       System.out.println("str: "+ stars.stream().allMatch(WebElement::isDisplayed));
 	       if (stars.size() != 5) return false;
 	return stars.stream().allMatch(WebElement::isDisplayed);
 	}
 	public int  jamesfivestars_Visible() {
 	List<WebElement> jamesstars =driver.findElements(jamesfivestarlocator);
-
 	return jamesstars.size();                                                          
 	}
 	public int  mariafivestars_Visible() {

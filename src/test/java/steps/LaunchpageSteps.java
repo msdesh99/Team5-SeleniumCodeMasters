@@ -45,12 +45,9 @@ public class LaunchpageSteps {
 	}
 	@Then("User should see app name on the top left")
 	public void user_should_see_app_name_on_the_top_left() throws Exception {
-
 	     int eleLocation = launchPageobj.validateAppNameOnTopLeft();
 	try {
-
-	Assert.assertTrue(eleLocation<=20,"App Name appears at the top left corner assertion is failed");
-
+		Assert.assertTrue(eleLocation<=20,"App Name appears at the top left corner assertion is failed");
 	}catch(AssertionError ae) {
 
 	throw new Exception(ae.getMessage());
@@ -144,8 +141,7 @@ public class LaunchpageSteps {
 	@Then("User should see a testimonial from user3 {string}")
 	public void user_should_see_a_testimonial_from_user3(String roberttestimonial) {
 	boolean isRobertTestimonialEle=launchPageobj.roberttestimonial_visible(roberttestimonial);
-	Assert.assertTrue(isRobertTestimonialEle,"Testimonial from user '" + roberttestimonial + "' is not visible");
-	   
+	Assert.assertTrue(isRobertTestimonialEle,"Testimonial from user '" + roberttestimonial + "' is not visible");	   
 	}
 
 	@Then("User should see {string} text is visible above testimonial section")
@@ -153,26 +149,26 @@ public class LaunchpageSteps {
 	boolean isJoinCommunityTextEle=launchPageobj.joincommunitytext_isVisibe();
 	Assert.assertTrue(isJoinCommunityTextEle,"Join our community of successful members");
 	}
-	@Then("User should see five yellow stars above Join our community of successful members text")
+	@Then("User should see five yellow stars above {string} text")
 	public void user_should_see_five_yellow_stars_above_text(String expectedText) {
 	boolean starsVisible = launchPageobj.FiveStars_Visible();
 	Assert.assertTrue(starsVisible,"Expected 5 yellow stars above the text but did not find them");
 	   
 	}
-	@Then("User should see five stars under user1 James D.")
-	public void user_should_see_five_stars_under_user1(int expectedStars) {
+	@Then("User should see five stars under user1 {string}")
+	public void user_should_see_five_stars_under_user1(String user1) {
 	 int actualStars =launchPageobj.jamesfivestars_Visible();
-	 Assert.assertEquals(expectedStars, actualStars);
+	 Assert.assertEquals(actualStars,5,"Assertion for displaying 5 Stars under user1 "+ user1+ " is failed");
 	}
-	@Then("User should see five stars under user2 Maria L.")
-	public void user_should_see_five_stars_under_user2(int expectedStars) {
+	@Then("User should see five stars under user2 {string}")
+	public void user_should_see_five_stars_under_user2(String user2) {
 	int actualStars1 =launchPageobj.mariafivestars_Visible();
-	 assertEquals(expectedStars, actualStars1);
+	 assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user2 "+ user2+ " is failed");
 	}
-	@Then("User should see five stars under user3 Robert T")
-	public void user_should_see_stars_under_user3(int expectedStars) {
+	@Then("User should see five stars under user3 {string}")
+	public void user_should_see_stars_under_user3(String user3) {
 	int actualStars1 =launchPageobj.robertfivestars_Visible();
-	assertEquals(expectedStars, actualStars1);
+	assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user3 "+ user3 +" is failed");
 	}
 	@Then("User should see a section with heading {string}")
 	public void user_should_see_a_section_with_heading(String heading) {

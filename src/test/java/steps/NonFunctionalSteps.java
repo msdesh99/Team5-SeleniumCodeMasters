@@ -19,14 +19,14 @@ import org.testng.Assert;
 public class NonFunctionalSteps {
 	TestContext testContext;
 	WebDriver driver;
-	NonFunctionalPage nonfunctional;
+	NonFunctionalPage nonfunctionalObj;
 	SoftAssertUtils softAssertUtils;
 	public NonFunctionalSteps(TestContext testContext) {
 	this.testContext = testContext;
 	this.driver = this.testContext.base.getDriver();
 	this.nonfunctionalObj = this.testContext.pageObjectManager.getNonFunctionalPage();
 	
-}
+}/*
 	@Given("User is in browser")
 	public void user_is_in_browser() {
 	driver = Chromedriver driver.getDriver();  
@@ -47,6 +47,6 @@ public class NonFunctionalSteps {
 	       assertTrue("Page did not load within 3 seconds", loadTime <= 3000);
 	       driver.quit();
 	}
-
+*/
 
 	}
