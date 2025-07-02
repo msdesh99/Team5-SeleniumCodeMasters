@@ -1,8 +1,9 @@
 Feature: Exercise schedule for premium user exercise fullPage
+
 Background: User is Logged into the app for premium user exercise fullPage
-Given  User click on login button of Launch Page 
-#When User enters userid "Team05@gmail.com" and password "Usanumpy@2024"
-When User enters userid "abcd@abcd.com" and password "abcd1234"  
+Given  User is on Launch Page 
+When User enters valid login credetnial for "premiumUser" 
+And User logs in and navigates to "Logbook" option for premium user logbook page
 And User logs in and clicks "Exercise" option from the side panel for premium user homePage
 And User is on Exercise and clicks "View Full Schedule" option for premium user exercise fullPage
 

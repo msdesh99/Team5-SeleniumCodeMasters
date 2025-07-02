@@ -78,4 +78,13 @@ public class PremiumUserLogbookPage {
         	if(yList.get(3).getText().equals(max)) result.add(true); else result.add(false);
  	    return result;
 	}
+	public boolean verifyIcon(String tab) {
+		By iconLocator = By.xpath("//h2[text()='"+tab+"']/../*[name()='svg']");
+		return driver.findElement(iconLocator).isDisplayed();
+	}
+	public boolean verifyMealsSubSections(String section) {
+		By sectionLocator = By.xpath(
+			"//h2[text()='Meal & Nutrition']/../following-sibling::div//h3[text()='"+section+"']");
+		return driver.findElement(sectionLocator).isDisplayed();
+	}
 }

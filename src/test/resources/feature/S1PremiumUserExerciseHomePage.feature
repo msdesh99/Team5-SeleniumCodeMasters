@@ -1,10 +1,10 @@
 @loginOnce
 Feature: Functional Testing of Exercise Module HomePage for Premium User
 
-Background: User is Logged into the app for premium user homePage
-Given  User click on login button of Launch Page 
-#When User enters userid "Team05@gmail.com" and password "Usanumpy@2024"
-When User enters userid "abcd@abcd.com" and password "abcd1234"  
+Background: User is Logged into the app for premium user logbook page
+Given  User is on Launch Page 
+When User enters valid login credetnial for "premiumUser" 
+And User logs in and navigates to "Logbook" option for premium user logbook page
 And User logs in and clicks "Exercise" option from the side panel for premium user homePage
 
 Scenario: Verify "View Full Schedule" button is displayed on right for premium user homePage
