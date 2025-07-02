@@ -1,9 +1,8 @@
 @premiumLogbook
 Feature: Premium User Logbook Page validation
 Background: User is Logged into the app for premium user logbook page
-Given  User click on login button of Launch Page 
-#When User enters userid "Team05@gmail.com" and password "Usanumpy@2024"
-When User enters userid "abcd@abcd.com" and password "abcd1234"  
+Given  User is on Launch Page 
+When User enters valid login credetnial for "premiumUser" 
 And User logs in and navigates to "Logbook" option for premium user logbook page
 
 @sectionPresence
@@ -54,4 +53,20 @@ Examples:
 | tab | min | max |
 | Blood Glucose Tracker | 70 | 180 |
 
+@iconPremiumUserLogbook
+Scenario Outline: Verify icon for "<tab>" section is displayed for premium user logbook page
+Then User should see Icon  on the left side of "<tab>" title for premium user logbook page
+Examples: 
+| tab |
+| Meal & Nutrition |
+| Physical Activity |
+| Medication Dosage |
+
+@mealsection
+Scenario Outline: Verify the presence of "<section>" section in Meal & Nutrition section for premium user logbook page
+Then User should see the section "<section>" for premium user logbook page
+Examples:
+| section |
+| 7-Day Aggregate Nutrition |
+| Daily Nutrition Breakdown |
 
