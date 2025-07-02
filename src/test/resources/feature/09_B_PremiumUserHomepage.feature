@@ -124,3 +124,65 @@ Feature: Functional and non functional test validation for premium account user
     Given User is in home page
     When User clicks meal section
     Then User should see text "calories" after the calorie value in main meal
+
+  @TC_21
+  Scenario: Verify the presence of "✅ Completed" button
+    Given User is in home page
+    When User clicks meal section
+    Then user should see "✅ Completed" button
+
+  @TC_22
+  Scenario: Verify the presence of "⚠️ Partially Completed" button
+    Given User is in home page
+    When User clicks meal section
+    Then user should see "⚠️ Partially Completed" button
+
+  @TC_23
+  Scenario: Verify the presence of "❌ Not Completed" button
+    Given User is in home page
+    When User clicks meal section
+    Then user should see "❌ Not Completed" button
+
+  @TC_24
+  Scenario: Verify color change of button completed
+    Given User is in home page
+    When User clicks "✅ Completed" button
+    Then button color should change to green
+
+  @TC_25
+  Scenario: Verify color change of button partially completed
+    Given User is in home page
+    When User clicks "⚠️ Partially Completed" button
+    Then button color should change to yellow
+
+  @TC_26
+  Scenario: Verify color change of button  not completed
+    Given User is in home page
+    When User clicks "❌ Not Completed" button
+    Then button color should change to red
+
+  @TC_27
+  Scenario: Verify the presence of nutrition insight summary flex card in each meal section
+    Given User is in home page
+    When User clicks meal section
+    Then Nutrition Insight summary card should be displayed in each meal section
+
+  @TC_28
+  Scenario: Verify the title in flex card in each meal section
+    Given User is in home page
+    When User clicks meal section
+    Then User should see flex card title" Nutrition Insight"
+
+  @TC_29
+  Scenario: Verify the sub title in flex card in each meal section
+    Given User is in home page
+    When User clicks meal section
+    Then User should see subtitle "Calories"
+
+  @TC_30
+  Scenario: Verify the total count of calories ( pre-meal & meal)
+    Given User is in home page
+    When User clicks meal section
+    Then total calorie count should equal the sum of Pre-Meal and Meal calories
+
+  

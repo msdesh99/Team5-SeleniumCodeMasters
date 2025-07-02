@@ -103,9 +103,7 @@ public class LaunchpageSteps {
 	   boolean isBalanceDietEle=launchPageobj.balancediet_locator();
 	   System.out.println("Balance diet "  + isBalanceDietEle);
 	   Assert.assertTrue(isBalanceDietEle,"Balance diet and physical activity for optimal control,Carb counting tools,Customized exercise plans,Meal suggestions based on readings");
-	 
 	}
-
 	@Then("User should see the text3 as  {string}")
 	public void user_should_see_the_text3_as(String getpersonalized) {
 	  boolean isGetpersonalizedEle =launchPageobj.getpersonalized_locator();
@@ -158,17 +156,27 @@ public class LaunchpageSteps {
 	@Then("User should see five stars under user1 {string}")
 	public void user_should_see_five_stars_under_user1(String user1) {
 	 int actualStars =launchPageobj.jamesfivestars_Visible();
+
 	 Assert.assertEquals(actualStars,5,"Assertion for displaying 5 Stars under user1 "+ user1+ " is failed");
+
+	 Assert.assertEquals(expectedStars, actualStars);
 	}
 	@Then("User should see five stars under user2 {string}")
 	public void user_should_see_five_stars_under_user2(String user2) {
 	int actualStars1 =launchPageobj.mariafivestars_Visible();
+
 	 assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user2 "+ user2+ " is failed");
+
+	 Assert.assertEquals(expectedStars, actualStars1);
+
 	}
 	@Then("User should see five stars under user3 {string}")
 	public void user_should_see_stars_under_user3(String user3) {
 	int actualStars1 =launchPageobj.robertfivestars_Visible();
 	assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user3 "+ user3 +" is failed");
+
+	Assert.assertEquals(expectedStars, actualStars1);
+
 	}
 	@Then("User should see a section with heading {string}")
 	public void user_should_see_a_section_with_heading(String heading) {

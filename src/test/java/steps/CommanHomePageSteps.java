@@ -47,7 +47,7 @@ public class CommanHomePageSteps {
 			int eleplaceright= commanhomepage.validateUserNameOnTopRight();
 		
 	
-			Assert.assertTrue(eleplaceright <1000,"User name appears at the top left corner assertion is failed");
+			Assert.assertTrue(eleplaceright <1000,"User name appears at top-right corner of the assertion is failed");
 		} catch(AssertionError ae) {
 			throw new Exception(ae.getMessage());
 	}
@@ -61,7 +61,7 @@ public class CommanHomePageSteps {
 			int eleplacelogout= commanhomepage.validateUserNameOnTopRightLogout();
 		
 	
-			Assert.assertTrue(eleplacelogout <1000,"Logout appears at the top left corner assertion is failed");
+			Assert.assertTrue(eleplacelogout <1000,"Logout appears at the the top-right corner assertion is failed");
 		} catch(AssertionError ae) {
 			throw new Exception(ae.getMessage());
 			}
@@ -151,7 +151,7 @@ public class CommanHomePageSteps {
 	public void user_should_see_latest_hb_a1c_value_for_free_user() {
 		
 		boolean hba1cvalue=commanhomepage.isHbA1CValueDisplayed();
-		Assert.assertTrue(hba1cvalue,"Assertion for presence of is failed");
+		Assert.assertTrue(hba1cvalue,"Assertion for presence of HbA1C value is failed");
 
         String value = commanhomepage.getHbA1CValue();
         System.out.println("HbA1C Value = " + value);  
@@ -161,7 +161,7 @@ public class CommanHomePageSteps {
 	@Then("User should see BMI value for free user")
 	public void user_should_see_bmi_value_for_free_user() {
 		boolean BMIvalue=commanhomepage.isBMIValueDisplayed();
-		Assert.assertTrue(BMIvalue,"Assertion for presence of is failed");
+		Assert.assertTrue(BMIvalue,"Assertion for presence of BMI value is failed");
 
         String value = commanhomepage.getBMIValue();
         System.out.println("BMIvalue Value = " + value); 
@@ -169,13 +169,97 @@ public class CommanHomePageSteps {
 
 	@Then("User should see Average Blood Sugar value for free user")
 	public void user_should_see_average_blood_sugar_value_for_free_user() {
+		
 		boolean AvgBloodSuagr=commanhomepage.isAvgBloodSuagrValueDisplayed();
-		Assert.assertTrue(AvgBloodSuagr,"Assertion for presence of is failed");
+		Assert.assertTrue(AvgBloodSuagr,"Assertion for presence of Average Blood Sugar value is failed");
 
         String value = commanhomepage.getAvgBloodSuagrValue();
         System.out.println("AvgBloodSugarValue Value = " + value); 
 	}
+	
+	
+	@Then("User should see {string} title for free user")
+	public void user_should_see_title_for_free_user(String option) throws Exception {
+		
+		boolean ToadyMealPlan = commanhomepage.getToadyMealPlan(option);
+		try {
+			Assert.assertTrue(ToadyMealPlan,"Assertion for presence of "+option+" is failed");
+		}catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+	  }
 	}
+	
+	
+	@Then("User should see tabs: Breakfast, Lunch, Dinner, Snacks for free user")
+	public void user_should_see_tabs_breakfast_lunch_dinner_snacks_for_free_user() {
+		
+		 List<String> expectedOrder = Arrays.asList("Breakfast","Lunch","Dinner", "Snacks");
+		 List<String> actualOrder=commanhomepage.VerifyMealBar();
+		 softAssertUtils.assertEquals(expectedOrder, actualOrder, "expected order is not found");
+		
+	}
+	
+	@Then("User should see sidebar tab container within the flex layout for free user")
+	public void user_should_see_sidebar_tab_container_within_the_flex_layout_for_free_user() {
+	   
+		boolean TabinFlex=commanhomepage.isTabInFlex();
+		Assert.assertTrue(TabinFlex,"Assertion for presence of sidebar tab container within the flex layout is failed");
+	}
+	
+	
+	@Then("User should see {string} label in the sidebar section for free user")
+	public void user_should_see_label_in_the_sidebar_section_for_free_user(String label) throws Exception {
+	 
+		boolean labelVisible = commanhomepage.LabelVisible(label);
+		try {
+			Assert.assertTrue(labelVisible,"Assertion for presence of "+label+" is failed");
+		}catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+		}
+	}
+	
+	@Then("User should see {string} button in the Meal Plan section for free user")
+	
+
+	public void user_should_see_button_in_the_meal_plan_section_for_free_user(String string) throws Exception {
+	    
+		boolean MealPlanVisible = commanhomepage.MealPlanVisible(string);
+		try {
+			Assert.assertTrue(MealPlanVisible,"Assertion for presence of "+string+" is failed");
+		}catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+		}
+		
+	}
+	
+	@Then("User should see utensil icon \\(crossed fork and knife) in the Meal Plan tab for free user")
+	public void user_should_see_utensil_icon_crossed_fork_and_knife_in_the_meal_plan_tab_for_free_user() throws Exception {
+
+		
+		boolean utensilsymbolVisible = commanhomepage.utensilsymbol();
+		try {
+		Assert.assertTrue(utensilsymbolVisible,"utensil symbol is not displayed!");
+		}
+		catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+		}
+		
+	}
+
+	@Then("User should see dumbbell icon in the Exercise tab for free user")
+	public void user_should_see_dumbbell_icon_in_the_exercise_tab_for_free_user() throws Exception {
+		
+		boolean dumbbellsymbolVisible = commanhomepage.dumbellsymbol();
+		try {
+		Assert.assertTrue(dumbbellsymbolVisible,"dumbbell symbol is not displayed!");
+		}
+		catch(AssertionError ae) {
+			throw new Exception(ae.getMessage());
+		}
+	}
+	
+	
+}
 
 
 
