@@ -34,13 +34,21 @@ public class PremiumUserHomepage {
 	By mealPlanButt = By.xpath("//span[text()='Meal Plan']");
 	By preMeal = By.xpath("//h3[text()='Pre-Meal']");
 	By mealcontainer = By.xpath("//div[@class='space-y-4']/div/button");
-	By snack = By.xpath("//button[text()='Snacks']");
 	By noneDis = By.xpath("//div[text()='None']");
 	By Zero = By.xpath("//span[text()='0']");
 	By mainmealTitle = By.xpath("//h3[text()='Main Meal']");
+	By mainMealIndicator = By.xpath("//h3[text()='Main Meal']//..//span");
 	By mainmealDescription = By.xpath("//h3[text()='Main Meal']/../div/div");
 	By UtensilImg = By.xpath("//span[text()='🍽️']");
-
+	By time = By.xpath("//div[@class='flex items-center text-sm text-gray-500 mt-1 space-x-4']/span");
+	By Breakfast = By.xpath("//button[text()='Breakfast']");
+	By lunch = By.xpath("//button[text()='Lunch']");
+	By dinner = By.xpath("//button[text()='Dinner']");
+	By snack = By.xpath("//button[text()='Snacks']");
+	By caloriesValue = By.xpath("//div[@class='flex items-center text-sm text-gray-500 mt-1 space-x-4']/span[last()]");
+    By calorieText=By.xpath("//span[text()='calories']");
+    
+    
 	public PremiumUserHomepage(WebDriver driver) {
 		this.driver = driver;
 		this.actions = new Actions(driver);
@@ -308,13 +316,12 @@ public class PremiumUserHomepage {
 
 	}
 
-	public WebElement clickSnack() {
+	public void clickSnack() {
 		try {
 			WebElement snackButton = driver.findElement(snack);
-			return snackButton;
+			snackButton.click();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
 
 	}
@@ -364,4 +371,57 @@ public class PremiumUserHomepage {
 
 	}
 
+	public void clickBreakfast() {
+		try {
+			WebElement breakfastButton = driver.findElement(Breakfast);
+			breakfastButton.click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void clickLunch() {
+		try {
+			WebElement LunchButton = driver.findElement(lunch);
+			LunchButton.click();
+			;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void clickDinner() {
+		try {
+			WebElement DinnerButton = driver.findElement(dinner);
+			DinnerButton.click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public WebElement checkCalorieValue() {
+		WebElement calorieValueDis = driver.findElement(caloriesValue);
+		return calorieValueDis;
+
+	}
+	public WebElement checkCalorieText() {
+		WebElement calorieTextDis = driver.findElement(calorieText);
+		return calorieTextDis;
+
+	}
+
+	public WebElement checkTime() {
+		WebElement timeDis = driver.findElement(time);
+		return timeDis;
+	}
+
+	public List<WebElement> checkIndicator() {
+		List<WebElement> indicatorDis = driver.findElements(mainMealIndicator);
+		return indicatorDis;
+	}
+
+	
 }

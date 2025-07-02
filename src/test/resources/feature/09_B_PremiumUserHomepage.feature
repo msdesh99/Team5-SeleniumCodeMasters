@@ -68,49 +68,49 @@ Feature: Functional and non functional test validation for premium account user
   @TC_11
   Scenario: Validate the indicator for breakfast main-meal
     Given User is in home page
-    When User clicks meal section
+    When User clicks breakfast section
     Then User should see indicator "AM" for breakfast main-meal
 
   @TC_12
   Scenario: Validate the indicator for lunch main-meal
     Given User is in home page
-    When User clicks meal section
+    When User clicks lunch section
     Then User should see indicator "PM" for lunch  main-meal
 
   @TC_13
   Scenario: Validate the indicator for dinner main-meal
     Given User is in home page
-    When User clicks meal section
+    When User clicks dinner section
     Then UUser should see indicator "PM" for dinner  main-meal
 
   @TC_14
   Scenario: Validate the indicator for snack main-meal
     Given User is in home page
-    When User clicks meal section
+    When User clicks snack section
     Then User should see indicator "PM" for snack  main-meal
 
   @TC_15
   Scenario: Verify the time in  main-breakfast
     Given User is in home page
-    When User clicks meal section
+    When User clicks breakfast section
     Then User should see 7:30 o'clock
 
   @TC_16
   Scenario: Verify the time in main-lunch
     Given User is in home page
-    When User clicks meal section
+    When User clicks lunch section
     Then User should see 12:30 o'clock
 
   @TC_17
   Scenario: Verify the time in main-dinner
     Given User is in home page
-    When User clicks meal section
+    When User clicks dinner section
     Then User should see 6:30 o'clock
 
   @TC_18
   Scenario: Verify the time in main-snack
     Given User is in home page
-    When User clicks meal section
+    When User clicks snack section
     Then User should see 3:30 o'clock
 
   @TC_19
@@ -123,4 +123,4 @@ Feature: Functional and non functional test validation for premium account user
   Scenario: Validate the text  " Calorie" in main-meal
     Given User is in home page
     When User clicks meal section
-    Then User should see text "calorie" after the calorie value in main meal
+    Then User should see text "calories" after the calorie value in main meal
