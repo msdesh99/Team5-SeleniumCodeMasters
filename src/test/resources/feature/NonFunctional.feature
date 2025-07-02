@@ -1,20 +1,13 @@
 Feature: Non-Functional Testing - Home Page
 
-
+Background:Given User is in browser
 
 Scenario: Homepage loads within acceptable time
-
-Given User is in browser
-
 When User enters the SweetBalance URL
+Then Page should be fully loaded within three seconds
 
-Then Page should be fully loaded within 3 seconds
-
-
-
-#Scenario: Homepage is responsive
-
-#Then All elements are readable and accessible without horizontal scrolling
+Scenario: Homepage is responsive
+Then All elements are readable and accessible without horizontal scrolling
 
 #
 
