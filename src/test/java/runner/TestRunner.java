@@ -9,8 +9,12 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-  
-		features= {"src/test/resources/feature/"},
+
+		tags= "@MealSection11",		
+		glue= {"steps"},
+  features= {"src/test/resources/feature/"},
+	
+		//features= {"src/test/resources/feature/"},
 		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
 		//features= {"src/test/resources/feature/NonFunctional.feature"},
 		//features= {"src/test/resources/feature/Launchpage.feature"},
