@@ -41,7 +41,19 @@ public class CommanHomePage {
 	
 	private By AvgBloodSuagrValue= By.xpath("//div[.//text()[normalize-space()='Average Blood Sugar']]//span[contains(@class, 'text-3xl')]");
 	
+	private By TodaysMealPlan = By.xpath("//h2[normalize-space(text())=\"Today's Meal Plan\"]"); 
 	
+	private By MenuBarList= By.xpath("//button[contains(@class, 'flex-1') and contains(@class, 'text-center')]");
+	
+	private By TabInflex = By.xpath("//div[@class='flex']//div[contains(@class,'flex-col')]");
+	
+	private By checkLabel=By.xpath("//div[contains(@class, 'flex-col')]//span[normalize-space(text())='Meal Plan' or normalize-space(text())='Exercise']");
+	
+	private By checkFullMealLabel =By.xpath("//button[normalize-space(text())='View Full Plan']");
+	
+	private By Utensilsymobol=By.xpath("//button[@class='p-4 rounded-lg transition-all duration-300 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg']//*[name()='svg']");
+	
+	private By Dumbbellsymbol= By.xpath(" //button[@class='p-4 rounded-lg transition-all duration-300 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg']//*[name()='svg']");
 	
 	public CommanHomePage(WebDriver driver) {
 		this.driver = driver;		
@@ -194,8 +206,56 @@ public class CommanHomePage {
 			public String getAvgBloodSuagrValue() {
 				return driver.findElement(AvgBloodSuagrValue).getText();
 			}
+
+
+			public boolean getToadyMealPlan(String option) {
+				WebElement Status = driver.findElement(TodaysMealPlan);
+		    	return Status.isDisplayed();
+				
+			}
 	 
-	 
+	public List<String> VerifyMealBar() {
+ 	
+	List<WebElement> navigateMenubarList = driver.findElements(MenuBarList);
+	List<String> MenuBarList = new ArrayList<>();
+	
+	for (WebElement item : navigateMenubarList) {
+		MenuBarList.add(item.getText());
+	}
+	return MenuBarList;
+	}
+
+	
+	public boolean isTabInFlex() {
+		WebElement Status = driver.findElement(TabInflex);
+		return Status.isDisplayed();
+	}
+
+
+	public boolean LabelVisible(String label) {
+		
+		WebElement Status = driver.findElement(checkLabel);
+		return Status.isDisplayed();
+		
+	}
+
+
+	public boolean MealPlanVisible(String string) {
+		WebElement Status = driver.findElement(checkFullMealLabel);
+		return Status.isDisplayed();
+		
+	}
+
+
+	public boolean utensilsymbol() {
+		return driver.findElement(Utensilsymobol).isDisplayed();
+	}
+
+	
+	public boolean dumbellsymbol() {
+		return driver.findElement(Dumbbellsymbol).isDisplayed();
+	}
+	
 }
 
 

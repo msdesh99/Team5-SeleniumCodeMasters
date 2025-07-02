@@ -10,13 +10,9 @@ import configs.BrowserConfig;
 
 @CucumberOptions(		
 
-		tags= "@TC_30",		
-		glue= {"steps"},
-
-		//features= {"src/test/resources/feature/09_B_PremiumUserHomepage.feature"},
-		features= {"src/test/resources/feature"},
-		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
-
+        tags=("@yAxisforBlooddailyNutrition"),
+        glue= {"steps"},
+		features= {"src/test/resources/feature/"},	
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
@@ -32,7 +28,7 @@ import configs.BrowserConfig;
 public class TestRunner extends AbstractTestNGCucumberTests{
 
 @Override
-@DataProvider(parallel=true)
+@DataProvider(parallel=false)
 public Object[][] scenarios() {
 	return super.scenarios();
 }

@@ -1,5 +1,6 @@
 package utils;
 import configs.ConfigLoader;
+
 import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
 import pages.Launchgpage1;
@@ -10,20 +11,25 @@ import pages.PdFfileUploadPage;
 import pages.NonFunctionalPage;
 
 import pages.PremiumUserHomepage;
+import pages.CommanHomePage_MealSection;
 import pages.CommanHomePage;
 import pages.ExercisePage;
 import pages.HomeNavigation;
 import pages.ExerciseFullPage;
 import pages.PremiumUserLogbookPage;
+
 public class PageObjectManager {
+  
     ConfigLoader configLoader;
     WebDriver driver;
+  
     private LaunchPageOld launchPage; 
     private Loginpage loginpage; 
     private PremiumUserHomepage premiumuserhomepage; 
     private ExercisePage exercisePage;
-    private CommanHomePage commanhomepage;
     private ExerciseFullPage exerciseFullPage;
+    private CommanHomePage commanhomepage;
+    private CommanHomePage_MealSection commanHomePage_MealSection;
     private PdFfileUploadPage pdfuploadpage;
     private Launchgpage1 launchPageobj;
     private HomeNavigation homepageObj;
@@ -58,11 +64,19 @@ public class PageObjectManager {
 	public PremiumUserHomepage getPremiumUserHomepage() {
 		premiumuserhomepage = new PremiumUserHomepage(this.driver);
 		return premiumuserhomepage;		
-	}	
-	public CommanHomePage getCommanHomePage() {
-		commanhomepage = new CommanHomePage(this.driver);
-		return commanhomepage;		
+
 	}
+		public CommanHomePage getCommanHomePage() {
+		commanhomepage = new CommanHomePage(this.driver);
+		return commanhomepage;
+	}
+	
+	 public CommanHomePage_MealSection getCommanHomePage_MealSection() {
+		commanHomePage_MealSection = new CommanHomePage_MealSection(this.driver);
+		return commanHomePage_MealSection;
+		
+	}
+	
 	public PdFfileUploadPage getPdFfileUploadPage() {
 		pdfuploadpage = new PdFfileUploadPage(this.driver);
 		return pdfuploadpage;		
@@ -80,4 +94,5 @@ public class PageObjectManager {
 	   nonfunctionalObj = new NonFunctionalPage(this.driver);
 	  return nonfunctionalObj;
 	}	
+
 }
