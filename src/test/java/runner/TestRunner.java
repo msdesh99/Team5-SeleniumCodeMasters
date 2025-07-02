@@ -9,6 +9,7 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
+
         tags=("@yAxisforBlooddailyNutrition"),
         glue= {"steps"},
 		features= {"src/test/resources/feature/"},	

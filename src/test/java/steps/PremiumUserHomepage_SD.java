@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 import org.testng.Assert;
 
 import io.cucumber.java.en.*;
@@ -360,5 +361,70 @@ public class PremiumUserHomepage_SD {
 		Assert.assertEquals(actual, expected);
 	}
 	
+	@Then("user should see {string} button")
+	public void user_should_see_button(String expected) throws InterruptedException {
+		String actualText = premiumuserhomepage.getButton(expected);
+	    Assert.assertEquals(actualText.trim(), expected);
+	}
+
+	@When("User clicks {string} button")
+	public void user_clicks_button(String expected) throws InterruptedException {
+		premiumuserhomepage.getCompleteTaskButton(expected);
+	}
+	@Then("button color should change to green")
+	public void button_color_should_change_to_green() throws InterruptedException {
+	    WebElement completedButton=premiumuserhomepage.checkCompletedText();
+	    String classAttri=completedButton.getAttribute("class");
+	    System.out.println(classAttri);
+	    Assert.assertTrue(classAttri.contains("bg-green-500"));
+	}
+
+	@Then("button color should change to yellow")
+	public void button_color_should_change_to_yellow() {
+		WebElement completedButton=premiumuserhomepage.checkPartiallyCompletedText();
+	    String classAttri=completedButton.getAttribute("class");
+	    System.out.println(classAttri);
+	    Assert.assertTrue(classAttri.contains("bg-yellow-500"));   
+	}
+
+	@Then("button color should change to red")
+	public void button_color_should_change_to_red() {
+		WebElement completedButton=premiumuserhomepage.checkNotCompletedText();
+	    String classAttri=completedButton.getAttribute("class");
+	    System.out.println(classAttri);
+	    Assert.assertTrue(classAttri.contains("bg-red-500")); 
+	}
+
+	@Then("Nutrition Insight summary card should be displayed in each meal section")
+	public void nutrition_insight_summary_card_should_be_displayed_in_each_meal_section() {
+	   Assert.assertTrue(premiumuserhomepage.nutrientInsightCardIsPresent());
+	}
+
+	@Then("User should see flex card title\" Nutrition Insight\"")
+	public void user_should_see_flex_card_title_nutrition_insight() {
+	   WebElement nutriInsight=premiumuserhomepage.checkNutrientInsight();
+	   String expected="Nutrition Insights";
+	   String actual=nutriInsight.getText();
+	   Assert.assertEquals(expected, actual);
+	   }
+
+	@Then("User should see subtitle {string}")
+	public void user_should_see_subtitle(String expected) {
+	    WebElement TitleCalorie=premiumuserhomepage.checkCalorieTitle();
+	    String actual=TitleCalorie.getText();
+	    Assert.assertEquals(actual, expected);
+		
+	}
+
+	@Then("total calorie count should equal the sum of Pre-Meal and Meal calories")
+	public void total_calorie_count_should_equal_the_sum_of_pre_meal_and_meal_calories() {
+	    WebElement totalMealCal=premiumuserhomepage.getTotalMealcalorie();
+	    Assert.assertTrue(totalMealCal.isDisplayed());
+	}
+
+	
+
+
+
 
 }
