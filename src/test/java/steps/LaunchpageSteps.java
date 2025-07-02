@@ -162,7 +162,7 @@ public class LaunchpageSteps {
 	@Then("User should see five stars under user1 James D.")
 	public void user_should_see_five_stars_under_user1(int expectedStars) {
 	 int actualStars =launchPageobj.jamesfivestars_Visible();
-	 Assert.assertTrue(expectedStars, actualStars);
+	 Assert.assertEquals(expectedStars, actualStars);
 	}
 	@Then("User should see five stars under user2 Maria L.")
 	public void user_should_see_five_stars_under_user2(int expectedStars) {

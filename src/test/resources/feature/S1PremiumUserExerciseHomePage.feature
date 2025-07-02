@@ -69,7 +69,8 @@ Examples:
 | Warm Up |
 | Main Workout |
 | Cool Down |
-     
+
+@exerciseMarkasCompleted
 Scenario Outline: Verify changes occured after marking as completed for different tabs for premium user homePage
 When User clicks the "Mark as Completed" button for "<tab>" for premium user homePage
 Then Success dialog appears and changes the button text for "<tab>" for premium user homePage
