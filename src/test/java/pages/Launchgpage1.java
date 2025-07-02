@@ -149,8 +149,6 @@ public class Launchgpage1 {
 	}
 	public boolean FiveStars_Visible() {
 	       List<WebElement> stars = driver.findElements(fivestarlocator);
-	       System.out.println("size: "+ stars.size());
-	       System.out.println("str: "+ stars.stream().allMatch(WebElement::isDisplayed));
 	       if (stars.size() != 5) return false;
 	return stars.stream().allMatch(WebElement::isDisplayed);
 	}
