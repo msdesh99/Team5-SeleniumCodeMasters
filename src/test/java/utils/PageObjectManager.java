@@ -2,12 +2,19 @@ package utils;
 import configs.ConfigLoader;
 import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
+import pages.Launchgpage1;
 import pages.Loginpage;
+
+import pages.PdFfileUploadPage;
+
+import pages.NonFunctionalPage;
+
 import pages.PremiumUserHomepage;
 import pages.CommanHomePage;
 import pages.ExercisePage;
+import pages.HomeNavigation;
 import pages.ExerciseFullPage;
-
+import pages.PremiumUserLogbookPage;
 public class PageObjectManager {
     ConfigLoader configLoader;
     WebDriver driver;
@@ -17,6 +24,11 @@ public class PageObjectManager {
     private ExercisePage exercisePage;
     private CommanHomePage commanhomepage;
     private ExerciseFullPage exerciseFullPage;
+    private PdFfileUploadPage pdfuploadpage;
+    private Launchgpage1 launchPageobj;
+    private HomeNavigation homepageObj;
+    private NonFunctionalPage nonfunctionalObj;
+    private PremiumUserLogbookPage premiumUserLogbookPage;
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
@@ -39,15 +51,33 @@ public class PageObjectManager {
 		exerciseFullPage = new ExerciseFullPage(this.driver);
 		return exerciseFullPage;
 	}
+	public PremiumUserLogbookPage getPremiumUserLogbookPage() {
+		premiumUserLogbookPage = new PremiumUserLogbookPage(this.driver);
+		return premiumUserLogbookPage;
+	}
 	public PremiumUserHomepage getPremiumUserHomepage() {
 		premiumuserhomepage = new PremiumUserHomepage(this.driver);
 		return premiumuserhomepage;		
-	}
-	
+	}	
 	public CommanHomePage getCommanHomePage() {
 		commanhomepage = new CommanHomePage(this.driver);
-		return commanhomepage;
-		
+		return commanhomepage;		
 	}
-	
+	public PdFfileUploadPage getPdFfileUploadPage() {
+		pdfuploadpage = new PdFfileUploadPage(this.driver);
+		return pdfuploadpage;		
+	}	
+	public Launchgpage1 getLaunchpage1() {
+		launchPageobj = new Launchgpage1(this.driver);
+		return launchPageobj;
+		//return new LaunchPage(this.driver);
+	}
+	public  HomeNavigation getHomeNavigation() {
+		homepageObj = new HomeNavigation(this.driver);
+		return homepageObj;
+	}
+	public NonFunctionalPage getNonFunctionalPage() {
+	   nonfunctionalObj = new NonFunctionalPage(this.driver);
+	  return nonfunctionalObj;
+	}	
 }
