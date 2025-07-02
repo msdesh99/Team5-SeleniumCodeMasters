@@ -9,10 +9,12 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-  
-		features= {"src/test/resources/feature/"},
 
-		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
+		tags= "@TC_30",		
+		glue= {"steps"},
+
+		//features= {"src/test/resources/feature/09_B_PremiumUserHomepage.feature"},
+		features= {"src/test/resources/feature"},
 		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
 
 		plugin= {"pretty",

@@ -1,5 +1,6 @@
 package pages;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.Assertion;
 
 import utils.LoggerLoad;
@@ -47,6 +50,16 @@ public class PremiumUserHomepage {
 	By snack = By.xpath("//button[text()='Snacks']");
 	By caloriesValue = By.xpath("//div[@class='flex items-center text-sm text-gray-500 mt-1 space-x-4']/span[last()]");
     By calorieText=By.xpath("//span[text()='calories']");
+    By completed = By.xpath("//button[normalize-space(text())='✅ Completed']");
+    By partiallyCompleted = By.xpath("//button[normalize-space(text())='⚠️ Partially Completed']");
+    By notCompleted = By.xpath("//button[normalize-space(text())='❌ Not Completed']");
+    By nutritionInsightscCard=By.xpath("//div[@class='border text-card-foreground bg-white/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl mt-8']");
+    By nutriInsight=By.xpath(".//h3[normalize-space()='Nutrition Insights']");
+    By calorieTitle=By.xpath("//h3[text()='Calories']");
+    By totalMealCalorie=By.xpath("//p[@class='text-sm text-gray-500']");
+    
+    
+    
     
     
 	public PremiumUserHomepage(WebDriver driver) {
@@ -422,6 +435,89 @@ public class PremiumUserHomepage {
 		List<WebElement> indicatorDis = driver.findElements(mainMealIndicator);
 		return indicatorDis;
 	}
+	public WebElement checkCompletedText() throws InterruptedException {
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    return wait.until(ExpectedConditions.visibilityOfElementLocated(completed));
 
+	}
+	public WebElement checkPartiallyCompletedText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    return wait.until(ExpectedConditions.visibilityOfElementLocated(partiallyCompleted));
+
+	}
+	public WebElement checkNotCompletedText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    return wait.until(ExpectedConditions.visibilityOfElementLocated(notCompleted));
+
+	}
+
+	public String getButton(String button) throws InterruptedException {
+
+		switch (button) {
+		case "✅ Completed":
+			return checkCompletedText().getText();
+		case "⚠️ Partially Completed":
+			return checkPartiallyCompletedText().getText();
+		case "❌ Not Completed":
+			return checkNotCompletedText().getText();
+		default:
+			throw new IllegalArgumentException("button is not present " + button);
+		}
+
+	}
+	public void clickCompletedButton() {
+		WebElement completedButton = driver.findElement(completed);
+		actions.moveToElement(completedButton).click().perform();;
+	}
+	public void clickPartiallyCompletedButton() {
+		WebElement partiallycompletedButton = driver.findElement(partiallyCompleted);
+		actions.moveToElement(partiallycompletedButton).click().perform();;
+	}
+	public void clickNotCompletedButton() {
+		WebElement notcompletedButton = driver.findElement(notCompleted);
+		actions.moveToElement(notcompletedButton).click().perform();
+	}
+	
+	public void getCompleteTaskButton(String button) throws InterruptedException {
+
+		switch (button) {
+		case "✅ Completed":
+			 clickCompletedButton();
+			 break;
+		case "⚠️ Partially Completed":
+			clickPartiallyCompletedButton();
+			break;
+		case "❌ Not Completed":
+			clickNotCompletedButton();
+			break;
+		default:
+			throw new IllegalArgumentException("button is not present " + button);
+		}
+
+	}
+	 public boolean nutrientInsightCardIsPresent() {
+		 List<WebElement> NutrientCard=driver.findElements(nutritionInsightscCard);
+		 for(WebElement nutri:NutrientCard) {
+			 List<WebElement> nutricard=nutri.findElements(nutriInsight);
+			 if(nutricard.isEmpty()) {
+				 return false;
+			 }
+		 }
+		 return true;
+	 }
+	 public WebElement checkNutrientInsight() {
+		 WebElement NutriInsight=driver.findElement(nutriInsight);
+	     return NutriInsight;
+	 }
+	
+	 public WebElement checkCalorieTitle() {
+		 WebElement titleCalorie=driver.findElement(calorieTitle);
+	     return titleCalorie;
+	 }
+	
+	public WebElement getTotalMealcalorie() {
+		WebElement totalcalorie=driver.findElement(totalMealCalorie);
+	     return totalcalorie;
+	}
 	
 }
