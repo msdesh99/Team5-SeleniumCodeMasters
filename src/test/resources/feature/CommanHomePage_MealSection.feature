@@ -69,5 +69,9 @@ Feature: Validation on meal section for free user
     
     @MealSection13 
      Scenario: Validate the text "calories" in pre-meal			
-     ThenUser should see text "calories" after the calorie value in pre meal																				
+     ThenUser should see text "calories" after the calorie value in pre meal		
+     
+    @MealSection14 
+     Scenario: 			
+     ThenUser should see text "calories" after the calorie value in pre meal																		
 
