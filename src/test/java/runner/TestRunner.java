@@ -10,13 +10,14 @@ import configs.BrowserConfig;
 
 @CucumberOptions(		
 
-        tags=("@yAxisforBlooddailyNutrition"),
+      //  tags=("@yAxisforBlooddailyNutrition"),
         glue= {"steps"},
-		features= {"src/test/resources/feature/"},	
+		//features= {"src/test/resources/feature/"},	
 
   
 		//features= {"src/test/resources/feature/"},
 		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
+
 		//features= {"src/test/resources/feature/NonFunctional.feature"},
 
 //		tags= "@ChomePage13",		
@@ -29,6 +30,9 @@ import configs.BrowserConfig;
 //		glue= {"steps"},
 
 // 		features= {"src/test/resources/feature/Launchpage.feature"},
+
+
+		features= {"src/test/resources/feature/NonFunctional.feature"},
 
 		//features= {"src/test/resources/feature/Launchpage.feature"},
 		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
