@@ -26,7 +26,6 @@ public class NonFunctionalSteps {
 	this.testContext = testContext;
 	this.driver = this.testContext.base.getDriver();
 	this.nonfunctionalObj = this.testContext.pageObjectManager.getNonFunctionalPage();
-
 }
 	long loadTime;
 
