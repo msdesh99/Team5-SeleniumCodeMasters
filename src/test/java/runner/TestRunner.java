@@ -11,9 +11,9 @@ import configs.BrowserConfig;
 @CucumberOptions(		
 
 
-        tags=("@yAxisforBlooddailyNutrition"),
+       // tags=("@yAxisforBlooddailyNutrition"),
         glue= {"steps"},
-		features= {"src/test/resources/feature/"},	
+	//	features= {"src/test/resources/feature/"},	
 
   
 		//features= {"src/test/resources/feature/"},
@@ -24,7 +24,7 @@ import configs.BrowserConfig;
 //		glue= {"steps"},
 
 //		features= {"src/test/resources/feature"},
-//		features= {"src/test/resources/feature/02_F_LoginwoReport.feature"},
+	features= {"src/test/resources/feature/02_F_Logwoupgradeplus.feature"},
 
 		//tags= "@ChomePage13",		
 //		glue= {"steps"},
