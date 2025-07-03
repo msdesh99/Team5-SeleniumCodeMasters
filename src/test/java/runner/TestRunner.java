@@ -10,9 +10,9 @@ import configs.BrowserConfig;
 
 @CucumberOptions(		
 
-        tags=("@yAxisforBlooddailyNutrition"),
+        //tags=("@yAxisforBlooddailyNutrition"),
         glue= {"steps"},
-		features= {"src/test/resources/feature/"},	
+		features= {"src/test/resources/feature"},	
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",

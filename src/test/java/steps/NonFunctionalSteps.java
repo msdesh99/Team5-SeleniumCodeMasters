@@ -24,7 +24,7 @@ public class NonFunctionalSteps {
 	public NonFunctionalSteps(TestContext testContext) {
 	this.testContext = testContext;
 	this.driver = this.testContext.base.getDriver();
-	this.nonfunctional = this.testContext.pageObjectManager.getNonFunctionalPage();
+	//this.nonfunctional = this.testContext.pageObjectManager.getNonFunctionalPage();
 	
 
 }/*

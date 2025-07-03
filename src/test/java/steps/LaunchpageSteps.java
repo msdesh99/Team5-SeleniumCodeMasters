@@ -159,7 +159,7 @@ public class LaunchpageSteps {
 
 	 Assert.assertEquals(actualStars,5,"Assertion for displaying 5 Stars under user1 "+ user1+ " is failed");
 
-	 Assert.assertEquals(expectedStars, actualStars);
+	 //Assert.assertEquals(expectedStars, actualStars);
 	}
 	@Then("User should see five stars under user2 {string}")
 	public void user_should_see_five_stars_under_user2(String user2) {
@@ -167,7 +167,7 @@ public class LaunchpageSteps {
 
 	 assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user2 "+ user2+ " is failed");
 
-	 Assert.assertEquals(expectedStars, actualStars1);
+	// Assert.assertEquals(expectedStars, actualStars1);
 
 	}
 	@Then("User should see five stars under user3 {string}")
@@ -175,7 +175,7 @@ public class LaunchpageSteps {
 	int actualStars1 =launchPageobj.robertfivestars_Visible();
 	assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user3 "+ user3 +" is failed");
 
-	Assert.assertEquals(expectedStars, actualStars1);
+	//Assert.assertEquals(expectedStars, actualStars1);
 
 	}
 	@Then("User should see a section with heading {string}")

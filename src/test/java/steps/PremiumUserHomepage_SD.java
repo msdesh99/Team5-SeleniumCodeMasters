@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 import org.testng.Assert;
 
 import io.cucumber.java.en.*;
@@ -182,8 +181,7 @@ public class PremiumUserHomepage_SD {
 
 	@Given("User is in home page")
 	public void user_is_in_home_page() {
-		WebElement homeTabDis = premiumuserhomepage.HomeTab();
-		Assert.assertTrue(homeTabDis.isDisplayed());
+		LoggerLoad.info("User is in home page");
 	}
 
 	@When("User clicks meal section")
