@@ -25,7 +25,7 @@ import configs.BrowserConfig;
 //		glue= {"steps"},
 
 //		features= {"src/test/resources/feature"},
-	features= {"src/test/resources/feature/02_F_Logwoupgradeplus.feature"},
+	// features= {"src/test/resources/feature/02_F_Logwoupgradeplus.feature"},
 
 		//tags= "@ChomePage13",		
 //		glue= {"steps"},
@@ -40,7 +40,7 @@ import configs.BrowserConfig;
 
 
       //  tags=("@yAxisforBlooddailyNutrition"),
-        tags=("@premiumlogbook"),
+        // tags=("@premiumlogbook"),
         glue= {"steps"},
 		features= {"src/test/resources/feature/"},	
 		//features= {"src/test/resources/feature"},
