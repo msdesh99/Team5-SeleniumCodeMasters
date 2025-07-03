@@ -1,3 +1,4 @@
+@premiumuserexercisefullpage
 Feature: Exercise schedule for premium user exercise fullPage
 
 Background: User is Logged into the app for premium user exercise fullPage
