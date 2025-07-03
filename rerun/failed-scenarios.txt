@@ -1,3 +1,0 @@
-file:src/test/resources/feature/02_F_Logwoupgradeplus.feature:9
-file:src/test/resources/feature/NonFunctional.feature:12
-
