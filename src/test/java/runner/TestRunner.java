@@ -32,7 +32,7 @@ import configs.BrowserConfig;
 // 		features= {"src/test/resources/feature/Launchpage.feature"},
 
 
-		features= {"src/test/resources/feature/NonFunctional.feature"},
+		features= {"src/test/resources/feature"},
 
 		//features= {"src/test/resources/feature/Launchpage.feature"},
 		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
