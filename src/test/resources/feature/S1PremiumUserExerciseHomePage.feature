@@ -1,4 +1,4 @@
-@loginOnce
+@premiumusexercisehomepage
 Feature: Functional Testing of Exercise Module HomePage for Premium User
 
 Background: User is Logged into the app for premium user logbook page

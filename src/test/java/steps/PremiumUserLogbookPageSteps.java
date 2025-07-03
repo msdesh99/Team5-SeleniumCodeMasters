@@ -9,9 +9,10 @@ import org.testng.Assert;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PremiumUserLogbookPage;
+import utils.LoggerLoad;
 import utils.SoftAssertUtils;
 import utils.TestContext;
-
+import io.cucumber.java.en.Given;
 public class PremiumUserLogbookPageSteps {
     TestContext testContext;
     PremiumUserLogbookPage premiumUserLogbookPage;
@@ -91,5 +92,10 @@ public class PremiumUserLogbookPageSteps {
 	public void user_should_see_the_section_for_premium_user_logbook_page(String section){
 		Assert.assertTrue(premiumUserLogbookPage.verifyMealsSubSections(section),
 				"Assertion for displaying subsection "+section+ " in  in Meal & Nutrition section is failed");
+	}
+	@Then("User should see {string} text colour {string} for premium user logbook page")
+	public void user_should_see_text_colour_for_premium_user_logbook_page(String tab, String color){
+		   boolean result = premiumUserLogbookPage.verifyColorOfTextInNutrition(tab,color);
+		Assert.assertTrue(result,"Assertion for Text colour of "+tab+" is failed");
 	}
 }
