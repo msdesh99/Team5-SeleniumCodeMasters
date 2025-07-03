@@ -27,10 +27,10 @@ public class HomeNavigationsteps {
 	this.homepageObj = this.testContext.pageObjectManager.getHomeNavigation();
 
 	}
-	@Given("User is on SweetBalance homepage")
+/*	@Given("User is on SweetBalance homepage")
 	public void user_is_on_sweet_balance_homepage() {
 	   
-	}
+	}*/
 
 	@When("User click the {string} button")
 	public void user_click_the_button(String string) {
