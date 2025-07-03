@@ -25,4 +25,4 @@ Scenario: Verify Create Account button is enabled after valid input on Login Pag
   Scenario: Verify presence of Step Through Onboarding button on Login Page
     Given User is on complete profile form page for new account user
     When User clicks create account button after filling valid data in all fields for new account user on login Page1
-    Then User should see Step Through Onboarding buttonf or new account user
+    Then User should see Step Through Onboarding button or new account user

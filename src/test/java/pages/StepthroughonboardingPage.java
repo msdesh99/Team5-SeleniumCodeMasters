@@ -25,11 +25,12 @@ public class StepthroughonboardingPage {
 	By progressbar = By.xpath("//p[contains(text(),'Step')]");
 	By optiononStep1 = By.xpath("//*[normalize-space(text())='Type 2' or normalize-space(text())=\"I don't know\"]");
 	By genderlocator = By.xpath("//div[@class='space-y-2']//button[1]");
-	By agelocator = By.xpath("//span[text()='years'][1]");
-	By heightlocator = By.xpath("//span[text()='120']");
-	By weightlocator = By.xpath("//span[text()='55']");
+	By agelocator = By.xpath("//button[span[normalize-space(.)='22 years']]");
+	By heightlocator = By.xpath("//button[span[normalize-space(.)='120 cm']]");
+	By weightlocator = By.xpath("//button[span[normalize-space(.)='50 kg']]");
 	By dieteryPreflocator = By.xpath("//div[@class='space-y-2']/following::button[2]");
-		By cusionlocator=	By.xpath("(//div[@class='space-y-2']/following::button[2]");
+	By cusionlocator = By.xpath("(//div[@class='space-y-2']/following::button[2])");
+
 		By Allerieslocator = By.xpath("//div[@class='space-y-2']/following::button[1]");
 		By alleriescheckboxlocator = By.xpath("//div[@class='space-y-4']/following::button[1]");
 		By checkboxselect =By.xpath("//button[@id='dairy']");
@@ -40,7 +41,14 @@ public class StepthroughonboardingPage {
 		By h1baclocator = By.xpath("//input[@type='number']");
 		By step12continuelocator = By.xpath("//button[text()='Continue']");
 		By freeorpremiumpagelocator = By.xpath("//h1[text()='Free vs. Premium Account Features']");
-	
+		By freeuserbtnlocator = By.xpath("//button[text()='Continue Free']");
+		By premiumuserlocator = By.xpath("//button[text()='Upgrade to Premium']");
+		By enterCreditcarddetails = By.xpath("//input[@aria-label='Credit or debit card number']");
+	    By entercardexpirtdate = By.xpath("//input[@placeholder='MM / YY']");
+	    By entercvclocator =By.xpath("//input[@data-elements-stable-field-name='cardCvc']");
+	    By premumbunlocator = By.xpath("//button[normalize-space(.)='Pay $9.99 USD']");
+	    By continuetohomelocator = By.xpath("//button[text()='Go to Homepage']");
+	    
 			
 			
 	public StepthroughonboardingPage(WebDriver driver) {
@@ -50,15 +58,8 @@ public class StepthroughonboardingPage {
        
 	}
 		
-	public void verifyUserIsOnOnboardingPage() {
-	    String currentUrl = driver.getCurrentUrl();
-	    String expectedUrl = "https://sweet-balance-test-env-3-numpyninjadiabe.replit.app/onboarding";
-	    
-//	    //Assert.assertEquals(
-//	        currentUrl,
-//	        expectedUrl,
-//	        "User is not redirected to the onboarding page!"
-//	    );
+	public String verifyUserIsOnOnboardingPage() {
+	    return driver.getCurrentUrl();
 	}
 	public boolean headingofStepboardisdisplayed() {
 		return driver.findElement(headingofpage).isDisplayed();
@@ -139,14 +140,17 @@ public class StepthroughonboardingPage {
 	 
 	}
 	public void clickDairyCheckbox() {
-	    driver.findElement(By.xpath("checkboxselect")).click();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(checkboxselect)).click();
 	}
 	public void clickcontinuetostepbtn() {
 		CommonMethods.scrollToElementAndClick(driver, continuebtn, 3);
 	
 }
 	public void clickmedicationCheckbox() {
-	    driver.findElement(By.xpath("checkboxselect1")).click();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(checkboxselect1));
+	    driver.findElement(checkboxselect1).click();
 	}
 	
 	public void selectFirstExerciseOption() {
@@ -159,13 +163,42 @@ public class StepthroughonboardingPage {
 	    inputField.sendKeys(value);
 	}
 	public boolean isDisplayedSubscriptionPage() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(freeorpremiumpagelocator));
 	    return element.isDisplayed();
 	}
 	public void clickoncontinue() {
 		driver.findElement(step12continuelocator).click();
+	}
+	public void clickfreeUser() {
+		driver.findElement(freeuserbtnlocator).click();
+	}
+	public void clickpremiumuser() {
+		driver.findElement(premiumuserlocator).click();
+	}
+	public String validatefrreuserurl() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.urlContains("https://sweet-balance-test-env-3-numpyninjadiabe.replit.app/free")); 
+
+	    return driver.getCurrentUrl();
+	}
+	public void enterCreditCardDetails(String cardNumber, String expiryDate, String cvc) {
+	  
+	    driver.findElement(enterCreditcarddetails).sendKeys(cardNumber);
+
+	    driver.findElement(entercardexpirtdate).sendKeys(expiryDate);
+	    
+	    driver.findElement(entercvclocator).sendKeys(cvc);
+	}
+	public void clickpremiumupoage() {
+		driver.findElement(premumbunlocator).click();
+	}
+	public void clickpremiumhomepage() {
+		driver.findElement(continuetohomelocator).click();
+	}
+	public String verifyUserIsOnpremiumpage() {
+	    return driver.getCurrentUrl();
 	}
 }
 
