@@ -37,7 +37,7 @@ Scenario: Verify upload box supports drag & drop on PDF upload Page
  
     When User clicks "Upload & Process" after uploading valid file on PDF upload Page
     Then User should see onboarding button on PDF upload Page
-#
+
   Scenario: Validate fields on report analysis on PDF upload Page
     When User clicks "Upload & Process" after uploading valid file on PDF upload Page for data
     Then User should see Blood Test Results, Complete Blood Count, Medical Conditions, Abnormal Values, Recommendations on PDF upload Page 
