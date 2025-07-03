@@ -150,16 +150,13 @@ public class LaunchpageSteps {
 	@Then("User should see five yellow stars above {string} text")
 	public void user_should_see_five_yellow_stars_above_text(String expectedText) {
 	boolean starsVisible = launchPageobj.FiveStars_Visible();
-	Assert.assertTrue(starsVisible,"Expected 5 yellow stars above the text but did not find them");
-	   
+	Assert.assertTrue(starsVisible,"Expected 5 yellow stars above the text but did not find them");   
 	}
 	@Then("User should see five stars under user1 {string}")
 	public void user_should_see_five_stars_under_user1(String user1) {
 	 int actualStars =launchPageobj.jamesfivestars_Visible();
-
 	 Assert.assertEquals(actualStars,5,"Assertion for displaying 5 Stars under user1 "+ user1+ " is failed");
 
-	 //Assert.assertEquals(expectedStars, actualStars);
 	}
 	@Then("User should see five stars under user2 {string}")
 	public void user_should_see_five_stars_under_user2(String user2) {
@@ -167,22 +164,17 @@ public class LaunchpageSteps {
 
 	 assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user2 "+ user2+ " is failed");
 
-	// Assert.assertEquals(expectedStars, actualStars1);
-
 	}
 	@Then("User should see five stars under user3 {string}")
 	public void user_should_see_stars_under_user3(String user3) {
 	int actualStars1 =launchPageobj.robertfivestars_Visible();
 	assertEquals(5, actualStars1,"Assertion for displaying 5 Stars under user3 "+ user3 +" is failed");
 
-	//Assert.assertEquals(expectedStars, actualStars1);
-
 	}
 	@Then("User should see a section with heading {string}")
 	public void user_should_see_a_section_with_heading(String heading) {
 	boolean isHeadingEle=launchPageobj.heading_visible();
-	Assert.assertTrue(isHeadingEle,"Take control of your diabetes today '" + heading + "' is not visible");
-	   
+	Assert.assertTrue(isHeadingEle,"Take control of your diabetes today '" + heading + "' is not visible");  
 	}
 	@Then("User should see a button labeled {string}")
 	public void user_should_see_a_button_labeled(String risk) {

@@ -82,4 +82,14 @@ public class PremiumUserLogbookPageSteps {
 		    Assert.assertTrue(actualResult,
 				"Assertion for display minimum and Maximum value on Y axis for "+tab+" is failed");
 	}
+	@Then("User should see Icon  on the left side of {string} title for premium user logbook page")
+	public void user_should_see_icon_on_the_left_side_of_title_for_premium_user_logbook_page(String tab){
+		Assert.assertTrue(premiumUserLogbookPage.verifyIcon(tab),
+				"Assertion for icon display at the left side of the title "+tab+" is failed");					
+	}
+	@Then("User should see the section {string} for premium user logbook page")
+	public void user_should_see_the_section_for_premium_user_logbook_page(String section){
+		Assert.assertTrue(premiumUserLogbookPage.verifyMealsSubSections(section),
+				"Assertion for displaying subsection "+section+ " in  in Meal & Nutrition section is failed");
+	}
 }

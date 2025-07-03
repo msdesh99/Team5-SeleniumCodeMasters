@@ -1,7 +1,1 @@
-file:src/test/resources/feature/02_C_Login.feature:5:10:15:20:25
-file:src/test/resources/feature/02_D_PDFupload.feature:3:8:12:17:22:27:32:36:41
-file:src/test/resources/feature/02_Login.feature:64
-file:src/test/resources/feature/09_B_PremiumUserHomepage.feature:87:147:153:159
-file:src/test/resources/feature/L1PremiumUserLogbookPage.feature:14:45
-file:src/test/resources/feature/NonFunctional.feature:5:9
-file:src/test/resources/feature/S1PremiumUserExerciseHomePage.feature:80:81:82
+
