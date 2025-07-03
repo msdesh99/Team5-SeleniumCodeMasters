@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-
-=======
 file:src/test/resources/feature/NonFunctional.feature:12
->>>>>>> 8dd7727 (non funcyional added)

@@ -44,8 +44,6 @@ public class Loginsteps {
 		if(userType.equals("premiumUser")) {
 			user = testContext.base.getConfigs().getPremiumUser();
 		    password = testContext.base.getConfigs().getPremiumPassword();
-			System.out.println("user: "+ user);
-
 		    }
 	    else if(userType.equals("freeUser"))  {
 	    	user = testContext.base.getConfigs().getFreeUser();

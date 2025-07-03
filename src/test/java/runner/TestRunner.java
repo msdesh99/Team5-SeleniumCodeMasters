@@ -11,33 +11,10 @@ import configs.BrowserConfig;
 @CucumberOptions(		
 
       //  tags=("@yAxisforBlooddailyNutrition"),
+        tags=("@premiumlogbook"),
         glue= {"steps"},
-		//features= {"src/test/resources/feature/"},	
-
-  
-		//features= {"src/test/resources/feature/"},
-		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
-
-		//features= {"src/test/resources/feature/NonFunctional.feature"},
-
-//		tags= "@ChomePage13",		
-//		glue= {"steps"},
-
-//		features= {"src/test/resources/feature"},
-//		features= {"src/test/resources/feature/02_F_LoginwoReport.feature"},
-
-		//tags= "@ChomePage13",		
-//		glue= {"steps"},
-
-// 		features= {"src/test/resources/feature/Launchpage.feature"},
-
-
-		features= {"src/test/resources/feature"},
-
-		//features= {"src/test/resources/feature/Launchpage.feature"},
-		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
-		//features= {"src/test/resources/feature/Launchpage.feature"},
-		//features= {"src/test/resources/feature/Homenavigation.feature"},
+		features= {"src/test/resources/feature/"},	
+		//features= {"src/test/resources/feature"},
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
@@ -58,7 +35,6 @@ public Object[][] scenarios() {
 	return super.scenarios();
 }
 	
-
 @BeforeTest
 @Parameters({"browser"})
 public void setBrowser(@Optional("chrome")String browser) {
