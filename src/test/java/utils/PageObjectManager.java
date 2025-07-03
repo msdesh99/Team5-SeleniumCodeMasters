@@ -11,7 +11,10 @@ import pages.PdFfileUploadPage;
 import pages.NonFunctionalPage;
 
 import pages.PremiumUserHomepage;
+
 import pages.CommanHomePage_MealSection;
+
+import pages.StepthroughonboardingPage;
 import pages.CommanHomePage;
 import pages.ExercisePage;
 import pages.HomeNavigation;
@@ -35,6 +38,9 @@ public class PageObjectManager {
     private HomeNavigation homepageObj;
     private NonFunctionalPage nonfunctionalObj;
     private PremiumUserLogbookPage premiumUserLogbookPage;
+
+    private StepthroughonboardingPage stepthroughonboardingpage;
+
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
 		this.driver = driver;
@@ -81,6 +87,15 @@ public class PageObjectManager {
 		pdfuploadpage = new PdFfileUploadPage(this.driver);
 		return pdfuploadpage;		
 	}	
+
+
+	public StepthroughonboardingPage getstepthroughonboarding() {
+		stepthroughonboardingpage= new StepthroughonboardingPage(this.driver);
+		return stepthroughonboardingpage;		
+
+	}
+	
+
 	public Launchgpage1 getLaunchpage1() {
 		launchPageobj = new Launchgpage1(this.driver);
 		return launchPageobj;

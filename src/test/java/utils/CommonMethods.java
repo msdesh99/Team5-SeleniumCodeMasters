@@ -59,6 +59,16 @@ public static void scrollToElement(WebDriver driver, By locator) {
         System.out.println("scrollToElement Exception for element "
                 + locator.toString() + ": " + e.getMessage());
     }
+    
+}
+public static void scrollToElement1(WebDriver driver, WebElement element) {
+    try {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        System.out.println("Scrolled to element: " + element.getText());
+    } catch (Exception e) {
+        System.out.println("scrollToElement Exception for element "
+                + element.toString() + ": " + e.getMessage());
+    }
 }
 }
 

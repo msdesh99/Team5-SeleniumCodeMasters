@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 file:src/test/resources/feature/NonFunctional.feature:5:9
+=======
+file:src/test/resources/feature/02_F_LoginwoReport.feature:25
+>>>>>>> 9506ec2 (fileupload)
