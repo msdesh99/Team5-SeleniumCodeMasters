@@ -11,8 +11,9 @@ import configs.BrowserConfig;
 @CucumberOptions(		
 
 
+
        // tags=("@yAxisforBlooddailyNutrition"),
-        glue= {"steps"},
+       // glue= {"steps"},
 	//	features= {"src/test/resources/feature/"},	
 
   
@@ -37,6 +38,13 @@ import configs.BrowserConfig;
 		//features= {"src/test/resources/feature/Homenavigation.feature"},
 
 
+
+      //  tags=("@yAxisforBlooddailyNutrition"),
+        tags=("@premiumlogbook"),
+        glue= {"steps"},
+		features= {"src/test/resources/feature/"},	
+		//features= {"src/test/resources/feature"},
+
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
@@ -57,7 +65,6 @@ public Object[][] scenarios() {
 	return super.scenarios();
 }
 	
-
 @BeforeTest
 @Parameters({"browser"})
 public void setBrowser(@Optional("chrome")String browser) {
