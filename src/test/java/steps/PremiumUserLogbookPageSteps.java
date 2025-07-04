@@ -98,4 +98,36 @@ public class PremiumUserLogbookPageSteps {
 		   boolean result = premiumUserLogbookPage.verifyColorOfTextInNutrition(tab,color);
 		Assert.assertTrue(result,"Assertion for Text colour of "+tab+" is failed");
 	}
+	@Then("User should see y-axis  clearly labeled with the text {string} in {string}")
+	public void user_should_see_y_axis_clearly_labeled_with_the_text_in(String label, String section) {
+		  Assert.assertTrue(premiumUserLogbookPage.verifyYAxisLabelForPysicalActivity(label,section),
+				  "Assertion for displaying Label "+label+ " in "+ section + " section is failed");
+	}
+	@Then("User should see no bars in the chart when Physical Activity not logged in home page for premium user logbook page")
+	public void user_should_see_no_bars_in_the_chart_when_physical_activity_not_logged_in_home_page_for_premium_user_logbook_page() {
+		System.out.println(premiumUserLogbookPage.verifyChartWhenPhysicalActivityNotLogged());
+		  Assert.assertFalse(premiumUserLogbookPage.verifyChartWhenPhysicalActivityNotLogged(),
+				  " Assertion for no bars displayed in the chart when Physical Activity not logged in home page for premium user logbook page is failed");
+	}
+
+	@When("User clicks {string} from logbook page for premium user logbook page")
+	public void user_clicks_from_logbook_page_for_premium_user_logbook_page(String string) {
+		premiumUserLogbookPage.gotoHomePage();
+	}
+
+	@Then("User clicks Physical Activity from Add Data section and adds the Physical activity details for premium user logbook page")
+	public void user_clicks_physical_activity_from_add_data_section_and_adds_the_physical_activity_details_for_premium_user_logbook_page() {
+        premiumUserLogbookPage.addPhysicalActivityLog();
+	}
+	@Then("User clicks logbook page for premium user logbook page")
+	public void user_clicks_logbook_page_for_premium_user_logbook_page() {
+		premiumUserLogbookPage.gotoLogbookPage();
+	}
+	@Then("User should see bars  in the chart when Physical Activity {string} log in Physical Activity for premium user logbook page")
+	public void user_should_see_bars_in_the_chart_when_physical_activity_log_in_physical_activity_for_premium_user_logbook_page(String string) {
+		  Assert.assertTrue(premiumUserLogbookPage.verifyChartWhenPhysicalActivityNotLogged(),
+				  " Assertion for no bars displayed in the chart when Physical Activity not logged in home page for premium user logbook page is failed");
+
+	}
+
 }

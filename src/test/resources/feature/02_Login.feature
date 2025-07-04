@@ -1,8 +1,10 @@
 Feature: User Login with valid Credentials
 
 Scenario:  Verify user can login sucerssfully 
-Given  User click on login button of Launch Page 
-When User enters userid "Team05@gmail.com" and password "Usanumpy@2024" 
+#Given  User click on login button of Launch Page 
+#When User enters userid "Team05@gmail.com" and password "Usanumpy@2024" 
+Given  User is on Launch Page 
+When User enters valid login credetnial for "premiumUser"
 Then User should redirected to Homepage
 
 Scenario: Verify login form header is displayed on LoginPage

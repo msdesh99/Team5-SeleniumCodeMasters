@@ -79,3 +79,18 @@ Examples:
 | Protein | #36A2EB |
 | Fats | #FFCE56 | 
 
+@yAxisForPhysicalActivity
+Scenario: Verify Y-axis has text "Calories" in "Physical Activity" section calories for premium user logbook page
+Then User should see y-axis  clearly labeled with the text "Calories" in "Physical Activity"
+
+@barfornoactivitylog
+Scenario: Verify bar is not displayed in chart when physical activity not logged home page for premium user logbook page
+Then User should see no bars in the chart when Physical Activity not logged in home page for premium user logbook page
+
+@barchartafteractivityadded
+Scenario: Verify display of in chart when physical activity log is added home page for premium user logbook page
+When User clicks "<Home>" from logbook page for premium user logbook page 
+Then User clicks Physical Activity from Add Data section and adds the Physical activity details for premium user logbook page
+Then User clicks logbook page for premium user logbook page
+Then User should see bars  in the chart when Physical Activity "<activity>" log in Physical Activity for premium user logbook page
+
