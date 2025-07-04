@@ -9,12 +9,17 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-		
+
 		//features= {"src/test/resources/feature/"},	
 		features= {"src/test/resources/feature/CommanHomePage.feature"},
 		//features= {"src/test/resources/feature/CommanHomePage_MealSection.feature"},
 		
 		glue= {"steps"},
+
+        //tags=("@premiumusexercisehomepage"),
+        glue= {"steps"},
+		features= {"src/test/resources/feature/"},	
+
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
@@ -35,7 +40,6 @@ public Object[][] scenarios() {
 	return super.scenarios();
 }
 	
-
 @BeforeTest
 @Parameters({"browser"})
 public void setBrowser(@Optional("chrome")String browser) {

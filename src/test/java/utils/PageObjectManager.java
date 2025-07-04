@@ -11,6 +11,7 @@ import pages.PdFfileUploadPage;
 import pages.PremiumUserHomepage;
 import pages.CommanHomePage_MealSection;
 import pages.StepthroughonboardingPage;
+import pages.DiabetesRiskAnalyzer;
 import pages.CommanHomePage;
 import pages.ExercisePage;
 import pages.HomeNavigation;
@@ -33,9 +34,9 @@ public class PageObjectManager {
     private Launchgpage1 launchPageobj;
     private HomeNavigation homepageObj;
    // private NonFunctionalPage nonfunctionalObj;
-    private PremiumUserLogbookPage premiumUserLogbookPage;
-
+    private PremiumUserLogbookPage premiumUserLogbookPage
     private StepthroughonboardingPage stepthroughonboardingpage;
+    private DiabetesRiskAnalyzer diabetesriskanalyzerObj;
 
     
 	public PageObjectManager(ConfigLoader configLoader, WebDriver driver) {
@@ -100,9 +101,14 @@ public class PageObjectManager {
 		homepageObj = new HomeNavigation(this.driver);
 		return homepageObj;
 	}
-//	public NonFunctionalPage getNonFunctionalPage() {
-//	   nonfunctionalObj = new NonFunctionalPage(this.driver);
-//	  return nonfunctionalObj;
-//	}	
+
+	public NonFunctionalPage getNonFunctionalPage() {
+	   nonfunctionalObj = new NonFunctionalPage(this.driver);
+	  return nonfunctionalObj;
+	}	
+  public DiabetesRiskAnalyzer getDiabetesRiskAnalyzer() {
+	  diabetesriskanalyzerObj = new DiabetesRiskAnalyzer(this.driver);
+	  return diabetesriskanalyzerObj;
+  }
 
 }

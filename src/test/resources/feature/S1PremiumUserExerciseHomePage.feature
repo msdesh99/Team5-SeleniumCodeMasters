@@ -1,12 +1,12 @@
-@loginOnce
+@premiumusexercisehomepage
 Feature: Functional Testing of Exercise Module HomePage for Premium User
 
 Background: User is Logged into the app for premium user logbook page
 Given  User is on Launch Page 
 When User enters valid login credetnial for "premiumUser" 
-And User logs in and navigates to "Logbook" option for premium user logbook page
+#And User logs in and navigates to "Logbook" option for premium user logbook page
 And User logs in and clicks "Exercise" option from the side panel for premium user homePage
-
+@psce1
 Scenario: Verify "View Full Schedule" button is displayed on right for premium user homePage
 Then "View Full Schedule" button is displayed on the right for premium user homePage
 
