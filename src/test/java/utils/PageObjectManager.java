@@ -33,7 +33,11 @@ public class PageObjectManager {
     private PdFfileUploadPage pdfuploadpage;
     private Launchgpage1 launchPageobj;
     private HomeNavigation homepageObj;
+
     private NonFunctionalPage nonfunctionalObj;
+
+   // private NonFunctionalPage nonfunctionalObj;
+
     private PremiumUserLogbookPage premiumUserLogbookPage;
     private StepthroughonboardingPage stepthroughonboardingpage;
     private DiabetesRiskAnalyzer diabetesriskanalyzerObj;

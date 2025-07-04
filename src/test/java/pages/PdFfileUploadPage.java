@@ -106,7 +106,7 @@ public class PdFfileUploadPage {
 	}
 	public void uploadnonPDffile() {
 	WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
-	uploadInput.sendKeys("/src/test/resources/feature/Testdata/Logindata.xlsx");
+	uploadInput.sendKeys("src/test/resources/feature/Testdata/Logindata.xlsx");
 	}
 	public boolean errrorMsgdiaplyed() {
 	WebElement errorMsg = driver.findElement(
@@ -120,11 +120,11 @@ public class PdFfileUploadPage {
 }
 	public void uploafile10MBnPDffile() {
 		WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
-		uploadInput.sendKeys("/src/test/resources/feature/Testdata/SQL.pdf");
+		uploadInput.sendKeys("src/test/resources/feature/Testdata/SQL.pdf");
 		}
 	public void uploafile1validnPDffile() {
 		WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
-		uploadInput.sendKeys("/Users/parikshit/git/Team5-SeleniumCodeMasters/src/test/resources/feature/Testdata/Maha test result 2.pdf");
+		uploadInput.sendKeys("src/test/resources/feature/Testdata/Maha test result 2.pdf");
 		}
 	public void clickoncancelbtn() {
 		driver.findElement(cancelbtnlocator).click();
