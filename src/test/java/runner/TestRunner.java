@@ -9,7 +9,7 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-         //tags=("@mealsection"),
+        //tags=("@premiumusexercisehomepage"),
         glue= {"steps"},
 		features= {"src/test/resources/feature/"},	
 		plugin= {"pretty",
