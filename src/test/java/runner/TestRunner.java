@@ -7,22 +7,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 
 import configs.BrowserConfig;
-
 @CucumberOptions(		
-
-
-        //tags=("@premiumusexercisehomepage"),
-
+        //tags=("@barfornoactivitylog"), //@barchartafteractivityadded"),
         glue= {"steps"},
 		features= {"src/test/resources/feature"},	
-
-        //glue= {"steps"},
-		//features= {"src/test/resources/feature/"},	
-
-
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
+				"com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
 				//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 				"com.aventstack.chaintest.plugins.ChainTestCucumberListener:",

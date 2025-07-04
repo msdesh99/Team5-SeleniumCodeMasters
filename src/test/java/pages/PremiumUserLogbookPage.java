@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.stream.Collectors;
+import org.openqa.selenium.support.ui.Select;
 public class PremiumUserLogbookPage {
     WebDriver driver;
     By navigationLocator = By.xpath("//button[text()='Logbook']");
@@ -17,9 +19,19 @@ public class PremiumUserLogbookPage {
 	By piLocator = By.xpath("//h3[text()='7-Day Aggregate Nutrition']/../div/div/*[name()='g']");
 	By statisticCardLocator = By.xpath(
 	"//h2[text()='Physical Activity']//..//..//following-sibling::div[contains(@class,'text-sm')]//div[contains(@class,'rounded-xl')]");
-
+	
+	By homeLocator = By.xpath("//button[text()='Home']");
+	By physicalActivityLogLocator = By.xpath("//span[text()='Physical Activity']");	
+	By activityTypeDropdownLocator = By.xpath("//div[@class='mb-6']//select[@id='activityType']");
+	By duration = By.xpath("//div[@class='mb-6']//select[@id='activityType']");
+	
+	By durationDropdownLocator = By.xpath("//select[@name='durationUnit']");
+	
+	By lightActivityLocator = By.xpath("//button[text()='Light']");
+	By saveActivityLocator = By.xpath("//span[text()='Save Activity']");
+	By logbookPageLocator = By.xpath("//div//button[text()='Logbook']");
     Map<String,Object> actualMap = new HashMap<String,Object>(); 
-    
+    JavascriptExecutor js;
 	public PremiumUserLogbookPage(WebDriver driver) {
 		 this.driver = driver;
 	}
@@ -137,5 +149,37 @@ public class PremiumUserLogbookPage {
 		WebElement ele = driver.findElement(cardTextColorLocator);
 		return ele.getAttribute("class");
 	}
-	
+	public boolean verifyYAxisLabelForPysicalActivity(String label,String section) {
+	  By yaxisLocator = By.xpath(
+		"//h2[text()='Physical Activity']/../../descendant::div//*[contains(@class,'recharts-yAxis')]//*[name()='tspan']");
+	   List<WebElement> yAxisList = driver .findElements(yaxisLocator);
+	   return yAxisList.stream().anyMatch(i->i.getText().equals(label));
+    }
+	public boolean verifyChartWhenPhysicalActivityNotLogged() {
+		By chartLocator = By.xpath(
+		"//h2[text()='Physical Activity']/../following-sibling::div/div/div//*[name()='g']/*[name()='path']");	
+		try {
+			  driver.findElement(chartLocator);
+		}catch(NoSuchElementException nsc) {
+			return false;
+		}	
+		return true;
+	}
+	public void gotoHomePage() {
+		driver.findElement(homeLocator).click();
+	}
+	public void addPhysicalActivityLog() {
+		driver.findElement(physicalActivityLogLocator).click();
+	    Select activitySelect = new Select(driver.findElement(activityTypeDropdownLocator));
+	    activitySelect.selectByVisibleText("Cycling");
+	    driver.findElement(duration).sendKeys("1");
+	   
+	    Select durationDropdown = new Select(driver.findElement(durationDropdownLocator));
+	    durationDropdown.selectByValue("hours");
+	    driver.findElement(lightActivityLocator).click();
+	    driver.findElement(saveActivityLocator).click();
+	}
+	public void gotoLogbookPage() {
+				driver.findElement(logbookPageLocator).click();
+	}
 }
