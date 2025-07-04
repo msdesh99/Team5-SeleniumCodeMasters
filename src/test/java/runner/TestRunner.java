@@ -9,34 +9,12 @@ import org.testng.annotations.Optional;
 import configs.BrowserConfig;
 
 @CucumberOptions(		
-
-
-        tags=("@yAxisforBlooddailyNutrition"),
-        glue= {"steps"},
-		features= {"src/test/resources/feature/"},	
-
-  
-		//features= {"src/test/resources/feature/"},
-		//features= {"src/test/resources/feature/S1PremiumUserExerciseHomePage.feature"},
-		//features= {"src/test/resources/feature/NonFunctional.feature"},
-
-//		tags= "@ChomePage13",		
-//		glue= {"steps"},
-
-//		features= {"src/test/resources/feature"},
-//		features= {"src/test/resources/feature/02_F_LoginwoReport.feature"},
-
-		//tags= "@ChomePage13",		
-//		glue= {"steps"},
-
-// 		features= {"src/test/resources/feature/Launchpage.feature"},
-
-		//features= {"src/test/resources/feature/Launchpage.feature"},
-		//features= {"src/test/resources/feature/S2PremiumUserExerciseFullPage.feature"},
-		//features= {"src/test/resources/feature/Launchpage.feature"},
-		//features= {"src/test/resources/feature/Homenavigation.feature"},
-
-
+		
+		//features= {"src/test/resources/feature/"},	
+		features= {"src/test/resources/feature/CommanHomePage.feature"},
+		//features= {"src/test/resources/feature/CommanHomePage_MealSection.feature"},
+		
+		glue= {"steps"},
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
