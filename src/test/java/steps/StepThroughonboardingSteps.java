@@ -302,20 +302,20 @@ public void user_should_be_redirected_to_the_confirmation_or_home_page_with_prem
 @When("User clicks the free user button with valid payment details")
 public void user_clicks_the_free_user_button_with_valid_payment_details() {
 	List<String>emailList= loginpage.getEmailId();
-    String email = emailList.get(28); 
+    String email = emailList.get(26); 
     loginpage.enterEmailid(email);
     loginpage.clickSubmitbtn();
 
     Map<String, List<String>> allData = loginpage.getCreateFormData();
     Map<String, String> singleRow = new HashMap<>();
     
-    singleRow.put("FullName", allData.get("FullName").get(28));
+    singleRow.put("FullName", allData.get("FullName").get(26));
     loginpage.enterFullname(singleRow.get("FullName"));  
 
-    singleRow.put("Username", allData.get("Username").get(28));
+    singleRow.put("Username", allData.get("Username").get(26));
     loginpage.enterUsername(singleRow.get("Username"));  
 
-    singleRow.put("Password", allData.get("Password").get(28));
+    singleRow.put("Password", allData.get("Password").get(26));
     loginpage.enterPasswordname(singleRow.get("Password"));  
     loginpage.checkTermscondition();
     loginpage.waitUntilCreateAccountButtonEnabled(); 
