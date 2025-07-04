@@ -12,13 +12,20 @@ import configs.BrowserConfig;
 
 
         //tags=("@premiumusexercisehomepage"),
+
         glue= {"steps"},
 		features= {"src/test/resources/feature"},	
+
+        //glue= {"steps"},
+		//features= {"src/test/resources/feature/"},	
+
+
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
 				//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+				"com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
 				"rerun:rerun/failed-scenarios.txt"
 				},
 		dryRun=false,
