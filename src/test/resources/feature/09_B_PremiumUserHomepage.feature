@@ -1,10 +1,9 @@
 Feature: Functional and non functional test validation for premium account user
 
   Background: User is logged into the app
-    Given User click on login button of Launch Page
-    When User enters userid "Teamcoders@gmail.com" and password "Numpy@123"
+    Given User is on Launch Page
+    When User enters valid login credetnial for "premiumUser"
 
-  #User clicks sign in after entering password
   @TC_01
   Scenario: Verify the presence of "Pre-meal" title in each meal section
     Given User is in home page
@@ -184,5 +183,3 @@ Feature: Functional and non functional test validation for premium account user
     Given User is in home page
     When User clicks meal section
     Then total calorie count should equal the sum of Pre-Meal and Meal calories
-
-  

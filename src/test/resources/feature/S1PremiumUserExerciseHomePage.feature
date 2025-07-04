@@ -10,7 +10,7 @@ And User logs in and clicks "Exercise" option from the side panel for premium us
 Scenario: Verify "View Full Schedule" button is displayed on right for premium user homePage
 Then "View Full Schedule" button is displayed on the right for premium user homePage
 
-Scenario: Verify navigation to "Today's Exercise Schedule" page for premium user home#Page
+Scenario: Verify navigation to "Today's Exercise Schedule" page for premium user homePage
 When User clicks the "View Full Schedule" button for premium user homePage
 Then User is redirected to "Today's Exercise Schedule" page for premium user homePage
 

@@ -1,12 +1,10 @@
 @PremiumUserHomepage
 Feature: Home Page Validation for Registered premium Account User
 
-  Background: User is in password auth page
-    Given User click on login button of Launch Page
-    #User is in password auth page
-    When User enters userid "Teamcoders@gmail.com" and password "Numpy@123"
+  Background: User is logged into the app
+    Given User is on Launch Page
+    When User enters valid login credetnial for "premiumUser"
 
-  #User clicks sign in after entering password
   @TC_01
   Scenario: Verify order of text in navigation bar
     Then User should see the navigation bar displaying items in the order: Home,Logbook,Dashboard,Education

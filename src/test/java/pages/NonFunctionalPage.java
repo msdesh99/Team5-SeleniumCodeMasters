@@ -53,7 +53,7 @@ public class NonFunctionalPage {
              }
          }
 
-         for (WebElement element : links) {
+         for (WebElement element : alllinks) {
              if (element.getText().trim().isEmpty() &&
                  (element.getAttribute("aria-label") == null || element.getAttribute("aria-label").trim().isEmpty())) {
                  System.out.println("Unlabeled link found: " + element.getAttribute("href"));
