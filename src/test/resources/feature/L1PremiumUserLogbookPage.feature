@@ -1,4 +1,4 @@
-@premiumLogbook
+@premiumlogbook
 Feature: Premium User Logbook Page validation
 Background: User is Logged into the app for premium user logbook page
 Given  User is on Launch Page 
@@ -69,4 +69,13 @@ Examples:
 | section |
 | 7-Day Aggregate Nutrition |
 | Daily Nutrition Breakdown |
+
+@colorAggregateNutrition
+Scenario Outline: Verify text color of "<tab>" in 7-day aggregate nutrition section for premium user logbook page
+Then User should see "<tab>" text colour "<color>" for premium user logbook page
+Examples:
+| tab | color |
+| Carbs | #FF6384 |
+| Protein | #36A2EB |
+| Fats | #FFCE56 | 
 

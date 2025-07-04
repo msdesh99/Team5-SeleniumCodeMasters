@@ -10,9 +10,10 @@ import configs.BrowserConfig;
 
 @CucumberOptions(		
 
-        tags=("@TC_07"),
+
+        //tags=("@premiumusexercisehomepage"),
         glue= {"steps"},
-		features= {"src/test/resources/feature/09_C_PremiumUserHomepage.feature"},	
+		features= {"src/test/resources/feature"},	
 		plugin= {"pretty",
 				"html:target/cucumber-reports/cucumberReport.html",
 				"json:target/cucumber-reports/cucumberReport.json",
@@ -33,7 +34,6 @@ public Object[][] scenarios() {
 	return super.scenarios();
 }
 	
-
 @BeforeTest
 @Parameters({"browser"})
 public void setBrowser(@Optional("chrome")String browser) {

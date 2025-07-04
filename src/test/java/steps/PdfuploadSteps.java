@@ -345,7 +345,7 @@ public class PdfuploadSteps {
 
         @Then("User should see text field for Age, height, weight on PDF upload page")
         public void user_should_see_text_field_for_age_height_weight_on_pdf_upload_page() {
-            
+        	Assert.assertTrue(pdfuploadpage.isheightlocatorDisplyed());
         }
 
         @When("User clicks Onboarding button on PDF upload page for dropdown")
@@ -379,8 +379,7 @@ public class PdfuploadSteps {
 
         @Then("User should see dropdown option for Gender field on PDF upload page")
         public void user_should_see_dropdown_option_for_gender_field_on_pdf_upload_page() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+        	Assert.assertTrue(pdfuploadpage.isgendernameisdisplayed());
         }
 
         @When("User clicks Onboarding button on PDF upload page for gender validation")
@@ -414,6 +413,7 @@ public class PdfuploadSteps {
 
         @Then("User should see {string} options in dropdown on PDF upload page")
         public void user_should_see_options_in_dropdown_on_pdf_upload_page(String string) {
+        	Assert.assertTrue(pdfuploadpage.isGenderDropdownEnabled());
             
         }
 
@@ -443,28 +443,27 @@ public class PdfuploadSteps {
 
         @Then("User should see enabled {string} button on PDF upload page")
         public void user_should_see_enabled_button_on_pdf_upload_page(String string) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+        	Assert.assertTrue(pdfuploadpage.isContinueBtnEnabled());
         }
 
         @When("User clicks Onboarding button on PDF upload page to move step {int}")
-        public void user_clicks_onboarding_button_on_pdf_upload_page_to_move_step(Integer int1) {
+        public void user_clicks_onboarding_button_on_pdf_upload_page_to_move_step(Integer int1) throws InterruptedException {
         	loginpage.clickonloginbtn();
         	List<String>emailList= loginpage.getEmailId();
-            String email = emailList.get(17); 
+            String email = emailList.get(16); 
             loginpage.enterEmailid(email);
             loginpage.clickSubmitbtn();
 
             Map<String, List<String>> allData = loginpage.getCreateFormData();
             Map<String, String> singleRow = new HashMap<>();
             
-            singleRow.put("FullName", allData.get("FullName").get(17));
+            singleRow.put("FullName", allData.get("FullName").get(16));
             loginpage.enterFullname(singleRow.get("FullName"));  
 
-            singleRow.put("Username", allData.get("Username").get(17));
+            singleRow.put("Username", allData.get("Username").get(16));
             loginpage.enterUsername(singleRow.get("Username"));  
 
-            singleRow.put("Password", allData.get("Password").get(17));
+            singleRow.put("Password", allData.get("Password").get(16));
             loginpage.enterPasswordname(singleRow.get("Password"));  
             loginpage.checkTermscondition();
             loginpage.waitUntilCreateAccountButtonEnabled(); 
@@ -474,7 +473,7 @@ public class PdfuploadSteps {
             pdfuploadpage.clickonuploadBtn();
             pdfuploadpage.waitForReportAnalysisPage();
             pdfuploadpage.clickcontinuetostep1page();
-            pdfuploadpage.enterHeightAndWeightUsingJS(120, 55); 
+            pdfuploadpage.enterHeightAndWeight(120, 55); 
             pdfuploadpage.clicksteponepage();
             pdfuploadpage.selectExerciseIntensity("Easy");
             pdfuploadpage.selectDietaryPreference("vegan");
@@ -490,62 +489,52 @@ public class PdfuploadSteps {
 
         @When("User clicks Onboarding button on PDF upload page for invalid")
         public void user_clicks_onboarding_button_on_pdf_upload_page_for_invalid() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+            
         }
 
         @Then("User should receive error message if form has invalid values on PDF upload page")
         public void user_should_receive_error_message_if_form_has_invalid_values_on_pdf_upload_page() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+           
         }
 
         @When("User clicks Onboarding button on PDF upload page for progress bar")
         public void user_clicks_onboarding_button_on_pdf_upload_page_for_progress_bar() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+            
         }
 
         @Then("Progress bar should be visible on PDF upload page")
         public void progress_bar_should_be_visible_on_pdf_upload_page() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+           
         }
 
         @When("User clicks Onboarding button on PDF upload page to read steps")
         public void user_clicks_onboarding_button_on_pdf_upload_page_to_read_steps() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+            
         }
 
         @Then("Progress text should read {string} on PDF upload page")
         public void progress_text_should_read_on_pdf_upload_page(String string) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+          
         }
 
         @When("User clicks Onboarding button on PDF upload page for step {int} indicator")
         public void user_clicks_onboarding_button_on_pdf_upload_page_for_step_indicator(Integer int1) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+           
         }
 
         @Then("Step {int} indicator should be highlighted on PDF upload page")
         public void step_indicator_should_be_highlighted_on_pdf_upload_page(Integer int1) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+            
         }
 
         @When("User clicks Onboarding button on PDF upload page for uncheck unhighlighted steps")
         public void user_clicks_onboarding_button_on_pdf_upload_page_for_uncheck_unhighlighted_steps() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+           
         }
 
         @Then("Steps {int} to {int} should remain unhighlighted or inactive on PDF upload page")
         public void steps_to_should_remain_unhighlighted_or_inactive_on_pdf_upload_page(Integer int1, Integer int2) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+            
         }
 
 

@@ -39,6 +39,7 @@ public class CommanHomePage_MealSection {
 	private By Purplecolor=By.xpath("//div[contains(@class, 'bg-purple-500')]");
 	private By PinkColor=By.xpath("//div[contains(@class, 'bg-pink-500')]");
 	private By gram= By.xpath("//div[@class='text-xs text-gray-600 mt-1']");
+	private By calories=By.xpath("//span[contains(., 'calories')]");
 	
 	
 	
@@ -143,6 +144,10 @@ public class CommanHomePage_MealSection {
 	        }
 	    }
 	    return false;
+	}
+
+	public boolean iscaloriesVisible() {
+		return driver.findElement(calories).isDisplayed();
 	}
 
 }

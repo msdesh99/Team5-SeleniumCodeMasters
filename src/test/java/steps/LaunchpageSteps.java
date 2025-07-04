@@ -14,6 +14,7 @@ import org.testng.Assert;
 import configs.BrowserConfig;
 
 import pages.Launchgpage1;
+import utils.LoggerLoad;
 import utils.SoftAssertUtils;
 
 public class LaunchpageSteps {
@@ -32,8 +33,9 @@ public class LaunchpageSteps {
 	//========= launchpage.feature
 	@Given("User launches the browser")
 	public void user_launches_the_browser() {
-	System.out.println("baseUrl: "+this.testContext.base.getConfigs().getBaseUrl());
-	System.out.println("This is Given url: "+ driver.getClass()+" "+BrowserConfig.getBrowserType());
+		LoggerLoad.info("User is on the Log-in page");
+//	System.out.println("baseUrl: "+this.testContext.base.getConfigs().getBaseUrl());
+//	System.out.println("This is Given url: "+ driver.getClass()+" "+BrowserConfig.getBrowserType());
 	}
 	@When("User enters the SweetBalance url")
 	public void user_enters_the_sweet_balance_url() {

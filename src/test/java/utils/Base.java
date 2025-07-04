@@ -26,7 +26,7 @@ public class Base {
     		  loadConfigs();
     	  if(browserType.equalsIgnoreCase("chrome")) {
     		  ChromeOptions cOptions = new ChromeOptions();
-    		 // cOptions.addArguments("--headless=new");
+    		  cOptions.addArguments("--headless=new");
     		  driver = new ChromeDriver(cOptions);
     	  }
     	  else if(browserType.equalsIgnoreCase("firefox")) {

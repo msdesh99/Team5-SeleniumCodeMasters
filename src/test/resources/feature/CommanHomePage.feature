@@ -1,10 +1,10 @@
 @CommanHomePage
 Feature: Home Page Validation for Registered free user
 
-  Background: User is in password auth page
-    Given User click on login button of Launch Page
-    When User enters userid "Team05@gmail.com" and password "Usanumpy@2024"
-
+  Background: User is Logged into the app for Free User
+	Given  User is on Launch Page 
+	When User enters valid login credetnial for "freeUser" 
+  
   @ChomePage1
   Scenario: Verify app name in free user home page
     Then User should see SweetBalance text  on the left side of the free user page.
@@ -80,15 +80,15 @@ Feature: Home Page Validation for Registered free user
 
   @ChomePage18
   Scenario: Verify View Full Plan button is visible for free user
-    Then User should see "View Full Plan" button in the Meal Plan section for free user
+   Then User should see "View Full Plan" button in the Meal Plan section for free user
 
   @ChomePage19
   Scenario: Verify the symbol utensil cross in "Meal plan" 	for free user
-    Then User should see utensil icon (crossed fork and knife) in the Meal Plan tab for free user
+   Then User should see utensil icon (crossed fork and knife) in the Meal Plan tab for free user
 
   @ChomePage20
   Scenario: Verify the symbol dumbbell in  "Exercise" for free user
-    Then User should see dumbbell icon in the Exercise tab for free user
+   Then User should see dumbbell icon in the Exercise tab for free user
     
     
     

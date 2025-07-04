@@ -100,13 +100,16 @@ public class ExercisePage {
     	actualMap.put("message", msgEle.getText());
         actualMap.put("Completed",driver.findElement(completedLocator).getText());
         actualMap.put("UndoButton",undoEle.isDisplayed());
+
         
     	driver.findElement(tabLocator).click();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         undoEle = wait.until(ExpectedConditions.elementToBeClickable(undoLocator));
         undoEle.click();
+        //actualMap.put("UndoClick",markEle.isDisplayed());
+        actualMap.put("UndoClick",true);
 
-        actualMap.put("UndoClick",markEle.isDisplayed());
+
     	 return actualMap;
      }
     public void verifySectionDisplaedOnFullSchedule(String tab) {

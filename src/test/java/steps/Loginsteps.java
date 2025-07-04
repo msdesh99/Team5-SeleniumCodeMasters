@@ -7,13 +7,11 @@ import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Loginpage;
-import utils.ExcelReader;
 import utils.LoggerLoad;
 import utils.SoftAssertUtils;
 import utils.TestContext;
@@ -44,8 +42,6 @@ public class Loginsteps {
 		if(userType.equals("premiumUser")) {
 			user = testContext.base.getConfigs().getPremiumUser();
 		    password = testContext.base.getConfigs().getPremiumPassword();
-			System.out.println("user: "+ user);
-
 		    }
 	    else if(userType.equals("freeUser"))  {
 	    	user = testContext.base.getConfigs().getFreeUser();

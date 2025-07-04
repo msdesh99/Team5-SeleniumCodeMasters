@@ -1,9 +1,10 @@
 @CommanHomePage_MealSection
 Feature: Validation on meal section for free user
 
-  Background: User is in password auth page
-    Given User click on login button of Launch Page
-    When User enters userid "Team05@gmail.com" and password "Usanumpy@2024"
+    
+  Background: User is Logged into the app for Free User
+	Given  User is on Launch Page 
+	When User enters valid login credetnial for "freeUser" 
 
   @MealSectionClickable
   Scenario Outline: Verify "<meal>" section is clickable to show details for free user
@@ -67,7 +68,9 @@ Feature: Validation on meal section for free user
   Scenario: Verify unit of measurement for Fat is in grams for free user
      Then It should display the unit as "g" for free user for free user
     
-    @MealSection13 
-     Scenario: Validate the text "calories" in pre-meal			
-     ThenUser should see text "calories" after the calorie value in pre meal																				
+   @MealSection14 
+   Scenario: Validate the text "calories" in pre-meal for free user			
+   Then User should see text "calories" after the calorie value in pre meal for free user		
+     
+   																	
 
