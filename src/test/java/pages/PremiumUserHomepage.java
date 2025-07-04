@@ -49,19 +49,24 @@ public class PremiumUserHomepage {
 	By dinner = By.xpath("//button[text()='Dinner']");
 	By snack = By.xpath("//button[text()='Snacks']");
 	By caloriesValue = By.xpath("//div[@class='flex items-center text-sm text-gray-500 mt-1 space-x-4']/span[last()]");
-    By calorieText=By.xpath("//span[text()='calories']");
-    By completed = By.xpath("//button[normalize-space(text())='✅ Completed']");
-    By partiallyCompleted = By.xpath("//button[normalize-space(text())='⚠️ Partially Completed']");
-    By notCompleted = By.xpath("//button[normalize-space(text())='❌ Not Completed']");
-    By nutritionInsightscCard=By.xpath("//div[@class='border text-card-foreground bg-white/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl mt-8']");
-    By nutriInsight=By.xpath(".//h3[normalize-space()='Nutrition Insights']");
-    By calorieTitle=By.xpath("//h3[text()='Calories']");
-    By totalMealCalorie=By.xpath("//p[@class='text-sm text-gray-500']");
-    
-    
-    
-    
-    
+    By calorieText = By.xpath("//span[text()='calories']");
+	By completed = By.xpath("//button[normalize-space(text())='✅ Completed']");
+	By partiallyCompleted = By.xpath("//button[normalize-space(text())='⚠️ Partially Completed']");
+	By notCompleted = By.xpath("//button[normalize-space(text())='❌ Not Completed']");
+	By nutritionInsightscCard = By.xpath(
+			"//div[@class='border text-card-foreground bg-white/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl mt-8']");
+	By nutriInsight = By.xpath(".//h3[normalize-space()='Nutrition Insights']");
+	By calorieTitle = By.xpath("//h3[text()='Calories']");
+	By totalMealCalorie = By.xpath("//p[@class='text-sm text-gray-500']");
+	By dialogboxchallenge=By.xpath("//div[@role='dialog']");
+	By chooseYourChallengeTitle=By.xpath("//h2[text()=\"Choose Your Challenge\"]");
+	By selectyourbestText=By.xpath("//p[text()=\"Select a program that best fits your health goals\"]");
+	By tenDayChallengebutton=By.xpath("//button[.//span[text()='10-Day Challenge']]");
+	By fourWeekProgramButton=By.xpath("//button[.//span[text()='4-Week Program']]");
+	By displayTendayText=By.xpath("//button[contains(., '10-Day Challenge') and contains(., 'Postprandial')]");
+	By displayFourWeekText=By.xpath("//button[contains(., '4-Week Program') and contains(., 'Reduction ')]");
+	
+	
 	public PremiumUserHomepage(WebDriver driver) {
 		this.driver = driver;
 		this.actions = new Actions(driver);
@@ -420,6 +425,7 @@ public class PremiumUserHomepage {
 		return calorieValueDis;
 
 	}
+
 	public WebElement checkCalorieText() {
 		WebElement calorieTextDis = driver.findElement(calorieText);
 		return calorieTextDis;
@@ -435,19 +441,22 @@ public class PremiumUserHomepage {
 		List<WebElement> indicatorDis = driver.findElements(mainMealIndicator);
 		return indicatorDis;
 	}
+
 	public WebElement checkCompletedText() throws InterruptedException {
-		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		    return wait.until(ExpectedConditions.visibilityOfElementLocated(completed));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(completed));
 
 	}
+
 	public WebElement checkPartiallyCompletedText() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    return wait.until(ExpectedConditions.visibilityOfElementLocated(partiallyCompleted));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(partiallyCompleted));
 
 	}
+
 	public WebElement checkNotCompletedText() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    return wait.until(ExpectedConditions.visibilityOfElementLocated(notCompleted));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(notCompleted));
 
 	}
 
@@ -465,25 +474,30 @@ public class PremiumUserHomepage {
 		}
 
 	}
+
 	public void clickCompletedButton() {
 		WebElement completedButton = driver.findElement(completed);
-		actions.moveToElement(completedButton).click().perform();;
+		actions.moveToElement(completedButton).click().perform();
+		
 	}
+
 	public void clickPartiallyCompletedButton() {
 		WebElement partiallycompletedButton = driver.findElement(partiallyCompleted);
-		actions.moveToElement(partiallycompletedButton).click().perform();;
+		actions.moveToElement(partiallycompletedButton).click().perform();
+		
 	}
+
 	public void clickNotCompletedButton() {
 		WebElement notcompletedButton = driver.findElement(notCompleted);
 		actions.moveToElement(notcompletedButton).click().perform();
 	}
-	
+
 	public void getCompleteTaskButton(String button) throws InterruptedException {
 
 		switch (button) {
 		case "✅ Completed":
-			 clickCompletedButton();
-			 break;
+			clickCompletedButton();
+			break;
 		case "⚠️ Partially Completed":
 			clickPartiallyCompletedButton();
 			break;
@@ -495,29 +509,66 @@ public class PremiumUserHomepage {
 		}
 
 	}
-	 public boolean nutrientInsightCardIsPresent() {
-		 List<WebElement> NutrientCard=driver.findElements(nutritionInsightscCard);
-		 for(WebElement nutri:NutrientCard) {
-			 List<WebElement> nutricard=nutri.findElements(nutriInsight);
-			 if(nutricard.isEmpty()) {
-				 return false;
-			 }
-		 }
-		 return true;
-	 }
-	 public WebElement checkNutrientInsight() {
-		 WebElement NutriInsight=driver.findElement(nutriInsight);
-	     return NutriInsight;
-	 }
-	
-	 public WebElement checkCalorieTitle() {
-		 WebElement titleCalorie=driver.findElement(calorieTitle);
-	     return titleCalorie;
-	 }
-	
+
+	public boolean nutrientInsightCardIsPresent() {
+		List<WebElement> NutrientCard = driver.findElements(nutritionInsightscCard);
+		for (WebElement nutri : NutrientCard) {
+			List<WebElement> nutricard = nutri.findElements(nutriInsight);
+			if (nutricard.isEmpty()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public WebElement checkNutrientInsight() {
+		WebElement NutriInsight = driver.findElement(nutriInsight);
+		return NutriInsight;
+	}
+
+	public WebElement checkCalorieTitle() {
+		WebElement titleCalorie = driver.findElement(calorieTitle);
+		return titleCalorie;
+	}
+
 	public WebElement getTotalMealcalorie() {
-		WebElement totalcalorie=driver.findElement(totalMealCalorie);
-	     return totalcalorie;
+		WebElement totalcalorie = driver.findElement(totalMealCalorie);
+		return totalcalorie;
 	}
 	
+	public void clickChallengeYourselfButton() {
+		WebElement partiallycompletedButton = driver.findElement(challengeYourselfButton);
+		actions.moveToElement(partiallycompletedButton).click().perform();
+		
+	}
+	public WebElement getdialogboxChallengeYourself() {
+		WebElement dialogboxChallengeYourself = driver.findElement(dialogboxchallenge);
+		return dialogboxChallengeYourself;
+	}
+	public WebElement getChooseYourChallenge() {
+		WebElement ChooseYourChallenge = driver.findElement(chooseYourChallengeTitle);
+		return ChooseYourChallenge;
+	}
+	public WebElement getSelectYourBestText() {
+		WebElement selectYourBestText = driver.findElement(selectyourbestText);
+		return selectYourBestText;
+	}
+	public WebElement getTenDaychallengeButton() {
+		WebElement tenDayChallengebuttonDis = driver.findElement(tenDayChallengebutton);
+		return tenDayChallengebuttonDis;
+	}
+	public WebElement getFourWeekChallengeButton() {
+		WebElement fourWeekProgramButtonDis = driver.findElement(fourWeekProgramButton);
+		return fourWeekProgramButtonDis;
+	}
+	public WebElement getFourWeekChallenge() {
+		WebElement fourWeekProgramText = driver.findElement(displayFourWeekText);
+		return fourWeekProgramText;
+	}
+	public WebElement getTenDaychallengeText() {
+		WebElement tenDayChallengeText = driver.findElement(displayTendayText);
+		return tenDayChallengeText;
+	}
+	
+
 }
