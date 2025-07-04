@@ -34,7 +34,7 @@ public class PageObjectManager {
     private Launchgpage1 launchPageobj;
     private HomeNavigation homepageObj;
    // private NonFunctionalPage nonfunctionalObj;
-    private PremiumUserLogbookPage premiumUserLogbookPage
+    private PremiumUserLogbookPage premiumUserLogbookPage;
     private StepthroughonboardingPage stepthroughonboardingpage;
     private DiabetesRiskAnalyzer diabetesriskanalyzerObj;
 
