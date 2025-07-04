@@ -7,13 +7,12 @@ import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Loginpage;
-import utils.ExcelReader;
+import utils.LoggerLoad;
 import utils.SoftAssertUtils;
 import utils.TestContext;
 
@@ -29,19 +28,29 @@ public class Loginsteps {
 		this.driver = this.testContext.base.getDriver();
 		this.loginpage = this.testContext.pageObjectManager.getLoginpage();
 		
+		
 	}
-	@Given("User click on login button of Launch Page")
-	public void user_click_on_login_button_of_launch_page() {
+	@Given("User is on Launch Page")
+	public void user_is_on_launch_page() {
+		LoggerLoad.info("User is on the Log-in page");
+	}
+	@When("User enters valid login credetnial for {string}")
+	public void user_enters_valid_login_credetnial_for(String userType) {			
 		loginpage.clickonloginbtn();
-			    
-	}
-
-	@When("User enters userid {string} and password {string}")
-	public void user_enters_userid_and_password(String string, String string2) {
-		loginpage.enterEmailid(string);
-		loginpage.clickSubmitbtn();
-		loginpage.enterPassword(string2);
-		loginpage.clicksigninBtn();	   
+		String user="";
+		String password="";
+		if(userType.equals("premiumUser")) {
+			user = testContext.base.getConfigs().getPremiumUser();
+		    password = testContext.base.getConfigs().getPremiumPassword();
+		    }
+	    else if(userType.equals("freeUser"))  {
+	    	user = testContext.base.getConfigs().getFreeUser();
+	    	password = testContext.base.getConfigs().getFreePassword();
+	    }
+		    loginpage.enterEmailid(user);
+		    loginpage.clickSubmitbtn();
+		    loginpage.enterPassword(password);
+		    loginpage.clicksigninBtn();	   
 	}
 
 	@Then("User should redirected to Homepage")

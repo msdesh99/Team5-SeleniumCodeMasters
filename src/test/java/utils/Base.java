@@ -26,7 +26,7 @@ public class Base {
     		  loadConfigs();
     	  if(browserType.equalsIgnoreCase("chrome")) {
     		  ChromeOptions cOptions = new ChromeOptions();
-    		 // cOptions.addArguments("--headless=new");
+    		  cOptions.addArguments("--headless=new");
     		  driver = new ChromeDriver(cOptions);
     	  }
     	  else if(browserType.equalsIgnoreCase("firefox")) {
@@ -57,10 +57,14 @@ public class Base {
     	  Properties prop = new Properties();
     	  configLoader = new ConfigLoader();
     	  String file = System.getProperty("user.dir")+"/src/test/resources/config.properties";
-    	  try { 
-    		  
+    	  try { 		  
     		  prop.load(new FileInputStream(new File(file)));
     		  configLoader.setBaseUrl(prop.getProperty("baseUrl"));
+    		  configLoader.setPremiumUser(prop.getProperty("premiumUser"));
+    		  configLoader.setPremiumPassword(prop.getProperty("premiumPassword"));
+    		  configLoader.setFreeUser(prop.getProperty("freeUser"));
+    		  configLoader.setFreePassword(prop.getProperty("freePassword"));
+
     		  
     	  }catch(FileNotFoundException fe) {
     		  fe.printStackTrace();

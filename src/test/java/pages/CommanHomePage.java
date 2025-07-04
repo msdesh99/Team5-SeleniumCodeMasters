@@ -17,7 +17,7 @@ public class CommanHomePage {
 	
 	private By appName= By.xpath("//span[normalize-space(text())='SweetBalance']");
 	
-	private By userName = By.xpath("//span[normalize-space(text())='virginia']");
+	private By userName = By.xpath("//div[@class='text-white/80']");
 	
 	private By logout = By.xpath("//button[normalize-space()='Logout']");
 	

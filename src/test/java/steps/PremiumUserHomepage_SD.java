@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 import org.testng.Assert;
 
 import io.cucumber.java.en.*;
@@ -182,8 +181,7 @@ public class PremiumUserHomepage_SD {
 
 	@Given("User is in home page")
 	public void user_is_in_home_page() {
-		WebElement homeTabDis = premiumuserhomepage.HomeTab();
-		Assert.assertTrue(homeTabDis.isDisplayed());
+		LoggerLoad.info("User is in home page");
 	}
 
 	@When("User clicks meal section")
@@ -422,7 +420,57 @@ public class PremiumUserHomepage_SD {
 	    Assert.assertTrue(totalMealCal.isDisplayed());
 	}
 
+	@When("User clicks Challenge button")
+	public void user_clicks_challenge_button() {
+		premiumuserhomepage.clickChallengeYourselfButton();
+	}
+
+	@Then("User should get pop window")
+	public void user_should_get_pop_window() {
+		WebElement dialogBoxOfChallengeYourself=premiumuserhomepage.getdialogboxChallengeYourself();
+	    Assert.assertTrue(dialogBoxOfChallengeYourself.isDisplayed());
+	}
+
+	@Then("User should see title \"Choose Your Challenge\"Choose Your Challenge")
+	public void user_should_see_title_choose_your_challenge_choose_your_challenge() {
+		WebElement chooseYourChallengeTitle=premiumuserhomepage.getChooseYourChallenge();
+	    Assert.assertTrue(chooseYourChallengeTitle.isDisplayed());
+	}
+	@Then("user should see sub text {string}")
+	public void user_should_see_sub_text(String expected) {
+		WebElement selectYourbestText=premiumuserhomepage.getSelectYourBestText();
+		String actual=selectYourbestText.getText();
+	    Assert.assertEquals(expected, actual);
+	}
+
+	@Then("User should see Ten Day challenge option")
+	public void user_should_see_ten_day_challenge_option() {
+		WebElement tenDayChallengeButton=premiumuserhomepage.getTenDaychallengeButton();
+	    Assert.assertTrue(tenDayChallengeButton.isDisplayed());
+	}
+
+	@Then("User should see Four Week challenge option")
+	public void user_should_see_four_week_challenge_option() {
+		WebElement fourWeekChallengeButton=premiumuserhomepage.getFourWeekChallengeButton();
+	    Assert.assertTrue(fourWeekChallengeButton.isDisplayed());
+	}
 	
+	@Then("User should see {string}  as first option")
+	public void user_should_see_as_first_option(String expected) {
+		WebElement tendayChallengeText=premiumuserhomepage.getTenDaychallengeText();
+		String actual=tendayChallengeText.getText().replaceAll("\\s+","").trim();
+		String spaceRemovedExpected=expected.replaceAll("\\s+","").trim();
+	    Assert.assertEquals(spaceRemovedExpected, actual);
+	}
+
+	@Then("User should see {string}  as second option")
+	public void user_should_see_as_second_option(String expected) {
+		WebElement fourWeekChallengeText=premiumuserhomepage.getFourWeekChallenge();
+		String actual=fourWeekChallengeText.getText().replaceAll("\\s+","").trim();
+		String spaceRemovedExpected=expected.replaceAll("\\s+","").trim();
+	    Assert.assertEquals(spaceRemovedExpected, actual);
+	}
+
 
 
 

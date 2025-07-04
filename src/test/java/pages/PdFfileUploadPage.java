@@ -1,15 +1,18 @@
 package pages;
 
 import java.time.Duration;
+import java.util.List;
 
-import org.openqa.selenium.By;import org.openqa.selenium.By;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import utils.CommonMethods;
 import utils.ExcelReader;
 
@@ -24,14 +27,58 @@ public class PdFfileUploadPage {
 	By continuetoonboardinglocator = By.xpath("//button[text()='Continue to Onboarding']");
 	By reportAnaylysHedaer = By.xpath("//h2[text()='Report Analysis Results']");
 	By uploadsucessfuleMsg = By .xpath("//li[@role='status']/div/div[1]");
-	By  bloodtestelementlocator = By.xpath("//h3[text()='Blood Test Results']");
-	By completetestLocator = By.xpath("//h3[text()='Complete Blood Count']");
-	By medicalConditionsLocator = By.xpath("//h3[text()='Medical Conditions']");
-	By abnormalValuesLocator = By.xpath("//h3[text()='Abnormal Values']");
-	By recommentions = By.xpath("//h3[text()='Recommendations']");
+	By BloodReportvaluesLocator = By.xpath(
+		    "//h3[normalize-space()='Blood Test Results' or " +
+		    "normalize-space()='Complete Blood Count' or " +
+		    "normalize-space()='Medical Conditions' or " +
+		    "normalize-space()='Abnormal Values' or " +
+		    "normalize-space()='Recommendations']"
+		);
+	By heightLocator = By.xpath("//input[@placeholder='Enter height in cm (1-300)']");
+	By weightLocator = By .xpath("//input[@placeholder='Enter weight in kg (1-500)']");
+	By continuetostep2locator = By.xpath("//button[text()='Continue']");
+	By pickintencityexerciselocator = By.xpath("//div[contains(@class,'cursor-pointer')]");
+	By diterypreferencelocator = By.xpath("//div[contains(@class,'cursor-pointer') and .//span[contains(@class,'text-black')]]");
+	By cusionoptionlocator = By.xpath("//div[contains(@class,'cursor-pointer') and .//span[contains(@class,'text-black')]]");
+	By Alleriesoptionlocator = By.xpath("//div[contains(@class,'cursor-pointer') and .//span[contains(@class,'text-black')]]");
+	By submitalasteps = By.xpath("//button[@type='submit']");
+	By gendernamelocator = By.xpath("//select[@name='gender']");
 	
 	public PdFfileUploadPage(WebDriver driver) {
 		this.driver = driver;		
+	}
+	
+	public boolean isgendernameisdisplayed() {
+		return driver.findElement(gendernamelocator).isDisplayed();
+	}
+	public boolean isGenderDropdownEnabled() {
+	    try {
+	        By genderDropdown = By.name("gendernamelocator");
+	        WebElement dropdown = driver.findElement(genderDropdown);
+	        return dropdown.isEnabled();
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
+	}
+	public boolean isContinueBtnEnabled() {
+	    try {
+	       
+	        By continueBtn = By.name("continuetostep2");
+	        WebElement continueButton = driver.findElement(continueBtn);
+	        return continueButton.isEnabled();
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
+	}
+	
+	public void clickallsubmitform() {
+		driver.findElement(submitalasteps).click();
+	}
+	public void clicksteponepage() {
+		driver.findElement(continuetostep2locator).click();
+	}
+	public boolean isheightlocatorDisplyed() {
+		return driver.findElement(heightLocator).isDisplayed();
 	}
 	
 	public void user_hovers_over_upload_box() {
@@ -47,10 +94,9 @@ public class PdFfileUploadPage {
 	    if(uploadBox.isDisplayed())  
 	    return true;
 	    else
-	    	return false;
-	      
-	  
+	    	return false;  
 	}
+	
 	
 	public boolean isUploadBtnEnabled() {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -60,7 +106,7 @@ public class PdFfileUploadPage {
 	}
 	public void uploadnonPDffile() {
 	WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
-	uploadInput.sendKeys("/Users/parikshit/git/Team5-SeleniumCodeMasters/src/test/resources/feature/Testdata/Logindata.xlsx");
+	uploadInput.sendKeys("/src/test/resources/feature/Testdata/Logindata.xlsx");
 	}
 	public boolean errrorMsgdiaplyed() {
 	WebElement errorMsg = driver.findElement(
@@ -74,7 +120,7 @@ public class PdFfileUploadPage {
 }
 	public void uploafile10MBnPDffile() {
 		WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
-		uploadInput.sendKeys("/Users/parikshit/git/Team5-SeleniumCodeMasters/src/test/resources/feature/Testdata/SQL.pdf");
+		uploadInput.sendKeys("/src/test/resources/feature/Testdata/SQL.pdf");
 		}
 	public void uploafile1validnPDffile() {
 		WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
@@ -96,8 +142,13 @@ public class PdFfileUploadPage {
             return header.isDisplayed();
         } catch (org.openqa.selenium.TimeoutException e) {
             return false;
-        }
-                  
+        }                  
+	}
+	
+	public void clickcontinuetostep1page() {
+		CommonMethods.scrollToElementAndClick(driver, continuetoonboardinglocator, 3);
+
+	
 	}
 
 	public boolean iscontinueOnboardingBtndisplayed() {
@@ -105,21 +156,109 @@ public class PdFfileUploadPage {
 		return driver.findElement(continuetoonboardinglocator).isDisplayed();
 	}
 	
-	
-
 	public String getuploadsucessfuleText() {
 		try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement header2 = wait.until(ExpectedConditions.visibilityOfElementLocated(uploadsucessfuleMsg));
-		
+            WebElement header2 = wait.until(ExpectedConditions.visibilityOfElementLocated(uploadsucessfuleMsg));	
 		return header2.getText();
 		} catch (org.openqa.selenium.TimeoutException e) {
 			return null;
 	}
-		
+				
+	}
+	public boolean isbloodReportsectionDisplayed() {
+        List<WebElement> headings = driver.findElements(BloodReportvaluesLocator);
+
+        if (headings.isEmpty()) {
+            return false;
+        }
+
+        for (WebElement heading : headings) {
+        	CommonMethods.scrollToElement1(driver, heading);
+            System.out.println("Found heading: " + heading.getText());
+            if (!heading.isDisplayed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+//	
+//	public void enterHeightAndWeight(int height, int weight) {
+//        Actions actions = new Actions(driver);
+//
+//        WebElement heightInput = driver.findElement(heightLocator);
+//        actions.moveToElement(heightInput).click().pause(500)
+//               .sendKeys(String.valueOf(height))
+//               .perform();
+//
+//        WebElement weightInput = driver.findElement(weightLocator);
+//        actions.moveToElement(weightInput).click().pause(500)
+//               .sendKeys(String.valueOf(weight))
+//               .perform();
+//    }
+	
+	public void enterHeightAndWeight(int height, int weight) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    
+	    WebElement heightInput = wait.until(ExpectedConditions.visibilityOfElementLocated(heightLocator));
+	    WebElement weightInput = wait.until(ExpectedConditions.visibilityOfElementLocated(weightLocator));
+
+	   	    heightInput.clear();
+	    heightInput.sendKeys(String.valueOf(height));
+	    
+
+	    weightInput.clear();
+	    weightInput.sendKeys(String.valueOf(weight));
 	}
 
+	public void selectExerciseIntensity(String optionText) {
+	    driver.findElement(By.xpath("//div[contains(@class,'cursor-pointer') and .//span[contains(.,'" + optionText + "')]]")).click();
+	    System.out.println("Selected exercise intensity: " + optionText);
+
+	}
+	public void selectDietaryPreference(String preference) {
+	    driver.findElement(
+	        By.xpath("//div[contains(@class,'cursor-pointer') and .//span[contains(@class,'text-black') and contains(normalize-space(),'" + preference + "')]]")
+	    ).click();
+	    System.out.println("Selected dietary preference: " + preference);
+	}
+
+	
+	public void selectCuisineOption(String cuisineName) {
+	    List<WebElement> options = driver.findElements(cusionoptionlocator);
+
+	    for (WebElement option : options) {
+	        String text = option.getText().trim();
+	        if (text.toLowerCase().contains(cuisineName.toLowerCase())) {
+	            option.click();
+	            System.out.println("Selected cuisine: " + text);
+	            return;
+	        }
+	    }
+
+	    throw new NoSuchElementException("Cuisine option not found: " + cuisineName);
+	}
+	public void selectAllergy(String allergyName) {
+	    List<WebElement> options = driver.findElements(Alleriesoptionlocator);
+
+	    for (WebElement option : options) {
+	        String text = option.getText().trim();
+	        if (text.toLowerCase().contains(allergyName.toLowerCase())) {
+	            option.click();
+	            System.out.println("Selected allergy option: " + text);
+	            return;
+	        }
+	    }
+
+	    throw new NoSuchElementException("Allergy option not found: " + allergyName);
+	}
+
+
 }
+
+
+
+	
 
 
 

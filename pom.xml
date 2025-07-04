@@ -1,87 +1,107 @@
-<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>team5.sweetbalance.ui</groupId>
-  <artifactId>Team5-SeleniumCodeMasters</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>Team5-SeleniumCodeMasters</name>
-  <properties>
-	  <maven.compiler.source>17</maven.compiler.source>
-	  <maven.compiler.target>17</maven.compiler.target>
-	  <cucumber-java-version>7.23.0</cucumber-java-version>
-	  <selenium-java-version>4.33.0</selenium-java-version>
-	  <apache-poi-version>5.4.1</apache-poi-version>
-	  <log4j-version>2.24.3</log4j-version>
-	  <extentreports-version>5.0.9</extentreports-version>
-	  <extentreports-cucumberadaptor-version>1.10.1</extentreports-cucumberadaptor-version>
-	  <allure-version>2.29.1</allure-version>
-  </properties>
-  <dependencies>
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>team5.sweetbalance.ui</groupId>
+	<artifactId>Team5-SeleniumCodeMasters</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Team5-SeleniumCodeMasters</name>
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<cucumber-java-version>7.23.0</cucumber-java-version>
+		<selenium-java-version>4.33.0</selenium-java-version>
+		<apache-poi-version>5.4.1</apache-poi-version>
+		<log4j-version>2.24.3</log4j-version>
+		<extentreports-version>5.0.9</extentreports-version>
+		<extentreports-cucumberadaptor-version>1.10.1</extentreports-cucumberadaptor-version>
+		<allure-version>2.29.1</allure-version>
+	</properties>
+	<dependencies>
 		<dependency>
-    		<groupId>io.cucumber</groupId>
-    		<artifactId>cucumber-java</artifactId>
-    		<version>${cucumber-java-version}</version>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber-java-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-picocontainer</artifactId>
-		    <version>${cucumber-java-version}</version>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumber-java-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-testng</artifactId>
-		    <version>${cucumber-java-version}</version>
-		</dependency>
-		   <dependency>
-		    <groupId>org.seleniumhq.selenium</groupId>
-		    <artifactId>selenium-java</artifactId>
-		    <version>${selenium-java-version}</version>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>${cucumber-java-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi-ooxml</artifactId>
-		    <version>${apache-poi-version}</version>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium-java-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>${apache-poi-version}</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${apache-poi-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-core</artifactId>
-		    <version>${log4j-version}</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${apache-poi-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-api</artifactId>
-		    <version>${log4j-version}</version>
-		</dependency>		
-		<dependency>
-		    <groupId>com.aventstack</groupId>
-		    <artifactId>extentreports</artifactId>
-		    <version>${extentreports-version}</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>tech.grasshopper</groupId>
-		    <artifactId>extentreports-cucumber7-adapter</artifactId>
-		    <version>${extentreports-cucumberadaptor-version}</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>io.qameta.allure</groupId>
-		    <artifactId>allure-testng</artifactId>
-		    <version>${allure-version}</version>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>${extentreports-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>io.qameta.allure</groupId>
-		    <artifactId>allure-cucumber7-jvm</artifactId>
-		    <version>${allure-version}</version>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+			<version>${extentreports-cucumberadaptor-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>${allure-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-cucumber7-jvm</artifactId>
+			<version>${allure-version}</version>
+		</dependency>
+		<dependency>
+<groupId>com.aventstack</groupId>
+<artifactId>chaintest-cucumber-jvm</artifactId>
+<version>1.0.4</version>
+<scope>provided</scope>
+</dependency>
+<dependency>
+<groupId>org.freemarker</groupId>
+<artifactId>freemarker</artifactId>
+<version>2.3.33</version>
+</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version> <!-- Compatible with Java 17 -->
+			<scope>provided</scope>
+		</dependency>
+
 		<!--
 		<dependency>
 			<groupId>Baseframework</groupId>
 			<artifactId>Baseframework</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		-->					
-  </dependencies>
+		-->
+	</dependencies>
 </project>
