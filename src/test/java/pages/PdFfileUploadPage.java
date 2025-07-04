@@ -42,8 +42,33 @@ public class PdFfileUploadPage {
 	By cusionoptionlocator = By.xpath("//div[contains(@class,'cursor-pointer') and .//span[contains(@class,'text-black')]]");
 	By Alleriesoptionlocator = By.xpath("//div[contains(@class,'cursor-pointer') and .//span[contains(@class,'text-black')]]");
 	By submitalasteps = By.xpath("//button[@type='submit']");
+	By gendernamelocator = By.xpath("//select[@name='gender']");
+	
 	public PdFfileUploadPage(WebDriver driver) {
 		this.driver = driver;		
+	}
+	
+	public boolean isgendernameisdisplayed() {
+		return driver.findElement(gendernamelocator).isDisplayed();
+	}
+	public boolean isGenderDropdownEnabled() {
+	    try {
+	        By genderDropdown = By.name("gendernamelocator");
+	        WebElement dropdown = driver.findElement(genderDropdown);
+	        return dropdown.isEnabled();
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
+	}
+	public boolean isContinueBtnEnabled() {
+	    try {
+	       
+	        By continueBtn = By.name("continuetostep2");
+	        WebElement continueButton = driver.findElement(continueBtn);
+	        return continueButton.isEnabled();
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
 	}
 	
 	public void clickallsubmitform() {
@@ -51,6 +76,9 @@ public class PdFfileUploadPage {
 	}
 	public void clicksteponepage() {
 		driver.findElement(continuetostep2locator).click();
+	}
+	public boolean isheightlocatorDisplyed() {
+		return driver.findElement(heightLocator).isDisplayed();
 	}
 	
 	public void user_hovers_over_upload_box() {
@@ -78,7 +106,7 @@ public class PdFfileUploadPage {
 	}
 	public void uploadnonPDffile() {
 	WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
-	uploadInput.sendKeys("/Users/parikshit/git/Team5-SeleniumCodeMasters/src/test/resources/feature/Testdata/Logindata.xlsx");
+	uploadInput.sendKeys("/src/test/resources/feature/Testdata/Logindata.xlsx");
 	}
 	public boolean errrorMsgdiaplyed() {
 	WebElement errorMsg = driver.findElement(
@@ -92,7 +120,7 @@ public class PdFfileUploadPage {
 }
 	public void uploafile10MBnPDffile() {
 		WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
-		uploadInput.sendKeys("/Users/parikshit/git/Team5-SeleniumCodeMasters/src/test/resources/feature/Testdata/SQL.pdf");
+		uploadInput.sendKeys("/src/test/resources/feature/Testdata/SQL.pdf");
 		}
 	public void uploafile1validnPDffile() {
 		WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']"));
@@ -119,7 +147,7 @@ public class PdFfileUploadPage {
 	
 	public void clickcontinuetostep1page() {
 		CommonMethods.scrollToElementAndClick(driver, continuetoonboardinglocator, 3);
-//		driver.findElement(continuetoonboardinglocator).click();
+
 	
 	}
 
@@ -154,37 +182,33 @@ public class PdFfileUploadPage {
         }
         return true;
     }
+//	
+//	public void enterHeightAndWeight(int height, int weight) {
+//        Actions actions = new Actions(driver);
+//
+//        WebElement heightInput = driver.findElement(heightLocator);
+//        actions.moveToElement(heightInput).click().pause(500)
+//               .sendKeys(String.valueOf(height))
+//               .perform();
+//
+//        WebElement weightInput = driver.findElement(weightLocator);
+//        actions.moveToElement(weightInput).click().pause(500)
+//               .sendKeys(String.valueOf(weight))
+//               .perform();
+//    }
 	
 	public void enterHeightAndWeight(int height, int weight) {
-        Actions actions = new Actions(driver);
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    
+	    WebElement heightInput = wait.until(ExpectedConditions.visibilityOfElementLocated(heightLocator));
+	    WebElement weightInput = wait.until(ExpectedConditions.visibilityOfElementLocated(weightLocator));
 
-        WebElement heightInput = driver.findElement(heightLocator);
-        actions.moveToElement(heightInput).click().pause(500)
-               .sendKeys(String.valueOf(height))
-               .perform();
+	   	    heightInput.clear();
+	    heightInput.sendKeys(String.valueOf(height));
+	    
 
-        WebElement weightInput = driver.findElement(weightLocator);
-        actions.moveToElement(weightInput).click().pause(500)
-               .sendKeys(String.valueOf(weight))
-               .perform();
-    }
-	
-	public void enterHeightAndWeightUsingJS(int height, int weight) {
-	    JavascriptExecutor js = (JavascriptExecutor) driver;
-
-	    WebElement heightInput = driver.findElement(heightLocator);
-	    WebElement weightInput = driver.findElement(weightLocator);
-
-	   
-	    js.executeScript("arguments[0].value = '';", heightInput);
-	    js.executeScript("arguments[0].value = '';", weightInput);
-
-
-	    js.executeScript("arguments[0].value = arguments[1];", heightInput, String.valueOf(height));
-	    js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", heightInput);
-
-	    js.executeScript("arguments[0].value = arguments[1];", weightInput, String.valueOf(weight));
-	    js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", weightInput);
+	    weightInput.clear();
+	    weightInput.sendKeys(String.valueOf(weight));
 	}
 
 	public void selectExerciseIntensity(String optionText) {
