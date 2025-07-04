@@ -146,6 +146,14 @@ public class CommanHomePageSteps_MealSection {
 		Assert.assertTrue(gram,"Assertion for presence of gram color is failed");
 	}
 	
+	
+	@Then("User should see text {string} after the calorie value in pre meal for free user")
+	public void user_should_see_text_after_the_calorie_value_in_pre_meal_for_free_user(String string) {
+	   
+		boolean calories = commanHomepage_MealSection.iscaloriesVisible();  
+		Assert.assertTrue(calories,"Assertion for presence of calories color is failed");
+		
+	}
 
 	
 }
