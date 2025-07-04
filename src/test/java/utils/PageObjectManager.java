@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import pages.LaunchPageOld;
 import pages.Launchgpage1;
 import pages.Loginpage;
+import pages.NonFunctionalPage;
 import pages.PdFfileUploadPage;
 import pages.NonFunctionalPage;
 import pages.PremiumUserHomepage;
@@ -35,9 +36,6 @@ public class PageObjectManager {
     private HomeNavigation homepageObj;
 
     private NonFunctionalPage nonfunctionalObj;
-
-   // private NonFunctionalPage nonfunctionalObj;
-
     private PremiumUserLogbookPage premiumUserLogbookPage;
     private StepthroughonboardingPage stepthroughonboardingpage;
     private DiabetesRiskAnalyzer diabetesriskanalyzerObj;
